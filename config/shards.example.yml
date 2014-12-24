@@ -6,7 +6,7 @@ octopus:
   development:
     grossman:
       adapter: sqlite3
-      database: grossman
+      database: db/grossman.sqlite3
 
     gman_services:
       adapter: sqlite3
@@ -15,7 +15,7 @@ octopus:
   production:
     grossman:
       adapter: sqlite3
-      database: grossman
+      database: db/grossman.sqlite3
 
     gman_services:
       adapter: sqlite3
@@ -24,10 +24,10 @@ octopus:
   test:
     grossman:
       adapter: sqlite3
-      database: grossman
+      database: db/grossman
 
     gman_services:
       adapter: sqlite3
       database: db/gman_services.sqlite3
 
-default_migration_group: gman_services
+# default_migration_group: gman_services

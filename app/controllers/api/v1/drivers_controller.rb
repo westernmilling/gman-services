@@ -5,7 +5,7 @@ module Api
       # GET /drivers.json
       def index
         respond_to do |format|
-          format.json { render :json => DriverAdapter.drivers }
+          format.json { render :json => DriverAdapter.all }
         end
       end
     end

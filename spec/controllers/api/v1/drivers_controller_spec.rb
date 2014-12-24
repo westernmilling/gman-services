@@ -17,7 +17,7 @@ RSpec.describe Api::V1::DriversController, :type => :controller do
       }
     ]
   end
-  before { allow(DriverAdapter).to receive(:drivers) { drivers } }
+  before { allow(DriverAdapter).to receive(:all) { drivers } }
 
   describe 'GET index' do
     before { index }

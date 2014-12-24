@@ -1,17 +1,18 @@
 source 'https://rubygems.org'
-# TODO: alphabetize (script??)
 
 gem 'awesome_print'
 gem 'rails', '4.1.5'
 gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcsqlite3-adapter'
-gem 'activerecord-relativity-adapter',
-    :github => 'josephbridgwaterrowe/activerecord-relativity-adapter'
+# gem 'activerecord-relativity-adapter',
+#     :github => 'josephbridgwaterrowe/activerecord-relativity-adapter'
 
 gem 'jquery-rails'
 
 gem 'jruby-openssl'
 gem 'puma'
+gem 'schema_plus'
+gem 'seedbank'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
 

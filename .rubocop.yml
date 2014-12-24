@@ -3,3 +3,7 @@ Style/HashSyntax:
   SupportedStyles:
     - ruby19
     - hash_rockets
+
+AllCops:
+ Exclude:
+   - db/schema.rb

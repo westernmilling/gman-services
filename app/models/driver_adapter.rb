@@ -11,14 +11,18 @@ class DriverAdapter
       ActiveRecord::Base.using(:grossman).connected_with_octopus?
     end
 
-    def drivers
-      [
-        {
-          :driver_id => 0001,
-          :first_name => 'test', :last_name => 'test',
-          :driver_type => 'DR'
-        }
-      ]
+    def all
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, ['
+    SELECT
+      DriverId
+      , FirstName
+      , LastName
+    FROM
+      Trucking_Drivers
+    WHERE
+      DriverType = ?', 'DR'])
+
+      ActiveRecord::Base.connection.execute(sql)
     end
   end
 end
