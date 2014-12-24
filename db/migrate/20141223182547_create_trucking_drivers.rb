@@ -15,11 +15,11 @@ class CreateTruckingDrivers < ActiveRecord::Migration
   end
 
   def view
-    create_view :get_drivers,
+    create_view :drivers_view,
                 'SELECT
-                DriverID
-              , FirstName
-              , LastName
+                DriverID AS driver_id
+              , FirstName AS first_name
+              , LastName AS last_name
             FROM
               Trucking_Drivers
             WHERE

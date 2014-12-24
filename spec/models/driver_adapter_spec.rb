@@ -21,14 +21,10 @@ RSpec.describe DriverAdapter, :type => :model do
     let(:sql) do
       ActiveRecord::Base.send(:sanitize_sql_array, ['
     SELECT
-      DriverID
-      , FirstName
-      , LastName
+      *
     FROM
-      Trucking_Drivers
-    WHERE
-      DriverType = ?
-      ', 'DR'])
+      drivers_view
+      '])
     end
     let(:all_drivers) { ActiveRecord::Base.connection.execute(sql) }
     let(:driver) { driver_adapter.all.first }
