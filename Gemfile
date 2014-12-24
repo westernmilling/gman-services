@@ -13,6 +13,7 @@ gem 'jruby-openssl'
 gem 'puma'
 gem 'schema_plus'
 gem 'seedbank'
+gem 'symbolize'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
 

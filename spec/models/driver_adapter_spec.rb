@@ -18,15 +18,7 @@ RSpec.describe DriverAdapter, :type => :model do
     end
   end
   describe '#all' do
-    let(:sql) do
-      ActiveRecord::Base.send(:sanitize_sql_array, ['
-    SELECT
-      *
-    FROM
-      drivers_view
-      '])
-    end
-    let(:all_drivers) { ActiveRecord::Base.connection.execute(sql) }
+    let(:all_drivers) { ActiveRecord::Base.connection.execute(driver_query) }
     let(:driver) { driver_adapter.all.first }
 
     it 'empty is not false' do
@@ -34,8 +26,24 @@ RSpec.describe DriverAdapter, :type => :model do
       expect(all_drivers.empty?).to be_falsey
     end
 
-    it { expect(driver).to have_key('DriverId') }
-    it { expect(driver).to have_key('FirstName') }
-    it { expect(driver).to have_key('LastName') }
+    it { expect(driver).to have_key('driver_id') }
+    it { expect(driver).to have_key('first_name') }
+    it { expect(driver).to have_key('last_name') }
+  end
+  describe 'replace_key' do
+    let(:result) do
+      [
+        {
+          'DriverId' => Faker::Number.number(4),
+          'FirstName' => Faker::Name.first_name,
+          'LastName' => Faker::Name.last_name
+        }
+      ]
+    end
+    # let(:convert) { result.first.to_snake_keys }
+    let(:convert) { driver_adapter.replace_key(result).first }
+    it { expect(convert).to have_key('driver_id') }
+    it { expect(convert).to have_key('first_name') }
+    it { expect(convert).to have_key('last_name') }
   end
 end

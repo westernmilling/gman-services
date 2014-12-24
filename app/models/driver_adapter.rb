@@ -1,3 +1,5 @@
+require 'lib/hash_extensions'
+
 # DriverAdapter
 class DriverAdapter
   # self.using(:grossman).connection.current_shard
@@ -12,7 +14,26 @@ class DriverAdapter
     end
 
     def all
-      sql = ActiveRecord::Base.send(:sanitize_sql_array, ['
+      results = ActiveRecord::Base.connection.execute(query_sql)
+      # results = results.each { |e| e.to_snake_keys }
+      # ap results
+      # ap replace_key(results)
+      replace_key(results)
+    end
+
+    def replace_key(hashlist)
+      mappings = {
+          'DriverId' => 'driver_id',
+          'FirstName' => 'first_name',
+          'LastName' => 'last_name'
+      }
+      hashlist.map do |e|
+        Hash[e.map { |k, v| [mappings[k] || k, v] }]
+      end
+    end
+
+    def query_sql
+      ActiveRecord::Base.send(:sanitize_sql_array, ['
     SELECT
       DriverId
       , FirstName
@@ -21,8 +42,6 @@ class DriverAdapter
       Trucking_Drivers
     WHERE
       DriverType = ?', 'DR'])
-
-      ActiveRecord::Base.connection.execute(sql)
     end
   end
 end
