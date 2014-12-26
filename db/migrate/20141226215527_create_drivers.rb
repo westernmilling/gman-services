@@ -11,17 +11,5 @@ class CreateDrivers < ActiveRecord::Migration
 
       t.timestamps
     end
-    view
-  end
-
-  def view
-    create_view :Trucking_Drivers,
-                'SELECT
-              driver_number AS DriverID
-            , first_name AS FirstName
-            , last_name AS LastName
-            , driver_type AS DriverType
-          FROM
-            drivers'
   end
 end

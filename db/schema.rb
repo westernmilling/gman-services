@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226215527) do
+ActiveRecord::Schema.define(version: 20141226232633) do
 
-  create_view "Trucking_Drivers", "SELECT\n              driver_number AS DriverID\n            , first_name AS FirstName\n            , last_name AS LastName\n            , driver_type AS DriverType\n          FROM\n            drivers", :force => true
+  create_view "Trucking_Drivers", "SELECT\n                driver_number AS DriverID\n                , first_name AS FirstName\n                , last_name AS LastName\n                , driver_type AS DriverType\n                FROM\n                  drivers", :force => true
 # Could not dump table "drivers" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
