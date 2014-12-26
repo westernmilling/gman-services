@@ -165,6 +165,10 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    symbolize (4.5.2)
+      activemodel (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
+      i18n
     therubyrhino (2.0.4)
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.4)
@@ -208,5 +212,6 @@ DEPENDENCIES
   rubocop
   schema_plus
   seedbank
+  symbolize
   therubyrhino
   uglifier (>= 1.0.3)

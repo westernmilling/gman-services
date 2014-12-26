@@ -15,21 +15,7 @@ class DriverAdapter
 
     def all
       results = ActiveRecord::Base.connection.execute(query_sql)
-      # results = results.each { |e| e.to_snake_keys }
-      # ap results
-      # ap replace_key(results)
-      replace_key(results)
-    end
-
-    def replace_key(hashlist)
-      mappings = {
-          'DriverId' => 'driver_id',
-          'FirstName' => 'first_name',
-          'LastName' => 'last_name'
-      }
-      hashlist.map do |e|
-        Hash[e.map { |k, v| [mappings[k] || k, v] }]
-      end
+      results.map(&:to_snake_keys)
     end
 
     def query_sql

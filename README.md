@@ -4,7 +4,7 @@
 
 For development purposes:
 ```ruby
-RAILS_ENV=development bundle exec rake db:drop db:create db:migrate db:seed:development
+bundle exec rake db:create db:migrate db:seed
 ```
 
 Do not use:
