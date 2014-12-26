@@ -18,14 +18,13 @@ RSpec.describe DriverAdapter, :type => :model do
   end
   describe '#all' do
     before do
-      create(:trucking_drivers)
+      create(:driver)
     end
-    let(:all_drivers) { ActiveRecord::Base.connection.execute(driver_query) }
-    let(:convert) { all_drivers.map(&:to_snake_keys) }
-    let(:driver) { convert.first }
+
+    subject(:driver) { driver_adapter.all.first }
 
     it 'empty is not false' do
-      expect(all_drivers.empty?).to be_falsey
+      expect(driver.empty?).to be_falsey
     end
 
     it { expect(driver).to have_key(:driver_id) }

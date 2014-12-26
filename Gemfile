@@ -30,6 +30,7 @@ group :development, :test do
   gem 'faker'
   gem 'json_spec'
   gem 'pry'
+  gem 'rspec-its'
   gem 'rspec-rails', '~> 3.0'
   gem 'rubocop', :require => false
   gem 'ar-octopus'

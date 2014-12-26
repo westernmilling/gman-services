@@ -1,5 +1,5 @@
 require 'lib/hash_extensions'
-
+require 'awesome_print'
 # DriverAdapter
 class DriverAdapter
   # self.using(:grossman).connection.current_shard

@@ -4,13 +4,13 @@ RSpec.describe Api::V1::DriversController, :type => :controller do
   let(:drivers) do
     [
       {
-        :driver_id => Faker::Number.number(4),
+        :driver_number => Faker::Number.number(4),
         :first_name => Faker::Name.first_name,
         :last_name => Faker::Name.last_name,
         :driver_type => 'DR'
       },
       {
-        :driver_id => Faker::Number.number(4),
+        :driver_number => Faker::Number.number(4),
         :first_name => Faker::Name.first_name,
         :last_name => Faker::Name.last_name,
         :driver_type => 'DR'
@@ -46,21 +46,12 @@ RSpec.describe Api::V1::DriversController, :type => :controller do
 
         describe 'first element' do
           subject(:first_element) { json.first }
-          it 'is a hash' do
-            expect(first_element).to be_kind_of(Hash)
-          end
-          it 'includes first name' do
-            expect(first_element).to have_key(:first_name)
-          end
-          it 'includes last name' do
-            expect(first_element).to have_key(:last_name)
-          end
-          it 'includes driver id' do
-            expect(first_element).to have_key(:driver_id)
-          end
-          it 'includes driver type' do
-            expect(first_element).to have_key(:driver_type)
-          end
+
+          it { expect(first_element).to be_kind_of(Hash) }
+          it { expect(first_element).to have_key(:first_name) }
+          it { expect(first_element).to have_key(:last_name) }
+          it { expect(first_element).to have_key(:driver_number) }
+          it { expect(first_element).to have_key(:driver_type) }
         end
       end
 
