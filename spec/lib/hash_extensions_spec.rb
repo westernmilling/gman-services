@@ -1,10 +1,9 @@
 require 'rails_helper'
 require 'lib/hash_extensions'
 
-RSpec.describe 'to_snake_keys' do
-  describe 'to_snake_key' do
-    let(:convert) { input.map(&:to_snake_keys).first }
-    context 'drivers' do
+RSpec.describe 'Hash' do
+  describe '.to_snake_key' do 
+    subject(:convert) { input.map(&:to_snake_keys).first }
       let(:input) do
         [
           {
@@ -15,13 +14,12 @@ RSpec.describe 'to_snake_keys' do
         ]
       end
       # let(:convert) { input.map(&:to_snake_keys).first }
-      it { expect(convert).to have_key(:driver_id) }
-      it { expect(convert).to have_key(:first_name) }
-      it { expect(convert).to have_key(:last_name) }
-    end
+      it { is_expected.to have_key(:driver_id) }
+      it { is_expected.to have_key(:first_name) }
+      it { is_expected.to have_key(:last_name) }
 
     describe 'underscore_key' do
-      let(:input) { [{ 'AaBb' => 'value' }] }
+      subject(:input) { [{ 'AaBb' => 'value' }] }
 
       it 'contains an underscore key' do
         expect(convert).to have_key(:aa_bb)

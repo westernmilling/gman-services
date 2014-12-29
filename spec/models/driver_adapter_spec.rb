@@ -10,10 +10,10 @@ RSpec.describe DriverAdapter, :type => :model do
   end
 
   describe '#connection' do
-    subject { driver_adapter.connection }
+    subject { driver_adapter.connection.current_shard }
 
     it 'current_shard is equal to grossman' do
-      expect(subject.current_shard).to eq(:grossman)
+      expect(is_expected.to eq(:grossman))
     end
   end
   describe '#all' do
@@ -21,14 +21,17 @@ RSpec.describe DriverAdapter, :type => :model do
       create(:driver)
     end
 
-    subject(:driver) { driver_adapter.all.first }
+    subject(:drivers) { driver_adapter.all }
 
     it 'empty is not false' do
-      expect(driver.empty?).to be_falsey
+      expect(drivers.empty?).to be_falsey
     end
+    describe 'first driver' do
+      subject { drivers.first }
 
-    it { expect(driver).to have_key(:driver_id) }
-    it { expect(driver).to have_key(:first_name) }
-    it { expect(driver).to have_key(:last_name) }
+      it { is_expected.to have_key(:driver_id) }
+      it { is_expected.to have_key(:first_name) }
+      it { is_expected.to have_key(:last_name) }
+    end
   end
 end

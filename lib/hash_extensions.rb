@@ -10,13 +10,19 @@ class Hash
     when Array
       value.map { |v| to_snake_keys(v) }
     when Hash
-      Hash[value.map { |k, v| [underscore_key(k).to_sym, to_snake_keys(v).to_s.strip] }]
+      Hash[map_hash_to_array(value)]
     else
       value
     end
   end
 
   private
+
+  def map_hash_to_array(hash)
+    hash.map do |k, v|
+      [underscore_key(k).to_sym, to_snake_keys(v).to_s.strip]
+    end
+  end
 
   def underscore_key(k)
     if k.is_a? Symbol

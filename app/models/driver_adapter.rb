@@ -3,6 +3,11 @@ require 'lib/hash_extensions'
 # DriverAdapter
 class DriverAdapter
   # self.using(:grossman).connection.current_shard
+  QUERY = <<SQL
+    SELECT DriverId, FirstName, LastName
+    FROM Trucking_Drivers
+    WHERE DriverType = ?
+SQL
 
   class << self
     def connection
@@ -14,20 +19,12 @@ class DriverAdapter
     end
 
     def all
-      results = ActiveRecord::Base.connection.execute(query_sql)
+      results = connection.execute(sanitized_sql)
       results.map(&:to_snake_keys)
     end
 
-    def query_sql
-      ActiveRecord::Base.send(:sanitize_sql_array, ['
-    SELECT
-      DriverId
-      , FirstName
-      , LastName
-    FROM
-      Trucking_Drivers
-    WHERE
-      DriverType = ?', 'DR'])
+    def sanitized_sql
+      ActiveRecord::Base.send(:sanitize_sql_array, [QUERY, 'DR'])
     end
   end
 end

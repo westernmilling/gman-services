@@ -1,5 +1,7 @@
 # CreateDriverViews
 class CreateDriversViews < ActiveRecord::Migration
+  using(:grossman)
+
   def change
     create_view :Trucking_Drivers,
                 'SELECT
