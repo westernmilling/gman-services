@@ -1,5 +1,3 @@
-require 'lib/hash_extensions'
-
 # DriverAdapter
 class DriverAdapter
   # self.using(:grossman).connection.current_shard

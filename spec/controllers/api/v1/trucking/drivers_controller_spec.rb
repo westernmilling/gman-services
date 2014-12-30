@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::DriversController, :type => :controller do
+RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
   let(:drivers) do
     [
       {
