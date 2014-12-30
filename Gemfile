@@ -10,6 +10,8 @@ gem 'activerecord-jdbcsqlite3-adapter'
 gem 'jquery-rails'
 
 gem 'jruby-openssl'
+# gem 'plissken'
+gem 'plissken', :github => 'michaelachrisco/plissken', :branch => 'symbolized_keys'
 gem 'puma'
 gem 'schema_plus'
 gem 'seedbank'
