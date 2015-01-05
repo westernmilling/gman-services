@@ -6,7 +6,8 @@ script:
   - bundle exec rspec -fd
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - cp config/shards.example.yml config/shards.yml
+  - cp config/shards.travis.yml config/shards.yml
+  - cp config/secrets.travis.yml config/secrets.yml
 #branches:
 #  only:
 #    - master
