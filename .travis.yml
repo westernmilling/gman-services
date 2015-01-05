@@ -1,0 +1,12 @@
+language: jruby
+rvm:
+  - 1.7.16.1
+script:
+  - bundle exec rake db:schema:load
+  - bundle exec rspec -fd
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - cp config/shards.example.yml config/shards.yml
+#branches:
+#  only:
+#    - master
