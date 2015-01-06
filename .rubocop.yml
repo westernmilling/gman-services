@@ -6,5 +6,4 @@ Style/HashSyntax:
 
 AllCops:
  Exclude:
-   - db/schema.rb
    - db/**/*

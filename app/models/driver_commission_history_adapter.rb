@@ -23,31 +23,8 @@ class DriverCommissionHistoryAdapter
         FROM
           Trucking_Drivers_Commissions_History
 SQL
-  # TODO: use QUERY_ALL + WHERE...
-  QUERY_BY_PAID_DATE = <<SQL
-          SELECT
-          DriverId
-        , Backhauls
-        , FreightRevenue
-        , CustomerId
-        , DeliveryDate
-        , DriverRate
-        , FreightBillNumber
-        , FuelSurcharge
-        , Layover
-        , MovementType
-        , OtherHourDollars
-        , OrderNumberText
-        , OriginName
-        , PaidDate
-        , Revenue
-        , SplitRate
-        , TotalFreightRevenue
-        FROM
-          Trucking_Drivers_Commissions_History
-        WHERE
-          PaidDate = ?
-SQL
+
+  QUERY_BY_PAID_DATE = QUERY_ALL + 'WHERE PaidDate = ?'
 
   class << self
     def connection
@@ -69,9 +46,6 @@ SQL
     end
 
     def sanitized_sql(query, options = {})
-      # puts query
-      # puts options
-      # puts ActiveRecord::Base.send(:sanitize_sql_array, [query, options])
       ActiveRecord::Base.send(:sanitize_sql_array, [query, options])
     end
   end
