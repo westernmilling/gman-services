@@ -1,7 +1,7 @@
 module Api
   module V1
     module Trucking
-      # Drivers Api endpoint
+      # Driver Commission History Api endpoint
       class DriverCommissionsHistoryController < ApplicationController
         # GET /driver_commission_history.json
         def index

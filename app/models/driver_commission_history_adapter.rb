@@ -1,4 +1,4 @@
-# DriverAdapter
+# DriverCommissionHistoryAdapter
 class DriverCommissionHistoryAdapter
   # self.using(:grossman).connection.current_shard
   QUERY_ALL = <<SQL

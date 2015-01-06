@@ -1,4 +1,3 @@
-# CreateDriverViews
 class CreateTruckingDriversViews < ActiveRecord::Migration
   using(:grossman)
 
