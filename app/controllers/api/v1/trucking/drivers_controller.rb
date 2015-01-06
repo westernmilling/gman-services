@@ -1,7 +1,7 @@
 module Api
   module V1
     module Trucking
-    # Drivers Api endpoint
+      # Drivers Api endpoint
       class DriversController < ApplicationController
         # GET /drivers.json
         def index

@@ -3,7 +3,7 @@ class CreateTruckingDriversViews < ActiveRecord::Migration
   using(:grossman)
 
   def change
-    create_view :Trucking_Drivers,'
+    create_view :Trucking_Drivers, '
 SELECT
   driver_number AS DriverID
 , first_name AS FirstName
