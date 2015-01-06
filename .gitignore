@@ -1,3 +1,5 @@
+.idea
+.DS_Store
 *.rbc
 capybara-*.html
 .rspec
@@ -29,3 +31,6 @@ config/secrets.yml
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
+config/shards.yml
+config/database.yml
+spec/cassettes
