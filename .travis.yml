@@ -2,7 +2,7 @@ language: jruby
 rvm:
   - 1.7.16.1
 script:
-  - bundle exec rake db:migrate RAILS_ENV=test
+  - bundle exec rake db:drop db:create db:migrate RAILS_ENV=test
   - bundle exec rspec -fd
 before_script:
   - cp config/database.travis.yml config/database.yml
