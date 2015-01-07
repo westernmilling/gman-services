@@ -23,10 +23,12 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'hound-tools', '~> 0.0.5', :require => false
+  gem 'hound-tools', '~> 0.0.6',
+      :github => 'michaelachrisco/hound-tools',
+      :require => false
   gem 'json_spec'
   gem 'pry'
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.0'
-  gem 'rubocop', '0.25.0', :require => false
+  gem 'rubocop', '0.28.0', :require => false
 end
