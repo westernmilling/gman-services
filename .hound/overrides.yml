@@ -1,0 +1,10 @@
+# NOTE: DO NOT put a 'inheried_from' in this file, because Hound with silently
+# ignore it
+#
+# Files you want to exclude
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - config/unicorn.rb
+    - db/schema.rb
+    - db/migrate/*

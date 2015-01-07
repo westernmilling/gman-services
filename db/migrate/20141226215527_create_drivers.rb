@@ -1,4 +1,3 @@
-# CreateDrivers
 class CreateDrivers < ActiveRecord::Migration
   using(:grossman)
 
