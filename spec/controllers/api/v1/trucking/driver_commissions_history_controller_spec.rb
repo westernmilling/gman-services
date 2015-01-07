@@ -58,25 +58,25 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         describe 'first element' do
           subject(:first_element) { json.first }
 
-          it { expect(first_element).to be_kind_of(Hash) }
-          it { expect(first_element).to have_key(:driver_id) }
-          it { expect(first_element).to have_key(:backhauls) }
-          it { expect(first_element).to have_key(:freight_revenue) }
-          it { expect(first_element).to have_key(:customer_id) }
-          it { expect(first_element).to have_key(:delivery_date) }
-          it { expect(first_element).to have_key(:driver_rate) }
-          it { expect(first_element).to have_key(:freight_bill_number) }
-          it { expect(first_element).to have_key(:fuel_revenue) }
-          it { expect(first_element).to have_key(:fuel_surcharge) }
-          it { expect(first_element).to have_key(:layover) }
-          it { expect(first_element).to have_key(:movement_type) }
-          it { expect(first_element).to have_key(:other_hour_dollars) }
-          it { expect(first_element).to have_key(:order_number_text) }
-          it { expect(first_element).to have_key(:origin_name) }
-          it { expect(first_element).to have_key(:paid_date) }
-          it { expect(first_element).to have_key(:revenue) }
-          it { expect(first_element).to have_key(:split_rate) }
-          it { expect(first_element).to have_key(:total_freight_revenue) }
+          it { is_expected.to be_kind_of(Hash) }
+          it { is_expected.to have_key(:driver_id) }
+          it { is_expected.to have_key(:backhauls) }
+          it { is_expected.to have_key(:freight_revenue) }
+          it { is_expected.to have_key(:customer_id) }
+          it { is_expected.to have_key(:delivery_date) }
+          it { is_expected.to have_key(:driver_rate) }
+          it { is_expected.to have_key(:freight_bill_number) }
+          it { is_expected.to have_key(:fuel_revenue) }
+          it { is_expected.to have_key(:fuel_surcharge) }
+          it { is_expected.to have_key(:layover) }
+          it { is_expected.to have_key(:movement_type) }
+          it { is_expected.to have_key(:other_hour_dollars) }
+          it { is_expected.to have_key(:order_number_text) }
+          it { is_expected.to have_key(:origin_name) }
+          it { is_expected.to have_key(:paid_date) }
+          it { is_expected.to have_key(:revenue) }
+          it { is_expected.to have_key(:split_rate) }
+          it { is_expected.to have_key(:total_freight_revenue) }
         end
       end
       describe 'response.body' do
@@ -122,25 +122,25 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         describe 'first element' do
           subject(:first_element) { json.first }
 
-          it { expect(first_element).to be_kind_of(Hash) }
-          it { expect(first_element).to have_key(:driver_id) }
-          it { expect(first_element).to have_key(:backhauls) }
-          it { expect(first_element).to have_key(:freight_revenue) }
-          it { expect(first_element).to have_key(:customer_id) }
-          it { expect(first_element).to have_key(:delivery_date) }
-          it { expect(first_element).to have_key(:driver_rate) }
-          it { expect(first_element).to have_key(:freight_bill_number) }
-          it { expect(first_element).to have_key(:fuel_revenue) }
-          it { expect(first_element).to have_key(:fuel_surcharge) }
-          it { expect(first_element).to have_key(:layover) }
-          it { expect(first_element).to have_key(:movement_type) }
-          it { expect(first_element).to have_key(:other_hour_dollars) }
-          it { expect(first_element).to have_key(:order_number_text) }
-          it { expect(first_element).to have_key(:origin_name) }
-          it { expect(first_element).to have_key(:paid_date) }
-          it { expect(first_element).to have_key(:revenue) }
-          it { expect(first_element).to have_key(:split_rate) }
-          it { expect(first_element).to have_key(:total_freight_revenue) }
+          it { is_expected.to be_kind_of(Hash) }
+          it { is_expected.to have_key(:driver_id) }
+          it { is_expected.to have_key(:backhauls) }
+          it { is_expected.to have_key(:freight_revenue) }
+          it { is_expected.to have_key(:customer_id) }
+          it { is_expected.to have_key(:delivery_date) }
+          it { is_expected.to have_key(:driver_rate) }
+          it { is_expected.to have_key(:freight_bill_number) }
+          it { is_expected.to have_key(:fuel_revenue) }
+          it { is_expected.to have_key(:fuel_surcharge) }
+          it { is_expected.to have_key(:layover) }
+          it { is_expected.to have_key(:movement_type) }
+          it { is_expected.to have_key(:other_hour_dollars) }
+          it { is_expected.to have_key(:order_number_text) }
+          it { is_expected.to have_key(:origin_name) }
+          it { is_expected.to have_key(:paid_date) }
+          it { is_expected.to have_key(:revenue) }
+          it { is_expected.to have_key(:split_rate) }
+          it { is_expected.to have_key(:total_freight_revenue) }
         end
       end
     end

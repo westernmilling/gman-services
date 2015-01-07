@@ -47,11 +47,11 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
         describe 'first element' do
           subject(:first_element) { json.first }
 
-          it { expect(first_element).to be_kind_of(Hash) }
-          it { expect(first_element).to have_key(:first_name) }
-          it { expect(first_element).to have_key(:last_name) }
-          it { expect(first_element).to have_key(:driver_number) }
-          it { expect(first_element).to have_key(:driver_type) }
+          it { is_expected.to be_kind_of(Hash) }
+          it { is_expected.to have_key(:first_name) }
+          it { is_expected.to have_key(:last_name) }
+          it { is_expected.to have_key(:driver_number) }
+          it { is_expected.to have_key(:driver_type) }
         end
       end
 
