@@ -7,3 +7,5 @@ Style/HashSyntax:
 AllCops:
  Exclude:
    - db/**/*
+ Include:
+   - db/seeds/**/*

@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'awesome_print'
 gem 'rails', '4.1.5'
+
+gem 'awesome_print'
 gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcsqlite3-adapter'
 # gem 'activerecord-relativity-adapter',
 #     :github => 'josephbridgwaterrowe/activerecord-relativity-adapter'
 
 gem 'jquery-rails'
-
 gem 'jruby-openssl'
 gem 'plissken', '0.2.0'
 gem 'puma'
@@ -18,11 +18,8 @@ gem 'symbolize'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
 
-# gem 'jdbc-mysql', '~> 5.1.33'
 gem 'mysql2', :platform => :ruby
 gem 'jdbc-mysql', :platform => :jruby
-
-# gem 'jruby-launcher', '~> 1.1.1'
 
 group :development, :test do
   # gem 'airborne'
