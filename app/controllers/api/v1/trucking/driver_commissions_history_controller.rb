@@ -10,7 +10,7 @@ module Api
           end
         end
 
-        # GET /driver_commission_history#by_paid_date
+        # GET /driver_commission_history_by_paid_date.json
         def by_paid_date
           respond_to do |format|
             format.json do
