@@ -1,11 +1,25 @@
+AllCops:
+  Excludes:
+    - config/unicorn.rb
+    - db/schema.rb
+    - db/migrate/*
+  RunRailsCops: true
+
+# Multi-line method chaining should be done with leading dots.
+Style/DotPosition:
+  EnforcedStyle: leading
+  SupportedStyles:
+    - leading
+    - trailing
+
 Style/HashSyntax:
   EnforcedStyle: hash_rockets
   SupportedStyles:
-    - ruby19
     - hash_rockets
+    - ruby19
 
-AllCops:
- Exclude:
-   - db/**/*
- Include:
-   - db/seeds/**/*
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
