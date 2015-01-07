@@ -37,8 +37,6 @@ GEM
       activesupport (>= 3.2.0)
     arel (5.0.1.20140414130214)
     ast (2.0.0)
-    astrolabe (1.3.0)
-      parser (>= 2.2.0.pre.3, < 3.0)
     awesome_print (1.2.0)
     builder (3.2.2)
     capybara (2.4.4)
@@ -60,6 +58,9 @@ GEM
       i18n (~> 0.5)
     ffi (1.9.6-java)
     hike (1.2.3)
+    hound-tools (0.0.5)
+      rubocop (= 0.25.0)
+      thor
     i18n (0.7.0)
     jdbc-mysql (5.1.33)
     jdbc-sqlite3 (3.8.7)
@@ -84,7 +85,7 @@ GEM
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     nokogiri (1.6.5-java)
-    parser (2.2.0.pre.8)
+    parser (2.2.0.1)
       ast (>= 1.1, < 3.0)
       slop (~> 3.4, >= 3.4.5)
     plissken (0.2.0)
@@ -147,9 +148,8 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
-    rubocop (0.28.0)
-      astrolabe (~> 1.3)
-      parser (>= 2.2.0.pre.7, < 3.0)
+    rubocop (0.25.0)
+      parser (>= 2.2.0.pre.4, < 3.0)
       powerpack (~> 0.0.6)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
@@ -205,6 +205,7 @@ DEPENDENCIES
   capybara
   factory_girl_rails
   faker
+  hound-tools (~> 0.0.5)
   jdbc-mysql
   jquery-rails
   jruby-openssl
@@ -216,7 +217,7 @@ DEPENDENCIES
   rails (= 4.1.5)
   rspec-its
   rspec-rails (~> 3.0)
-  rubocop
+  rubocop (= 0.25.0)
   schema_plus
   seedbank
   symbolize

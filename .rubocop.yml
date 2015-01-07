@@ -1,25 +1,8 @@
+inherit_from:
+  - .hound/defaults.yml
+  - .hound/overrides.yml
+  - .rubocop_todo.yml
+
+# Rails cops (so we don't need to run with -R option)
 AllCops:
-  Excludes:
-    - config/unicorn.rb
-    - db/schema.rb
-    - db/migrate/*
   RunRailsCops: true
-
-# Multi-line method chaining should be done with leading dots.
-Style/DotPosition:
-  EnforcedStyle: leading
-  SupportedStyles:
-    - leading
-    - trailing
-
-Style/HashSyntax:
-  EnforcedStyle: hash_rockets
-  SupportedStyles:
-    - hash_rockets
-    - ruby19
-
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
-  SupportedStyles:
-    - single_quotes
-    - double_quotes

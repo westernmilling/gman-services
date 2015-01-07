@@ -28,5 +28,5 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.0'
-  gem 'rubocop', :require => false
+  gem 'rubocop', '0.25.0', :require => false
 end
