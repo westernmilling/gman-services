@@ -25,8 +25,9 @@ module GmanServices
     # config.i18n.load_path +=
     #   Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    
-    # create a db specific dump in structure.sql file rather than schema.rb. IIRC when :sql is set rails test code loads that instead of the schema.rb
+
+    # create a db specific dump in structure.sql file rather than schema.rb.
+    # IIRC when :sql is set rails test code loads that instead of the schema.rb
     config.active_record.schema_format = :sql
   end
 end

@@ -83,7 +83,6 @@ RSpec.describe DriverCommissionHistoryAdapter, :type => :model do
       it { is_expected.to have_key(:revenue) }
       it { is_expected.to have_key(:split_rate) }
       it { is_expected.to have_key(:total_freight_revenue) }
-      it { is_expected.to have_value('2014-01-01') }
     end
   end
 end

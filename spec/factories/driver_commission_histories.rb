@@ -19,4 +19,3 @@ FactoryGirl.define do
     total_freight_revenue Faker::Number.number(4)
   end
 end
-

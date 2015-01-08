@@ -4,8 +4,6 @@ gem 'rails', '4.1.5'
 
 gem 'awesome_print'
 gem 'activerecord-jdbc-adapter'
-# gem 'activerecord-jdbc-adapter', :github => 'michaelachrisco/activerecord-jdbc-adapter', :branch => '1-3-stable'
-# gem 'activerecord-jdbcmysql-adapter'
 gem 'devise'
 gem 'doorkeeper'
 gem 'jdbc-mysql', :platform => :jruby
@@ -13,8 +11,6 @@ gem 'jquery-rails'
 gem 'jruby-openssl'
 gem 'mysql2', :platform => :ruby
 gem 'plissken', '0.2.0'
-# gem 'puma'
-# gem 'schema_plus', '1.8.2'
 gem 'seedbank'
 gem 'symbolize'
 gem 'therubyrhino'

@@ -4,7 +4,7 @@ module Api
       # Drivers Api endpoint
       class DriversController < ApplicationController
         before_action :doorkeeper_authorize!
-        
+
         # GET /drivers.json
         def index
           respond_to do |format|

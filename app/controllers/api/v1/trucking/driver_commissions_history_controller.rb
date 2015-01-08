@@ -4,7 +4,7 @@ module Api
       # Driver Commission History Api endpoint
       class DriverCommissionsHistoryController < ApplicationController
         before_action :doorkeeper_authorize!
-        
+
         # GET /driver_commission_history.json
         def index
           respond_to do |format|

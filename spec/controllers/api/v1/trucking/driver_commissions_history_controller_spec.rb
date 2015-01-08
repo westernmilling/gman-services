@@ -2,29 +2,31 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
                :type => :controller do
-  
+  before do
+    allow(controller).to receive(:doorkeeper_token).and_return(token)
+  end
+
   describe 'doorkeeper token' do
-    before do
-      allow(controller).to receive(:doorkeeper_token).and_return(token)
-    end
     context 'token accepted' do
       let(:token) { double :acceptable? => true }
       it 'responds with 200' do
-        get :index, :format => :html
+        get :index, :format => :json
         expect(response.status).to eq(200)
       end
     end
 
     context 'token not accepted' do
-      let(:token) { double :acceptable? => false,
-                           :accessible? => false }
+      let(:token) do
+        double :acceptable? => false,
+               :accessible? => false
+      end
       it 'responds with 401' do
-        get :index, :format => :html
+        get :index, :format => :json
         expect(response.status).to eq(401)
       end
     end
   end
-  
+
   let(:driver_commission_history) do
     [
       {
@@ -57,6 +59,8 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
   end
 
   describe 'GET index' do
+    let(:token) { double :acceptable? => true }
+
     before { index }
     subject(:index) { get :index, :format => format }
     context 'when format is json' do
@@ -116,6 +120,8 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
     end
   end
   describe 'GET by_paid_date' do
+    let(:token) { double :acceptable? => true }
+
     let(:paid_date) { Date.new(2012, 01, 01) }
     before { by_paid_date }
     subject(:by_paid_date) do

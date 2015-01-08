@@ -1,36 +1,12 @@
 require 'rails_helper'
 
-# module ApiHelper
-#   include Rack::Test::Methods
-
-#   def app
-#     Rails.application
-#   end
-# end
-
-# RSpec.configure do |config|
-#   config.include ApiHelper, :type => :api #apply to all spec for apis folder
-# end
-
-RSpec.describe 'test doorkeeper' do #, :type => :api do
-  # before(:all) {
-  #   @pid = Kernel.spawn('rails s')
-  # }
-  # before {
-  #   allow(QueryAdapter).to receive(:using).with('relativity') { QueryAdapter }
-  #   allow(QueryAdapter).to receive(:get_drivers) { } #.and_return([])
-  # }
-  let(:application) {
+RSpec.describe 'test doorkeeper' do # , :type => :api do
+  let(:application) do
     Doorkeeper::Application.create!(
         :name => 'Test',
-        # :uid => Doorkeeper::OAuth::Helpers::UniqueToken.generate,
-        # :secret => Doorkeeper::OAuth::Helpers::UniqueToken.generate,
         :redirect_uri => redirect_uri)
-  }
+  end
   let(:redirect_uri) { 'urn:ietf:wg:oauth:2.0:oob' }
-
-  # Add database cleaner to make sure the DB is clean after tests, since we don't want to use transations
-  # Can we disable transactions per spec?
 
   context 'valid application id and secret' do
     # Break this up to test:
@@ -39,14 +15,7 @@ RSpec.describe 'test doorkeeper' do #, :type => :api do
     #  - some data
 
     describe 'doorkeeper' do
-
       it 'works' do
-        # application
-        # puts Doorkeeper::Application.all.to_yaml
-
-        # client = OAuth2::Client.new(application.uid, application.secret,
-        #   :site => 'http://localhost:3000')
-
         client = OAuth2::Client.new(application.uid, application.secret,
                                     :site => 'http://localhost:3000') do |b|
           b.request :url_encoded
@@ -57,10 +26,7 @@ RSpec.describe 'test doorkeeper' do #, :type => :api do
 
         expect(token).to be_present
 
-        # Test getting some drivers
-        response = token.get('/api/v1/trucking/drivers.json')
-
-        # puts response.to_yaml
+        response = token.get('/api/v1/drivers.json')
 
         expect(response).to be_present
         expect(response.status).to eq(200)
@@ -78,11 +44,5 @@ RSpec.describe 'test doorkeeper' do #, :type => :api do
 
       expect { client.client_credentials.get_token }.to raise_error(OAuth2::Error)
     end
-
   end
-
-  # after(:all) {
-  #   Process.kill('SIGKILL', @pid)
-  # }
-
 end
