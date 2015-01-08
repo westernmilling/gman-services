@@ -5,7 +5,7 @@ gem 'rails', '4.1.5'
 gem 'awesome_print'
 gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcsqlite3-adapter'
-
+gem 'doorkeeper'
 gem 'jdbc-mysql', :platform => :jruby
 gem 'jquery-rails'
 gem 'jruby-openssl'

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   scope '/api/v1/' do
     get 'drivers(.:format)',
         :to => 'api/v1/trucking/drivers#index',
