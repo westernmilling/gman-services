@@ -2,6 +2,29 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
                :type => :controller do
+  
+  describe 'doorkeeper token' do
+    before do
+      allow(controller).to receive(:doorkeeper_token).and_return(token)
+    end
+    context 'token accepted' do
+      let(:token) { double :acceptable? => true }
+      it 'responds with 200' do
+        get :index, :format => :html
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context 'token not accepted' do
+      let(:token) { double :acceptable? => false,
+                           :accessible? => false }
+      it 'responds with 401' do
+        get :index, :format => :html
+        expect(response.status).to eq(401)
+      end
+    end
+  end
+  
   let(:driver_commission_history) do
     [
       {

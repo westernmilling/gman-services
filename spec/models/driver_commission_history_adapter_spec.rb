@@ -18,7 +18,9 @@ RSpec.describe DriverCommissionHistoryAdapter, :type => :model do
   end
   describe '#all' do
     before do
-      create(:driver_commission_history)
+      Octopus.using(:grossman) do
+        create(:driver_commission_history)
+      end
     end
 
     subject(:driver_commissions) { driver_commission_history_adapter.all }
@@ -50,7 +52,9 @@ RSpec.describe DriverCommissionHistoryAdapter, :type => :model do
   end
   describe '#by_paid_date' do
     before do
-      create(:driver_commission_history, :paid_date => Date.new(2014, 01, 01))
+      Octopus.using(:grossman) do
+        create(:driver_commission_history, :paid_date => Date.new(2014, 01, 01))
+      end
     end
 
     subject(:driver_commissions) do

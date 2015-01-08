@@ -8,6 +8,7 @@ before_script:
   - cp config/database.travis.yml config/database.yml
   - cp config/shards.travis.yml config/shards.yml
   - cp config/secrets.travis.yml config/secrets.yml
+  - for db in grossman_test gman_services_test; do mysql -e "create database $db" ; done
 #branches:
 #  only:
 #    - master

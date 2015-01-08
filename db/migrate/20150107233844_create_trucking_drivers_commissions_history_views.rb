@@ -1,7 +1,8 @@
 class CreateTruckingDriversCommissionsHistoryViews < ActiveRecord::Migration
   using(:grossman)
-  def change
-    create_view :Trucking_Drivers_Commissions_History, '
+
+  def up
+    self.connection.execute 'CREATE OR REPLACE VIEW Trucking_Drivers_Commissions_History AS
 SELECT
   driver_id AS DriverId
 , backhauls AS Backhauls
@@ -21,7 +22,11 @@ SELECT
 , split_rate AS SplitRate
 , total_freight_revenue AS TotalFreightRevenue
 FROM
-  driver_commission_histories
+  driver_commission_histories;
 '
+  end
+
+  def down
+    self.connection.execute "DROP VIEW IF EXISTS Trucking_Drivers_Commissions_History;"
   end
 end
