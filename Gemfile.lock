@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/doorkeeper-gem/doorkeeper.git
+  revision: 2115a5243b4663090b49c872a1837f6dda6b0b91
+  specs:
+    doorkeeper (2.0.1)
+      railties (>= 3.1)
+
+GIT
   remote: git://github.com/michaelachrisco/hound-tools.git
   revision: 7511afc75eec8710599154e7eafb8cebaf73aaa9
   specs:
@@ -31,9 +38,9 @@ GEM
       arel (~> 5.0.0)
     activerecord-jdbc-adapter (1.3.13)
       activerecord (>= 2.2)
-    activerecord-jdbcsqlite3-adapter (1.3.13)
+    activerecord-jdbcmysql-adapter (1.3.13)
       activerecord-jdbc-adapter (~> 1.3.13)
-      jdbc-sqlite3 (>= 3.7.2, < 3.9)
+      jdbc-mysql (>= 5.1.22)
     activesupport (4.1.5)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -48,6 +55,8 @@ GEM
     astrolabe (1.3.0)
       parser (>= 2.2.0.pre.3, < 3.0)
     awesome_print (1.2.0)
+    bcrypt (3.1.9)
+    bcrypt (3.1.9-java)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -56,6 +65,13 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.1.0)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -66,11 +82,14 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.6-java)
+    hashie (3.3.2)
     hike (1.2.3)
+    httpauth (0.2.1)
     i18n (0.7.0)
     jdbc-mysql (5.1.33)
-    jdbc-sqlite3 (3.8.7)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -80,6 +99,8 @@ GEM
     json_spec (1.1.4)
       multi_json (~> 1.0)
       rspec (>= 2.0, < 4.0)
+    jwt (0.1.13)
+      multi_json (>= 1.5)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -88,10 +109,24 @@ GEM
     mini_portile (0.6.1)
     minitest (5.5.0)
     multi_json (1.10.1)
+    multipart-post (2.0.0)
     mysql2 (0.3.17)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     nokogiri (1.6.5-java)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
+    omniauth-oauth2 (1.0.3)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
+    orm_adapter (0.5.0)
     parser (2.2.0.1)
       ast (>= 1.1, < 3.0)
       slop (~> 3.4, >= 3.4.5)
@@ -132,6 +167,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     rake (10.4.2)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -162,9 +199,6 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.1)
-    schema_plus (1.7.1)
-      activerecord (>= 3.2)
-      valuable
     seedbank (0.3.0)
     slop (3.6.0)
     spoon (0.0.4)
@@ -197,7 +231,8 @@ GEM
     uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    valuable (0.9.9)
+    warden (1.2.3)
+      rack (>= 1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -206,11 +241,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-jdbc-adapter
-  activerecord-jdbcsqlite3-adapter
+  activerecord-jdbcmysql-adapter
   ar-octopus
   awesome_print
   capybara
+  devise
+  doorkeeper!
   factory_girl_rails
   faker
   hound-tools (~> 0.0.6)!
@@ -219,6 +255,8 @@ DEPENDENCIES
   jruby-openssl
   json_spec
   mysql2
+  omniauth
+  omniauth-oauth2 (= 1.0.3)
   plissken (= 0.2.0)
   pry
   puma
@@ -226,7 +264,6 @@ DEPENDENCIES
   rspec-its
   rspec-rails (~> 3.0)
   rubocop (= 0.28.0)
-  schema_plus
   seedbank
   symbolize
   therubyrhino

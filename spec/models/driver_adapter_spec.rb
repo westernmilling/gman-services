@@ -18,7 +18,9 @@ RSpec.describe DriverAdapter, :type => :model do
   end
   describe '#all' do
     before do
-      create(:driver)
+      Octopus.using(:grossman) do
+        create(:driver)
+      end
     end
 
     subject(:drivers) { driver_adapter.all }

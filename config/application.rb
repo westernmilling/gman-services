@@ -1,5 +1,5 @@
 require File.expand_path('../boot', __FILE__)
-
+# require 'config/initializers/monkey_magic'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -25,5 +25,9 @@ module GmanServices
     # config.i18n.load_path +=
     #   Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # create a db specific dump in structure.sql file rather than schema.rb.
+    # IIRC when :sql is set rails test code loads that instead of the schema.rb
+    config.active_record.schema_format = :sql
   end
 end
