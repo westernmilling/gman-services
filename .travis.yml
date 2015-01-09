@@ -2,12 +2,14 @@ language: jruby
 rvm:
   - 1.7.16.1
 script:
-  - bundle exec rake db:drop db:create db:migrate RAILS_ENV=test
+  - bundle exec rake db:create RAILS_ENV=test
+  - bundle exec rake db:migrate RAILS_ENV=test
   - bundle exec rspec -fd
 before_script:
   - cp config/database.travis.yml config/database.yml
   - cp config/shards.travis.yml config/shards.yml
   - cp config/secrets.travis.yml config/secrets.yml
+  - for db in grossman_test gman_services_test; do mysql -e "create database $db" ; done
 #branches:
 #  only:
 #    - master
