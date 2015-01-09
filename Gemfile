@@ -13,6 +13,7 @@ gem 'jruby-openssl'
 gem 'mysql2', :platform => :ruby
 gem 'plissken', '0.2.0'
 gem 'puma'
+gem 'seedbank'
 gem 'symbolize'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
