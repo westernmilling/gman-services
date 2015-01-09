@@ -231,7 +231,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-jdbc-adapter
   activerecord-jdbcmysql-adapter
   ar-octopus
   awesome_print

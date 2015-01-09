@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.5'
 
 gem 'awesome_print'
-gem 'activerecord-jdbc-adapter'
+# gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
 gem 'devise'
 gem 'doorkeeper'
