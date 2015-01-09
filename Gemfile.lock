@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/doorkeeper-gem/doorkeeper.git
+  revision: 2115a5243b4663090b49c872a1837f6dda6b0b91
+  specs:
+    doorkeeper (2.0.1)
+      railties (>= 3.1)
+
+GIT
   remote: git://github.com/michaelachrisco/hound-tools.git
   revision: 7511afc75eec8710599154e7eafb8cebaf73aaa9
   specs:
@@ -66,8 +73,6 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    doorkeeper (2.0.1)
-      railties (>= 3.1)
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -240,7 +245,7 @@ DEPENDENCIES
   awesome_print
   capybara
   devise
-  doorkeeper
+  doorkeeper!
   factory_girl_rails
   faker
   hound-tools (~> 0.0.6)!

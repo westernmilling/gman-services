@@ -8,7 +8,7 @@ Doorkeeper.configure do
     # This block will be called to check whether the resource owner is
     # authenticated or not.
     resource_owner_authenticator do
-      # fail "Please configure doorkeeper
+      # fail "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
       # resource_owner_authenticator block located in #{__FILE__}"
       # Put your resource owner authentication logic here.
       # Example implementation:
@@ -95,15 +95,16 @@ Doorkeeper.configure do
     #
     # If not specified, Doorkeeper enables all the four grant flows.
     #
-    # grant_flows %w(authorization_code implicit password client_credentials)
-
+    grant_flows %w(authorization_code implicit password client_credentials)
+    # grant_flows %w(authorization_code)
     # Under some circumstances you might want to have
     # applications auto-approved,
     # so that the user skips the authorization step.
     # For example if dealing with trusted a application.
-    # skip_authorization do |resource_owner, client|
-    #   client.superapp? or resource_owner.admin?
-    # end
+
+    skip_authorization do
+      true
+    end
 
     # WWW-Authenticate Realm (default "Doorkeeper").
     # realm "Doorkeeper"
@@ -112,5 +113,6 @@ Doorkeeper.configure do
     # Some applications require dynamic query parameters on their request_uri
     # set to true if you want this to be allowed
     # wildcard_redirect_uri false
+    enable_application_owner :confirmation => false
   end
 end
