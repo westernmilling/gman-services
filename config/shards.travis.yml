@@ -5,29 +5,57 @@ octopus:
     - test
   development:
     grossman:
-      adapter: sqlite3
-      database: db/grossman_dev.sqlite3
+      adapter: mysql2
+      database: grossman_dev
+      host: localhost
+      username: root
+      password:
+      pool: 5
+      timeout: 5000
 
     gman_services:
-      adapter: sqlite3
-      database: db/gman_services_dev.sqlite3
+      adapter: mysql2
+      database: gman_services_dev
+      host: localhost
+      username: root
+      password:
+      pool: 5
+      timeout: 5000
 
   production:
     grossman:
-      adapter: sqlite3
-      database: db/grossman.sqlite3
+      adapter: mysql2
+      database: grossman
+      host: localhost
+      username: root
+      password:
+      pool: 5
+      timeout: 5000
 
     gman_services:
-      adapter: sqlite3
-      database: db/gman_services.sqlite3
+      adapter: mysql2
+      database: gman_services
+      host: localhost
+      username: root
+      password:
+      pool: 5
+      timeout: 5000
 
   test:
     grossman:
-      adapter: sqlite3
-      database: db/grossman_test.sqlite3
+      adapter: mysql2
+      database: grossman_test
+      host: localhost
+      username: root
+      password:
+      pool: 5
+      timeout: 5000
 
     gman_services:
-      adapter: sqlite3
-      database: db/gman_services_test.sqlite3
-
-# default_migration_group: gman_services
+      adapter: mysql2
+      database: gman_services_test
+      host: localhost
+      username: root
+      password:
+      pool: 5
+      timeout: 5000
