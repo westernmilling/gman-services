@@ -1,6 +1,6 @@
 -- MySQL dump 10.15  Distrib 10.0.15-MariaDB, for osx10.10 (x86_64)
 --
--- Host: localhost    Database: gman_services_dev
+-- Host: localhost    Database: gman_services_test
 -- ------------------------------------------------------
 -- Server version	10.0.15-MariaDB
 
@@ -58,7 +58,7 @@ CREATE TABLE `oauth_access_tokens` (
   UNIQUE KEY `index_oauth_access_tokens_on_token` (`token`),
   UNIQUE KEY `index_oauth_access_tokens_on_refresh_token` (`refresh_token`),
   KEY `index_oauth_access_tokens_on_resource_owner_id` (`resource_owner_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +79,7 @@ CREATE TABLE `oauth_applications` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_oauth_applications_on_uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,16 +131,8 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-19 12:23:44
+-- Dump completed on 2015-01-20 16:53:25
 INSERT INTO schema_migrations (version) VALUES ('20150106164711');
 
 INSERT INTO schema_migrations (version) VALUES ('20150107233845');
-
-INSERT INTO schema_migrations (version) VALUES ('20150107233846');
-
-INSERT INTO schema_migrations (version) VALUES ('20150107233847');
-
-INSERT INTO schema_migrations (version) VALUES ('20150107233848');
-
-INSERT INTO schema_migrations (version) VALUES ('20150107233849');
 

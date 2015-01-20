@@ -101,6 +101,8 @@ GEM
       rspec (>= 2.0, < 4.0)
     jwt (0.1.13)
       multi_json (>= 1.5)
+    macaddr (1.7.1)
+      systemu (~> 2.6.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -216,6 +218,7 @@ GEM
       activemodel (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
       i18n
+    systemu (2.6.4)
     therubyrhino (2.0.4)
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.4)
@@ -231,6 +234,8 @@ GEM
     uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuid (2.3.7)
+      macaddr (~> 1.0)
     warden (1.2.3)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -268,3 +273,4 @@ DEPENDENCIES
   symbolize
   therubyrhino
   uglifier (>= 1.0.3)
+  uuid
