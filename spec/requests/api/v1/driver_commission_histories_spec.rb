@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe '/api/v1/driver_commission_history', :type => :request do
-  let(:application) { create(:doorkeeper_application)  }
+  let(:application) do
+    Octopus.using(:gman_services) do
+      create(:doorkeeper_application)
+    end
+  end
   subject(:response) { oauth_get(url, application.uid, application.secret) }
   describe 'all' do
     let(:all) do

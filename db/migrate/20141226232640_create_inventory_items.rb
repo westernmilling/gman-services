@@ -4,6 +4,7 @@ class CreateInventoryItems < ActiveRecord::Migration
   def change
     create_table :inventory_items do |t|
       t.integer :item_id
+      t.string :uuid, :limit => 36
       t.string :in_item_description
 
       t.timestamps

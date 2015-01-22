@@ -17,6 +17,7 @@ gem 'seedbank'
 gem 'symbolize'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
+gem 'uuid'
 
 group :development, :test do
   gem 'ar-octopus'
