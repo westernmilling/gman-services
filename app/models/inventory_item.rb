@@ -7,5 +7,5 @@ class InventoryItem < ActiveRecord::Base
   def init
     uuid = UUID.new
     self.uuid  = uuid.generate
-    end
+  end
 end
