@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.0.3'
 
 group :development, :test do
   gem 'ar-octopus'
+  gem 'capistrano', '~> 3.3.0'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'faker'
