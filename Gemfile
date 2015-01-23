@@ -7,6 +7,7 @@ gem 'awesome_print'
 gem 'activerecord-jdbcmysql-adapter'
 gem 'devise'
 gem 'doorkeeper', :github => 'doorkeeper-gem/doorkeeper'
+gem 'figaro'
 gem 'jdbc-mysql', :platform => :jruby
 gem 'jquery-rails'
 gem 'jruby-openssl'
