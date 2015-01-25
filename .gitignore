@@ -33,3 +33,5 @@ bower.json
 config/shards.yml
 config/database.yml
 spec/cassettes
+
+config/application.yml

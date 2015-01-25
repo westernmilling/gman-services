@@ -5,6 +5,7 @@ gem 'rails', '4.1.5'
 gem 'awesome_print'
 # gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
+gem 'coveralls', :require => false
 gem 'devise'
 gem 'doorkeeper', :github => 'doorkeeper-gem/doorkeeper'
 gem 'jdbc-mysql', :platform => :jruby
