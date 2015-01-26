@@ -4,8 +4,6 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rake/dsl_definition'
-require 'coveralls'
-Coveralls.wear!('rails')
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
