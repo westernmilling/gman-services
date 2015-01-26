@@ -5,7 +5,6 @@ gem 'rails', '4.1.5'
 gem 'awesome_print'
 # gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
-gem 'coveralls', :require => false
 gem 'devise'
 gem 'doorkeeper', :github => 'doorkeeper-gem/doorkeeper'
 gem 'jdbc-mysql', :platform => :jruby
@@ -22,6 +21,7 @@ gem 'uglifier', '>= 1.0.3'
 group :development, :test do
   gem 'ar-octopus'
   gem 'capybara'
+  gem 'coveralls', :require => false
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'hound-tools', '~> 0.0.6',
