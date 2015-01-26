@@ -6,7 +6,6 @@ script:
   - bundle exec rake db:migrate RAILS_ENV=test
   - bundle exec rspec -fd
 before_script:
-  - cp config/application.travis.yml config/application.yml
   - cp config/database.travis.yml config/database.yml
   - cp config/shards.travis.yml config/shards.yml
   - cp config/secrets.travis.yml config/secrets.yml

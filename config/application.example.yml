@@ -1,5 +1,5 @@
 production:
-  production_url: ""
-  production_user: ""
+  deployment_url: ""
+  deployment_user: ""
   repo_url: ""
   application: ""
