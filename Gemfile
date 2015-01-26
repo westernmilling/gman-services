@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.0.3'
 group :development, :test do
   gem 'ar-octopus'
   gem 'capybara'
+  gem 'coveralls', :require => false
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'hound-tools', '~> 0.0.6',
