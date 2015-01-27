@@ -1,4 +1,5 @@
 # gman-services
+[![Build Status](https://travis-ci.org/westernmilling/gman-services.svg?branch=master)](https://travis-ci.org/westernmilling/gman-services) [![Coverage Status](https://coveralls.io/repos/westernmilling/gman-services/badge.svg)](https://coveralls.io/r/westernmilling/gman-services)
 
 ## Getting Started
 A few gotchas:

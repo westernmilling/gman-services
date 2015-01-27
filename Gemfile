@@ -23,6 +23,7 @@ group :development, :test do
   gem 'ar-octopus'
   gem 'capistrano', '~> 3.3.0'
   gem 'capybara'
+  gem 'coveralls', :require => false
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'hound-tools', '~> 0.0.6',
