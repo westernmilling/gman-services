@@ -1,11 +1,12 @@
 lock '3.3.5'
+require 'figaro'
 
 set :application, Figaro.env.application
 set :repo_url, Figaro.env.repo_url
 
 set :branch, 'master'
 
-set :user, Figaro.env.production_user
+set :user, Figaro.env.deployment_user
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/#{fetch(:user)}/www"
 

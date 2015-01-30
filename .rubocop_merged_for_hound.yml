@@ -13,7 +13,6 @@
 AllCops:
   RunRailsCops: true
   Exclude:
-    - config/unicorn.rb
     - db/schema.rb
     - db/migrate/*
 # ---------------------------------
