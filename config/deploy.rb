@@ -1,12 +1,15 @@
 lock '3.3.5'
 require 'figaro'
 
-set :application, Figaro.env.application
-set :repo_url, Figaro.env.repo_url
+load_params = YAML::load_file('config/application.yml')
+server_params = load_params[Rails.env.to_s].symbolize_keys
+
+set :application, server_params[:application]
+set :repo_url, server_params[:repo_url]
 
 set :branch, 'master'
 
-set :user, Figaro.env.deployment_user
+set :user, server_params[:deployment_user]
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/#{fetch(:user)}/www"
 

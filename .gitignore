@@ -36,3 +36,11 @@ spec/cassettes
 
 # Ignore application configuration
 /config/application.yml
+
+vm/.vagrant/machines/default/virtualbox
+vm/.vagrant/machines/default/virtualbox/private_key
+vm/.vagrant/machines/default/virtualbox/action_provision
+vm/.vagrant/machines/default/virtualbox/id
+vm/.vagrant/machines/default/virtualbox/index_uuid
+vm/.vagrant/machines/default/virtualbox/synced_folders
+vm/.vagrant/machines/default/virtualbox/action_set_name

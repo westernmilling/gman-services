@@ -7,7 +7,7 @@ gem 'awesome_print'
 gem 'activerecord-jdbcmysql-adapter'
 gem 'devise'
 gem 'doorkeeper', :github => 'doorkeeper-gem/doorkeeper'
-gem 'figaro'
+# gem 'figaro'
 gem 'jdbc-mysql', :platform => :jruby
 gem 'jquery-rails'
 gem 'jruby-openssl'
@@ -39,4 +39,6 @@ group :development, :test do
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.0'
   gem 'rubocop', '0.28.0', :require => false
+  #install manually for your environment
+  # gem 'vagrant', :require => false
 end
