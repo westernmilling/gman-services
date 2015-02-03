@@ -36,9 +36,10 @@ group :development, :test do
   gem 'omniauth'
   gem 'omniauth-oauth2', '1.0.3'
   gem 'pry'
+  gem 'figaro'
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.0'
   gem 'rubocop', '0.28.0', :require => false
-  #install manually for your environment
+  # install manually for your environment
   # gem 'vagrant', :require => false
 end

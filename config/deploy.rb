@@ -1,5 +1,6 @@
 lock '3.3.5'
-require 'figaro'
+require 'yaml'
+require 'rails'
 
 load_params = YAML::load_file('config/application.yml')
 server_params = load_params[Rails.env.to_s].symbolize_keys

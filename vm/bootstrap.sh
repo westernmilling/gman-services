@@ -6,10 +6,10 @@ set -e
 #echo "gman" | passwd gman --stdin
 #sudo adduser gman sudo
 
-echo "Updates packages. Asks for your password."
+echo "Updates packages."
 sudo apt-get update -y
 
-echo "Installs packages. Give your password when asked."
+echo "Installs packages."
 sudo apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev nodejs -y
 
 echo "Installs ImageMagick for image processing"
@@ -36,7 +36,23 @@ else
 
 fi
 
-echo "Installs Ruby"
+echo "Installs Java 7 from source"
+sudo apt-get install -y openjdk-7-jdk
+export JAVA_HOME=`readlink -f /usr/bin/java | sed "s:bin/java::"`
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java" 1062
+
+#echo "Installs JRuby from source"
+## https://github.com/jruby/jruby/blob/master/BUILDING.md
+#sudo apt-get install -y  maven
+##sudo apt-get install oracle-java7-set-default
+#java -version
+##git clone https://github.com/jruby/jruby.git
+#cd jruby; mvn install
+#ant
+#cd ..
+##Potential symlink
+
+echo "Installs JRuby from rvm"
 rvm install jruby-1.7.16.1
 rvm use jruby-1.7.16.1 --default
 rvm alias create default jruby-1.7.16.1
@@ -54,8 +70,8 @@ echo -e "Now we are going to print info to check that everything is done:\n"
 
 echo -n "Should be sqlite 3.7.3 or higher: sqlite "
 sqlite3 --version
-echo -n "Should be rvm 1.6.32 or higher:          "
-rvm --version | sed '/^.*$/N;s/\n//g' | cut -c 1-10
+echo -n "Should be java 7:                        "
+java -version
 echo -n "Should be jruby-1.7.16.1:                "
 ruby -v
 echo -n "Should be Rails 3.2.2 or higher:         "

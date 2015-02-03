@@ -15,6 +15,7 @@ AllCops:
   Exclude:
     - db/schema.rb
     - db/migrate/*
+    - vm/*
 # ---------------------------------
 # .rubocop_todo.yml
 # ---------------------------------
