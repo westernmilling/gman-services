@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
 
-gem 'awesome_print'
 # gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
+gem 'ar-octopus'
+gem 'awesome_print'
 gem 'devise'
 gem 'doorkeeper', :github => 'doorkeeper-gem/doorkeeper'
 # gem 'figaro'
@@ -12,6 +13,8 @@ gem 'jdbc-mysql', :platform => :jruby
 gem 'jquery-rails'
 gem 'jruby-openssl'
 gem 'mysql2', :platform => :ruby
+gem 'omniauth'
+gem 'omniauth-oauth2', '1.0.3'
 gem 'plissken', '0.2.0'
 gem 'puma'
 gem 'seedbank'
@@ -21,7 +24,6 @@ gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
 
 group :development, :test do
-  gem 'ar-octopus'
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-rails', :require => false
   gem 'capistrano-bundler', :require => false
@@ -35,8 +37,6 @@ group :development, :test do
       :github => 'michaelachrisco/hound-tools',
       :require => false
   gem 'json_spec'
-  gem 'omniauth'
-  gem 'omniauth-oauth2', '1.0.3'
   gem 'pry'
   gem 'figaro'
   gem 'rspec-its'
