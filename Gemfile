@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
 
-# gem 'activerecord-jdbc-adapter'
+gem 'activerecord-jdbc-adapter'
+gem 'activerecord-relativity-adapter',
+    :github => 'josephbridgwaterrowe/activerecord-relativity-adapter'
 gem 'activerecord-jdbcmysql-adapter'
 gem 'ar-octopus'
 gem 'awesome_print'
