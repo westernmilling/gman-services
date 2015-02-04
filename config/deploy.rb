@@ -11,11 +11,15 @@ set :repo_url, server_params[:repo_url]
 set :branch, 'master'
 
 set :user, server_params[:deployment_user]
+set :rvm_ruby_version, 'jruby-1.7.16.1'
+
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/#{fetch(:user)}/www"
 
+# rubocop:disable Metrics/LineLength,
 set :linked_files,
-    %w{config/application.yml config/database.yml config/shards.yml}
+    %w{config/application.yml config/database.yml config/shards.yml config/secrets.yml}
+# rubocop:enable Metrics/LineLength,
 
 set :linked_dirs,
     %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}

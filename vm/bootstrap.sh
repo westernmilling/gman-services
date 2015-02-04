@@ -1,10 +1,11 @@
 #!/bin/bash
 
 set -e
+#sudo su - gman
+#whoami
+# Create user on box before running vagrant provision.
 
-#echo "Add user"
-#echo "gman" | passwd gman --stdin
-#sudo adduser gman sudo
+sudo chmod 777 /tmp
 
 echo "Updates packages."
 sudo apt-get update -y
@@ -36,7 +37,7 @@ else
 
 fi
 
-echo "Installs Java 7 from source"
+echo "Installs Java 7"
 sudo apt-get install -y openjdk-7-jdk
 export JAVA_HOME=`readlink -f /usr/bin/java | sed "s:bin/java::"`
 sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java" 1062
@@ -60,14 +61,20 @@ rvm default
 
 gem install bundler --no-rdoc --no-ri
 gem install rails --no-rdoc --no-ri
+gem install jruby-openssl
+
+echo "installs mysql"
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password gman'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password gman'
+apt-get update
+apt-get install -y -f mysql-server
+for db in grossman gman_services; do mysql -u root --password=gman -e "create database $db" ; done
 
 echo -e "\n- - - - - -\n"
 echo -e "Now we are going to print info to check that everything is done:\n"
 
-# brew in ubuntu?
-# echo -n "Should be brew 0.8 or higher:       brew "
-# brew -v
-
+echo -n "Should be root"
+whoami
 echo -n "Should be sqlite 3.7.3 or higher: sqlite "
 sqlite3 --version
 echo -n "Should be java 7:                        "
@@ -76,10 +83,7 @@ echo -n "Should be jruby-1.7.16.1:                "
 ruby -v
 echo -n "Should be Rails 3.2.2 or higher:         "
 rails -v
+echo -n "Should contain mysql"
+mysql --version
 echo -e "\n- - - - - -\n"
-
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password gman'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password gman'
-apt-get update
-apt-get install -y -f mysql-server
 

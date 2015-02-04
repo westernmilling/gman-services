@@ -16,6 +16,7 @@ gem 'plissken', '0.2.0'
 gem 'puma'
 gem 'seedbank'
 gem 'symbolize'
+gem 'turbolinks'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
 
@@ -24,6 +25,7 @@ group :development, :test do
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-rails', :require => false
   gem 'capistrano-bundler', :require => false
+  gem 'capistrano-rvm'
   gem 'capistrano3-puma'
   gem 'capybara'
   gem 'coveralls', :require => false
