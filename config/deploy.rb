@@ -18,11 +18,11 @@ set :deploy_to, "/home/#{fetch(:user)}/www"
 
 # rubocop:disable Metrics/LineLength,
 set :linked_files,
-    %w{config/application.yml config/database.yml config/shards.yml config/secrets.yml}
+    %w{config/application.yml config/database.yml config/shards.yml config/secrets.yml lib/RelJDBC.jar }
 # rubocop:enable Metrics/LineLength,
 
 set :linked_dirs,
-    %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+    %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system lib}
 
 set :keep_releases, 5
 

@@ -6,6 +6,12 @@ GIT
       railties (>= 3.1)
 
 GIT
+  remote: git://github.com/josephbridgwaterrowe/activerecord-relativity-adapter.git
+  revision: f51853f2777b57a2dd6bf0dff2f4b39edb573608
+  specs:
+    activerecord-relativity-adapter (0.1)
+
+GIT
   remote: git://github.com/michaelachrisco/hound-tools.git
   revision: 7511afc75eec8710599154e7eafb8cebaf73aaa9
   specs:
@@ -297,7 +303,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-jdbc-adapter
   activerecord-jdbcmysql-adapter
+  activerecord-relativity-adapter!
   ar-octopus
   awesome_print
   capistrano (~> 3.3.0)
