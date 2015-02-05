@@ -1,6 +1,20 @@
-require File.expand_path('../boot', __FILE__)
 # require 'config/initializers/monkey_magic'
+jar_path = File.expand_path('../../lib/RelJDBC.jar', __FILE__)
+# puts jar_path
+$CLASSPATH << jar_path
+
+require File.expand_path('../boot', __FILE__)
+
 require 'rails/all'
+java.lang.Class.for_name('javax.crypto.JceSecurity')
+  .get_declared_field('isRestricted')
+  .tap do |f|
+  f.accessible = true
+  f.set nil, false
+end
+
+require 'csv'
+require File.expand_path('../boot', __FILE__)
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

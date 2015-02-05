@@ -3,6 +3,24 @@ require 'rails_helper'
 RSpec.describe DriverCommissionHistoryAdapter, :type => :model do
   let(:driver_commission_history_adapter) { DriverCommissionHistoryAdapter }
 
+  describe '#new' do
+    subject { driver_commission_history_adapter.new }
+
+    it { expect { subject }.to raise_error.with_message(/Not supported!/) }
+  end
+
+  describe '#delete' do
+    subject { driver_commission_history_adapter.delete }
+
+    it { expect { subject }.to raise_error.with_message(/Not supported!/) }
+  end
+
+  describe '#destroy' do
+    subject { driver_commission_history_adapter.delete }
+
+    it { expect { subject }.to raise_error.with_message(/Not supported!/) }
+  end
+
   describe '#connected_with_octopus?' do
     subject { driver_commission_history_adapter.connected_with_octopus? }
 
@@ -10,12 +28,17 @@ RSpec.describe DriverCommissionHistoryAdapter, :type => :model do
   end
 
   describe '#connection' do
-    subject { driver_commission_history_adapter.connection.current_shard }
+    subject do
+      Octopus.using(:grossman) do
+        driver_commission_history_adapter.connection.current_shard
+      end
+    end
 
     it 'current_shard is equal to grossman' do
       expect(is_expected.to eq(:grossman))
     end
   end
+
   describe '#all' do
     before do
       Octopus.using(:grossman) do

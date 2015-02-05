@@ -3,6 +3,23 @@ require 'rails_helper'
 RSpec.describe InventoryItemAdapter, :type => :model do
   let(:inventory_item_adapter) { InventoryItemAdapter }
 
+  describe '#new' do
+    subject { inventory_item_adapter.new }
+
+    it { expect { subject }.to raise_error.with_message(/Not supported!/) }
+  end
+
+  describe '#delete' do
+    subject { inventory_item_adapter.delete }
+
+    it { expect { subject }.to raise_error.with_message(/Not supported!/) }
+  end
+  describe '#destroy' do
+    subject { inventory_item_adapter.delete }
+
+    it { expect { subject }.to raise_error.with_message(/Not supported!/) }
+  end
+
   describe '#connected_with_octopus?' do
     subject { inventory_item_adapter.connected_with_octopus? }
 
@@ -10,12 +27,17 @@ RSpec.describe InventoryItemAdapter, :type => :model do
   end
 
   describe '#connection' do
-    subject { inventory_item_adapter.connection.current_shard }
+    subject do
+      Octopus.using(:grossman) do
+        inventory_item_adapter.connection.current_shard
+      end
+    end
 
     it 'current_shard is equal to grossman' do
       expect(is_expected.to eq(:grossman))
     end
   end
+
   describe '#all' do
     before do
       Octopus.using(:grossman) do
