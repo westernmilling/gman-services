@@ -36,7 +36,6 @@ spec/cassettes
 
 # Ignore application configuration
 /config/application.yml
-config/shards.yml.ig2
 
 vm/.vagrant/machines/default/virtualbox
 vm/.vagrant/machines/default/virtualbox/private_key

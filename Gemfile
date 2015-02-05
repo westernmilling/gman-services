@@ -38,6 +38,7 @@ group :development, :test do
   gem 'hound-tools', '~> 0.0.6',
       :github => 'michaelachrisco/hound-tools',
       :require => false
+  gem 'rspec-its'
   gem 'json_spec'
   gem 'pry'
   gem 'figaro'
