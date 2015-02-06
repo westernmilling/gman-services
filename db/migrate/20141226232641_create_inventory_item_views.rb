@@ -1,4 +1,6 @@
 class CreateInventoryItemViews < ActiveRecord::Migration
+  return if Rails.env == 'production'
+  
   using(:grossman)
 
   def up

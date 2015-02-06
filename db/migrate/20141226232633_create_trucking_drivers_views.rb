@@ -1,6 +1,8 @@
 class CreateTruckingDriversViews < ActiveRecord::Migration
+  return if Rails.env == 'production'
+  
   using(:grossman)
-
+  
   def up
     self.connection.execute 'CREATE OR REPLACE VIEW Trucking_Drivers AS
   SELECT
