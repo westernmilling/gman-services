@@ -49,7 +49,7 @@ RSpec.describe '/api/v1/inventory/items', :type => :request do
       end
 
       # rubocop:disable Metrics/LineLength,
-      let(:url) { '/api/v1/inventory/items_like_id_description.json?item_id=1&in_item_description' }
+      let(:url) { '/api/v1/inventory/items_like_id_description.json?item_id=1&in_item_description=des' }
       # rubocop:enable Metrics/LineLength
 
       context 'when application id and secret are valid' do

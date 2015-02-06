@@ -1,6 +1,5 @@
 # DriverAdapter
-class DriverAdapter
-  # self.using(:grossman).connection.current_shard
+class DriverAdapter < GrossmanAdapter
   QUERY = <<SQL
     SELECT DriverId, FirstName, LastName
     FROM Trucking_Drivers
@@ -8,16 +7,8 @@ class DriverAdapter
 SQL
 
   class << self
-    def connection
-      ActiveRecord::Base.using(:grossman).connection
-    end
-
-    def connected_with_octopus?
-      ActiveRecord::Base.using(:grossman).connected_with_octopus?
-    end
-
     def all
-      results = connection.execute(sanitized_sql)
+      results = gman_connection.execute(sanitized_sql)
       results.map(&:to_snake_keys)
     end
 
