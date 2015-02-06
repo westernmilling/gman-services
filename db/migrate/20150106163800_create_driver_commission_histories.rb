@@ -1,4 +1,6 @@
 class CreateDriverCommissionHistories < ActiveRecord::Migration
+  return if Rails.env == 'production'
+  
   using(:grossman)
   def change
     create_table :driver_commission_histories do |t|

@@ -1,4 +1,6 @@
 class CreateInventoryItems < ActiveRecord::Migration
+  return if Rails.env == 'production'
+  
   using(:grossman)
   
   def change
