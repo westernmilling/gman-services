@@ -31,20 +31,21 @@ group :development, :test do
   gem 'capistrano-bundler', :require => false
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
-  gem 'capybara'
-  gem 'coveralls', :require => false
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'hound-tools', '~> 0.0.6',
       :github => 'michaelachrisco/hound-tools',
       :require => false
-  gem 'rspec-its'
-  gem 'json_spec'
-  gem 'pry'
   gem 'figaro'
-  gem 'rspec-its'
-  gem 'rspec-rails', '~> 3.0'
   gem 'rubocop', '0.28.0', :require => false
   # install manually for your environment
   # gem 'vagrant', :require => false
+end
+
+group :test do
+  gem 'capybara'
+  gem 'coveralls', :require => false
+  gem 'json_spec'
+  gem 'rspec-its'
+  gem 'rspec-rails', '~> 3.0'
 end

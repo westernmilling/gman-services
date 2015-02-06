@@ -66,20 +66,22 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
       end
 
       describe 'parsed JSON schema' do
-        let(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
 
         it 'is an array' do
-          expect(json).to be_kind_of(Array)
+          is_expected.to be_kind_of(Array)
         end
 
         describe 'first element' do
           subject(:first_element) { json.first }
 
           it { is_expected.to be_kind_of(Hash) }
-          it { is_expected.to have_key(:first_name) }
-          it { is_expected.to have_key(:last_name) }
-          it { is_expected.to have_key(:driver_number) }
-          it { is_expected.to have_key(:driver_type) }
+          its(:keys) do
+            is_expected.to eq([:driver_number,
+                               :first_name,
+                               :last_name,
+                               :driver_type])
+          end
         end
       end
 

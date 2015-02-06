@@ -1,5 +1,4 @@
 # DriverCommissionHistoryAdapter
-require 'awesome_print'
 class DriverCommissionHistoryAdapter < GrossmanAdapter
   QUERY_ALL = <<SQL
         SELECT

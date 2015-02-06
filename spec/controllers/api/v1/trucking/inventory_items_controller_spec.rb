@@ -69,18 +69,20 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
       end
 
       describe 'parsed JSON schema' do
-        let(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
 
         it 'is an array' do
-          expect(json).to be_kind_of(Array)
+          is_expected.to be_kind_of(Array)
         end
 
         describe 'first element' do
           subject(:first_element) { json.first }
 
           it { is_expected.to be_kind_of(Hash) }
-          it { is_expected.to have_key(:item_id) }
-          it { is_expected.to have_key(:in_item_description) }
+          its(:keys) do
+            is_expected.to eq([:item_id,
+                               :in_item_description])
+          end
         end
       end
 
@@ -125,18 +127,20 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
       end
 
       describe 'parsed JSON schema' do
-        let(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
 
         it 'is an array' do
-          expect(json).to be_kind_of(Array)
+          is_expected.to be_kind_of(Array)
         end
 
         describe 'first element' do
           subject(:first_element) { json.first }
 
           it { is_expected.to be_kind_of(Hash) }
-          it { is_expected.to have_key(:item_id) }
-          it { is_expected.to have_key(:in_item_description) }
+          its(:keys) do
+            is_expected.to eq([:item_id,
+                               :in_item_description])
+          end
         end
       end
 
@@ -189,8 +193,10 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
           subject(:first_element) { json.first }
 
           it { is_expected.to be_kind_of(Hash) }
-          it { is_expected.to have_key(:item_id) }
-          it { is_expected.to have_key(:in_item_description) }
+          its(:keys) do
+            is_expected.to eq([:item_id,
+                               :in_item_description])
+          end
         end
       end
 

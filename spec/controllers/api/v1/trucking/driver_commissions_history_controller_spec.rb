@@ -78,32 +78,33 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         expect { JSON.parse(response.body) }.not_to raise_error
       end
       describe 'parsed JSON schema' do
-        let(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
         it 'is an array' do
-          expect(json).to be_kind_of(Array)
+          is_expected.to be_kind_of(Array)
         end
         describe 'first element' do
-          subject(:first_element) { json.first }
+          subject { json.first }
 
-          it { is_expected.to be_kind_of(Hash) }
-          it { is_expected.to have_key(:driver_id) }
-          it { is_expected.to have_key(:backhauls) }
-          it { is_expected.to have_key(:freight_revenue) }
-          it { is_expected.to have_key(:customer_id) }
-          it { is_expected.to have_key(:delivery_date) }
-          it { is_expected.to have_key(:driver_rate) }
-          it { is_expected.to have_key(:freight_bill_number) }
-          it { is_expected.to have_key(:fuel_revenue) }
-          it { is_expected.to have_key(:fuel_surcharge) }
-          it { is_expected.to have_key(:layover) }
-          it { is_expected.to have_key(:movement_type) }
-          it { is_expected.to have_key(:other_hour_dollars) }
-          it { is_expected.to have_key(:order_number_text) }
-          it { is_expected.to have_key(:origin_name) }
-          it { is_expected.to have_key(:paid_date) }
-          it { is_expected.to have_key(:revenue) }
-          it { is_expected.to have_key(:split_rate) }
-          it { is_expected.to have_key(:total_freight_revenue) }
+          its(:keys) do
+            is_expected.to eq([:driver_id,
+                               :backhauls,
+                               :freight_revenue,
+                               :customer_id,
+                               :delivery_date,
+                               :driver_rate,
+                               :freight_bill_number,
+                               :fuel_revenue,
+                               :fuel_surcharge,
+                               :layover,
+                               :movement_type,
+                               :other_hour_dollars,
+                               :order_number_text,
+                               :origin_name,
+                               :paid_date,
+                               :revenue,
+                               :split_rate,
+                               :total_freight_revenue])
+          end
         end
       end
       describe 'response.body' do
@@ -144,32 +145,33 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         expect { JSON.parse(response.body) }.not_to raise_error
       end
       describe 'parsed JSON schema' do
-        let(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
         it 'is an array' do
-          expect(json).to be_kind_of(Array)
+          is_expected.to be_kind_of(Array)
         end
         describe 'first element' do
-          subject(:first_element) { json.first }
+          subject { json.first }
 
-          it { is_expected.to be_kind_of(Hash) }
-          it { is_expected.to have_key(:driver_id) }
-          it { is_expected.to have_key(:backhauls) }
-          it { is_expected.to have_key(:freight_revenue) }
-          it { is_expected.to have_key(:customer_id) }
-          it { is_expected.to have_key(:delivery_date) }
-          it { is_expected.to have_key(:driver_rate) }
-          it { is_expected.to have_key(:freight_bill_number) }
-          it { is_expected.to have_key(:fuel_revenue) }
-          it { is_expected.to have_key(:fuel_surcharge) }
-          it { is_expected.to have_key(:layover) }
-          it { is_expected.to have_key(:movement_type) }
-          it { is_expected.to have_key(:other_hour_dollars) }
-          it { is_expected.to have_key(:order_number_text) }
-          it { is_expected.to have_key(:origin_name) }
-          it { is_expected.to have_key(:paid_date) }
-          it { is_expected.to have_key(:revenue) }
-          it { is_expected.to have_key(:split_rate) }
-          it { is_expected.to have_key(:total_freight_revenue) }
+          its(:keys) do
+            is_expected.to eq([:driver_id,
+                               :backhauls,
+                               :freight_revenue,
+                               :customer_id,
+                               :delivery_date,
+                               :driver_rate,
+                               :freight_bill_number,
+                               :fuel_revenue,
+                               :fuel_surcharge,
+                               :layover,
+                               :movement_type,
+                               :other_hour_dollars,
+                               :order_number_text,
+                               :origin_name,
+                               :paid_date,
+                               :revenue,
+                               :split_rate,
+                               :total_freight_revenue])
+          end
         end
       end
     end
