@@ -19,6 +19,9 @@ RSpec.describe DriverAdapter, :type => :model do
       subject { drivers.first }
       its(:keys) do
         is_expected.to eq([:driver_id,
+                           :active_fg,
+                           :driver_type,
+                           :sub_hauler_fg,
                            :first_name,
                            :last_name])
       end

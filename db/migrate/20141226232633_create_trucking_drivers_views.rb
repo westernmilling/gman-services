@@ -10,6 +10,8 @@ class CreateTruckingDriversViews < ActiveRecord::Migration
   , first_name AS FirstName
   , last_name AS LastName
   , driver_type AS DriverType
+  , sub_hauler_fg AS SubHaulerFg
+  , active_fg AS ActiveFg
   FROM
     drivers'
   end
