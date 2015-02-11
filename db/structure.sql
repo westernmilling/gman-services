@@ -1,6 +1,6 @@
 -- MySQL dump 10.15  Distrib 10.0.15-MariaDB, for osx10.10 (x86_64)
 --
--- Host: localhost    Database: gman_services_dev
+-- Host: localhost    Database: gman_services_test
 -- ------------------------------------------------------
 -- Server version	10.0.15-MariaDB
 
@@ -131,18 +131,8 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-06 11:55:04
-INSERT INTO schema_migrations (version) VALUES ('20141226232633');
-
-INSERT INTO schema_migrations (version) VALUES ('20141226232640');
-
-INSERT INTO schema_migrations (version) VALUES ('20141226232641');
-
-INSERT INTO schema_migrations (version) VALUES ('20150106163800');
-
+-- Dump completed on 2015-02-09  8:28:30
 INSERT INTO schema_migrations (version) VALUES ('20150106164711');
-
-INSERT INTO schema_migrations (version) VALUES ('20150107233844');
 
 INSERT INTO schema_migrations (version) VALUES ('20150107233845');
 

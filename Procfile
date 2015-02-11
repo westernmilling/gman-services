@@ -1,2 +1,3 @@
-web: bundle exec bin/puma -C config/puma.rb
+web: bundle exec rackup -s Fishwife
+#web: bundle exec fishwife
 
