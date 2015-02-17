@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :driver_commission_history, :class => DriverCommissionHistory do
     driver_id Faker::Number.number(4)
-    backhauls 'BACKHAULS'
+    backhauls Faker::Number.number(4)
     freight_revenue Faker::Number.number(4)
     customer_id 0001
     delivery_date Date.new(2014, 01, 01)
@@ -17,5 +17,6 @@ FactoryGirl.define do
     revenue Faker::Number.number(4)
     split_rate Faker::Number.number(4)
     total_freight_revenue Faker::Number.number(4)
+    drvrcomh_key "#{Faker::Number.number(5)} #{Faker::Number.number(8)}"
   end
 end
