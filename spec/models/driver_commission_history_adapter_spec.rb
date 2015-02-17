@@ -34,7 +34,8 @@ RSpec.describe DriverCommissionHistoryAdapter, :type => :model do
                            :paid_date,
                            :revenue,
                            :split_rate,
-                           :total_freight_revenue])
+                           :total_freight_revenue,
+                           :drvrcomh_key])
       end
     end
   end
@@ -71,7 +72,8 @@ RSpec.describe DriverCommissionHistoryAdapter, :type => :model do
                            :paid_date,
                            :revenue,
                            :split_rate,
-                           :total_freight_revenue])
+                           :total_freight_revenue,
+                           :drvrcomh_key])
       end
     end
   end

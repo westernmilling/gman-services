@@ -23,6 +23,7 @@ SELECT
 , revenue AS Revenue
 , split_rate AS SplitRate
 , total_freight_revenue AS TotalFreightRevenue
+, drvrcomh_key AS DrvrcomhKey
 FROM
   driver_commission_histories;
 '

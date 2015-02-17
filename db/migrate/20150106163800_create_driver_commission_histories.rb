@@ -21,6 +21,7 @@ class CreateDriverCommissionHistories < ActiveRecord::Migration
       t.integer :revenue
       t.integer :split_rate
       t.integer :total_freight_revenue
+      t.string :drvrcomh_key
       t.timestamps
     end
   end

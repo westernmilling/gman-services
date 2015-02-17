@@ -10,13 +10,17 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
       {
         :driver_number => Faker::Number.number(4),
         :first_name => Faker::Name.first_name,
+        :active_fg => [true, false].sample,
         :last_name => Faker::Name.last_name,
+        :sub_hauler_fg => [true, false].sample,
         :driver_type => 'DR'
       },
       {
         :driver_number => Faker::Number.number(4),
         :first_name => Faker::Name.first_name,
+        :active_fg => [true, false].sample,
         :last_name => Faker::Name.last_name,
+        :sub_hauler_fg => [true, false].sample,
         :driver_type => 'DR'
       }
     ]
@@ -79,7 +83,9 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
           its(:keys) do
             is_expected.to eq([:driver_number,
                                :first_name,
+                               :active_fg,
                                :last_name,
+                               :sub_hauler_fg,
                                :driver_type])
           end
         end

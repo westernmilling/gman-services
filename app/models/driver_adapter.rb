@@ -1,7 +1,13 @@
 # DriverAdapter
 class DriverAdapter < GrossmanAdapter
   QUERY = <<SQL
-    SELECT DriverId, FirstName, LastName
+    SELECT
+      DriverId,
+      ActiveFG,
+      DriverType,
+      SubHaulerFg,
+      FirstName,
+      LastName
     FROM Trucking_Drivers
     WHERE DriverType = ?
 SQL

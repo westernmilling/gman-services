@@ -19,6 +19,7 @@ class DriverCommissionHistoryAdapter < GrossmanAdapter
         , Revenue
         , SplitRate
         , TotalFreightRevenue
+        , DrvrcomhKey
         FROM
           Trucking_Drivers_Commissions_History
 SQL
