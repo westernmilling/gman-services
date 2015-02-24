@@ -8,6 +8,7 @@ class CreateDriverCommissionHistories < ActiveRecord::Migration
       t.string :backhauls
       t.integer :freight_revenue
       t.integer :customer_id, :foreign_key => false
+      t.string :customer_name
       t.date :delivery_date
       t.integer :driver_rate
       t.integer :freight_bill_number

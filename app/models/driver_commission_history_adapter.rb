@@ -1,11 +1,12 @@
-# DriverCommissionHistoryAdapter
+# +DriverCommissionHistoryAdapter+
 class DriverCommissionHistoryAdapter < GrossmanAdapter
   QUERY_ALL = <<SQL
         SELECT
           DriverId
         , Backhauls
         , FreightRevenue
-        , CustomerId
+        , Customers.CustomerId
+        , Customers.Name AS CustomerName
         , DeliveryDate
         , DriverRate
         , FreightBillNumber
@@ -22,6 +23,8 @@ class DriverCommissionHistoryAdapter < GrossmanAdapter
         , DrvrcomhKey
         FROM
           Trucking_Drivers_Commissions_History
+          LEFT JOIN Customers On Customers
+            .CustomerId = Trucking_Drivers_Commissions_History.CustomerId
 SQL
 
   QUERY_BY_PAID_DATE = QUERY_ALL + 'WHERE PaidDate = ?'

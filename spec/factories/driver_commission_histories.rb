@@ -3,6 +3,7 @@ FactoryGirl.define do
     driver_id { Faker::Number.number(4) }
     backhauls { Faker::Number.number(4) }
     freight_revenue { Faker::Number.number(4) }
+    customer_name "#{Faker::Name.first_name}, #{Faker::Name.last_name}"
     customer_id 0001
     delivery_date { Date.new(2014, 01, 01) }
     driver_rate { Faker::Number.number(4) }
