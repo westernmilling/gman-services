@@ -16,6 +16,7 @@ SELECT
 , fuel_surcharge AS FuelSurcharge
 , layover AS Layover
 , movement_type AS MovementType
+, movement_cd AS MovementCd
 , other_hour_dollars AS OtherHourDollars
 , order_number_text AS OrderNumberText
 , origin_name AS OriginName

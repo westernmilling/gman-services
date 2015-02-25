@@ -12,7 +12,7 @@ class DriverCommissionHistoryAdapter < GrossmanAdapter
         , FreightBillNumber
         , FuelSurcharge
         , Layover
-        , MovementType
+        , MovementTypes.MovementDescription AS MovementType
         , OtherHourDollars
         , OrderNumberText
         , OriginName
@@ -25,6 +25,8 @@ class DriverCommissionHistoryAdapter < GrossmanAdapter
           Trucking_Drivers_Commissions_History
           LEFT JOIN Customers On Customers
             .CustomerId = Trucking_Drivers_Commissions_History.CustomerId
+          LEFT JOIN MovementTypes ON MovementTypes
+            .MovementCd = Trucking_Drivers_Commissions_History.MovementCd
 SQL
 
   QUERY_BY_PAID_DATE = QUERY_ALL + 'WHERE PaidDate = ?'

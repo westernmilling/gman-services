@@ -10,7 +10,8 @@ FactoryGirl.define do
     freight_bill_number { Faker::Number.number(4) }
     fuel_surcharge { Faker::Number.number(4) }
     layover 'layover'
-    movement_type 'MOVE TYPE'
+    movement_type 'WALKING FLOOR'
+    movement_cd 1
     other_hour_dollars { Faker::Number.number(4) }
     order_number_text { Faker::Number.number(4) }
     origin_name 'ORIGIN NAME'
