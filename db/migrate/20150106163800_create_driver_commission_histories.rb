@@ -15,6 +15,7 @@ class CreateDriverCommissionHistories < ActiveRecord::Migration
       t.integer :fuel_surcharge
       t.string :layover
       t.string :movement_type
+      t.string :movement_cd
       t.integer :other_hour_dollars
       t.string :order_number_text
       t.string :origin_name
