@@ -20,8 +20,8 @@ GIT
       thor
 
 GIT
-  remote: git://github.com/michaelachrisco/plissken.git
-  revision: fa51b5d2e075fb39abb6079a1604855d1207a063
+  remote: https://github.com/michaelachrisco/plissken.git
+  revision: 9177b144d504d56fd6ace297afe2182c6be08e01
   branch: trailing_spaces
   specs:
     plissken (0.2.1)

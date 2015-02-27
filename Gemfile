@@ -17,7 +17,7 @@ gem 'jruby-openssl'
 gem 'mysql2', :platform => :ruby
 gem 'omniauth'
 gem 'omniauth-oauth2', '1.0.3'
-gem 'plissken', :github => 'michaelachrisco/plissken',
+gem 'plissken', :git => 'https://github.com/michaelachrisco/plissken.git',
                 :branch => 'trailing_spaces'
 gem 'puma'
 gem 'seedbank'
