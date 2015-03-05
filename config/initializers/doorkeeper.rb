@@ -35,7 +35,7 @@ Doorkeeper.configure do
     # reuse_access_token
 
     # Issue access tokens with refresh token (disabled by default)
-    use_refresh_token
+    # use_refresh_token
 
     # Provide support for an owner to be assigned to each registered
     # application (disabled by default)
