@@ -9,6 +9,7 @@ capybara-*.html
 /public/system
 /coverage/
 /spec/tmp
+.capistrano
 **.orig
 rerun.txt
 pickle-email-*.html
@@ -36,6 +37,11 @@ spec/cassettes
 
 # Ignore application configuration
 /config/application.yml
+/config/production.yml
+/config/development.yml
+/config/deploy.yml
+/config/deploy.rb
+/config/deploy/production.rb
 
 vm/.vagrant/machines/default/virtualbox
 vm/.vagrant/machines/default/virtualbox/private_key
