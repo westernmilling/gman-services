@@ -30,7 +30,6 @@ group :development, :test do
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-rails', :require => false
   gem 'capistrano-bundler', :require => false
-  gem 'capistrano-rvm'
   gem 'capistrano3-puma'
   gem 'factory_girl_rails'
   gem 'faker'
