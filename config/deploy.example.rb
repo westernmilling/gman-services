@@ -1,20 +1,15 @@
+# config valid only for current version of Capistrano
 lock '3.3.5'
-require 'yaml'
-require 'rails'
 
-load_params = YAML::load_file('config/application.yml')
-server_params = load_params[Rails.env.to_s].symbolize_keys
-
-set :application, server_params[:application]
-set :repo_url, server_params[:repo_url]
+set :application, ''
+set :repo_url, ''
 
 set :branch, 'master'
 
-set :user, server_params[:deployment_user]
-set :rvm_ruby_version, 'jruby-1.7.16.1'
+set :user, ''
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/#{fetch(:user)}/www"
+set :deploy_to, ''
 
 # rubocop:disable Metrics/LineLength,
 set :linked_files,

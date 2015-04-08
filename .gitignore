@@ -36,6 +36,9 @@ spec/cassettes
 
 # Ignore application configuration
 /config/application.yml
+/config/production.yml
+/config/development.yml
+/config/deploy.yml
 
 vm/.vagrant/machines/default/virtualbox
 vm/.vagrant/machines/default/virtualbox/private_key
