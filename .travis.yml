@@ -1,6 +1,7 @@
 language: jruby
 rvm:
   - 1.7.19
+  - 9.0.0.0
 script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate RAILS_ENV=test
