@@ -1,12 +1,12 @@
-language: jruby
+language: ruby
 rvm:
-  - 1.7.19
+  - jruby-19mode
 script:
-  - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate RAILS_ENV=test
-  - bundle exec rspec -fd
+  - bundle exec rspec --color --format documentation
 before_script:
-  - cp config/database.travis.yml config/database.yml
-  - cp config/shards.travis.yml config/shards.yml
-  - cp config/secrets.travis.yml config/secrets.yml
-  - for db in grossman_test gman_services_test; do mysql -e "create database $db" ; done
+  - cp config/database.example.yml config/database.yml
+  - mysql -e "create database grossman_test"
+  - mysql -e "create database gman_services_test"
+before_install:
+  - export JRUBY_OPTS='--client -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -Xcext.enabled=false -J-Xss2m -Xcompile.invokedynamic=false'

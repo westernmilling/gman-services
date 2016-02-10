@@ -1,8 +1,9 @@
 class CreateDriverCommissionHistories < ActiveRecord::Migration
-  return if Rails.env == 'production'
-  
-  using(:grossman)
+  return if DriverCommissionHistory.connection.class.to_s.include?('Relativity')
+
   def change
+    @connection = DriverCommissionHistory.connection
+
     create_table :driver_commission_histories do |t|
       t.integer :driver_id, :foreign_key => false
       t.string :backhauls

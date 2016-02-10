@@ -31,7 +31,7 @@ set :normalize_asset_timestamps,
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    on roles(:app), :in => :sequence, :wait => 5 do
+    on roles(:app), in: :sequence, wait: 5 do
     end
   end
 
@@ -53,8 +53,6 @@ namespace :deploy do
         run_locally do
           execute :ssh, "www@#{web_server}", "mkdir -p #{release_path}"
           execute :rsync, "-av ./public www@#{web_server}:#{release_path}"
-          # execute :ssh, "www@#{web_server}", "rm -f #{deploy_to}/current"
-          # execute :ssh, "www@#{web_server}", "ln -s #{release_path} #{deploy_to}/current"
         end
       end
 

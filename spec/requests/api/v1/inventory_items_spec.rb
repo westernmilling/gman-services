@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '/api/v1/inventory/items', :type => :request do
+RSpec.describe '/api/v1/inventory/items', type: :request do
   let(:application) { create(:doorkeeper_application)  }
   subject(:response) { oauth_get(url, application.uid, application.secret) }
   describe 'all' do

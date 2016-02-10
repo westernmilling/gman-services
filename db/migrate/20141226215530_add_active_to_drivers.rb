@@ -1,9 +1,6 @@
 class AddActiveToDrivers < ActiveRecord::Migration
-  return if Rails.env == 'production'
+  return if Driver.connection.class.to_s.include?('Relativity')
 
-  using(:grossman)
   def change
-    add_column :drivers, :active_fg, :bool
-    add_column :drivers, :sub_hauler_fg, :bool
   end
 end

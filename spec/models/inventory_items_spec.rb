@@ -1,13 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe InventoryItemAdapter, :type => :model do
+RSpec.describe InventoryItemAdapter, type: :model do
   let(:inventory_item_adapter) { InventoryItemAdapter }
 
   describe '#all' do
     before do
-      Octopus.using(:grossman) do
-        create(:inventory_item)
-      end
+      create(:inventory_item)
     end
 
     subject(:inventory_items) { inventory_item_adapter.all }
@@ -25,9 +23,7 @@ RSpec.describe InventoryItemAdapter, :type => :model do
     end
     describe '#like_id_description' do
       before do
-        Octopus.using(:grossman) do
-          create(:inventory_item, :item_id => 1, :in_item_description => 'desc')
-        end
+        create(:inventory_item, ItemId: 1, InItem_Description: 'desc')
       end
 
       subject(:inventory_items) do

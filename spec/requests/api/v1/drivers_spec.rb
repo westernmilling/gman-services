@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '/api/v1/drivers', :type => :request do
+RSpec.describe '/api/v1/drivers', type: :request do
   let(:all) do
     DriverAdapter.all
   end
