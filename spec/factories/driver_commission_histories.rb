@@ -1,24 +1,22 @@
 FactoryGirl.define do
-  factory :driver_commission_history, :class => DriverCommissionHistory do
-    driver_id { Faker::Number.number(4) }
-    backhauls { Faker::Number.number(4) }
-    freight_revenue { Faker::Number.number(4) }
-    customer_name "#{Faker::Name.first_name}, #{Faker::Name.last_name}"
-    customer_id 0001
-    delivery_date { Date.new(2014, 01, 01) }
-    driver_rate { Faker::Number.number(4) }
-    freight_bill_number { Faker::Number.number(4) }
-    fuel_surcharge { Faker::Number.number(4) }
-    layover 'layover'
-    movement_type 'WALKING FLOOR'
-    movement_cd 1
-    other_hour_dollars { Faker::Number.number(4) }
-    order_number_text { Faker::Number.number(4) }
-    origin_name 'ORIGIN NAME'
-    paid_date Date.new(2014, 01, 01)
-    revenue { Faker::Number.number(4) }
-    split_rate { Faker::Number.number(4) }
-    total_freight_revenue { Faker::Number.number(4) }
-    drvrcomh_key { "#{Faker::Number.number(5)} #{Faker::Number.number(8)}" }
+  factory :driver_commission_history do
+    DriverId { Faker::Number.number(4) }
+    Backhauls { Faker::Number.number(4) }
+    FreightRevenue { Faker::Number.number(4) }
+    CustomerId 0001
+    DeliveryDate { Date.new(2014, 01, 01) }
+    DriverRate { Faker::Number.number(4) }
+    FreightBillNumber { Faker::Number.number(4) }
+    FuelSurcharge { Faker::Number.number(4) }
+    Layover 'layover'
+    MovementCd 1
+    OtherHourDollars { Faker::Number.number(4) }
+    OrderNumberText { Faker::Number.number(4) }
+    OriginName 'ORIGIN NAME'
+    PaidDate Date.new(2014, 01, 01)
+    Revenue { Faker::Number.number(4) }
+    SplitRate { Faker::Number.number(4) }
+    TotalFreightRevenue { Faker::Number.number(4) }
+    DrvrcomhKey { "#{Faker::Number.number(5)} #{Faker::Number.number(8)}" }
   end
 end

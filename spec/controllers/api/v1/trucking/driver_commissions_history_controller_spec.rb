@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
-               :type => :controller do
+               type: :controller do
   before do
     allow(controller).to receive(:doorkeeper_token).and_return(token)
   end
@@ -10,7 +10,7 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
     context 'token accepted' do
       let(:token) { double :acceptable? => true }
       it 'responds with 200' do
-        get :index, :format => :json
+        get :index, format: :json
         expect(response.status).to eq(200)
       end
     end
@@ -21,7 +21,7 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
                :accessible? => false
       end
       it 'responds with 401' do
-        get :index, :format => :json
+        get :index, format: :json
         expect(response.status).to eq(401)
       end
     end
@@ -30,25 +30,25 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
   let(:driver_commission_history) do
     [
       {
-        :driver_id => Faker::Number.number(4),
-        :backhauls => 'BACKHAULS',
-        :customer_name => Faker::Name.first_name,
-        :freight_revenue => Faker::Number.number(4),
-        :customer_id => 0001,
-        :delivery_date => Date.new(2012, 01, 01),
-        :driver_rate => Faker::Number.number(4),
-        :freight_bill_number => Faker::Number.number(4),
-        :fuel_revenue => Faker::Number.number(4),
-        :fuel_surcharge => Faker::Number.number(4),
-        :layover => 'layover',
-        :movement_type => 'MOVE TYPE',
-        :other_hour_dollars => Faker::Number.number(4),
-        :order_number_text => Faker::Number.number(4),
-        :origin_name => 'ORIGIN NAME',
-        :paid_date => Date.new(2012, 01, 01),
-        :revenue => Faker::Number.number(4),
-        :split_rate => Faker::Number.number(4),
-        :total_freight_revenue => Faker::Number.number(4)
+        driver_id: Faker::Number.number(4),
+        backhauls: 'BACKHAULS',
+        customer_name: Faker::Name.first_name,
+        freight_revenue: Faker::Number.number(4),
+        customer_id: 0001,
+        delivery_date: Date.new(2012, 01, 01),
+        driver_rate: Faker::Number.number(4),
+        freight_bill_number: Faker::Number.number(4),
+        fuel_revenue: Faker::Number.number(4),
+        fuel_surcharge: Faker::Number.number(4),
+        layover: 'layover',
+        movement_type: 'MOVE TYPE',
+        other_hour_dollars: Faker::Number.number(4),
+        order_number_text: Faker::Number.number(4),
+        origin_name: 'ORIGIN NAME',
+        paid_date: Date.new(2012, 01, 01),
+        revenue: Faker::Number.number(4),
+        split_rate: Faker::Number.number(4),
+        total_freight_revenue: Faker::Number.number(4)
       }
     ]
   end
@@ -63,7 +63,7 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
     let(:token) { double :acceptable? => true }
 
     before { index }
-    subject(:index) { get :index, :format => format }
+    subject(:index) { get :index, format: format }
     context 'when format is json' do
       let(:format) { :json }
       it 'responds with 200' do
@@ -79,7 +79,7 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         expect { JSON.parse(response.body) }.not_to raise_error
       end
       describe 'parsed JSON schema' do
-        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, symbolize_names: true) }
         it 'is an array' do
           is_expected.to be_kind_of(Array)
         end
@@ -129,8 +129,8 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
     before { by_paid_date }
     subject(:by_paid_date) do
       get :by_paid_date,
-          :format => format,
-          :paid_date => paid_date
+          format: format,
+          paid_date: paid_date
     end
     context 'when format is json' do
       let(:format) { :json }
@@ -147,7 +147,7 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         expect { JSON.parse(response.body) }.not_to raise_error
       end
       describe 'parsed JSON schema' do
-        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, symbolize_names: true) }
         it 'is an array' do
           is_expected.to be_kind_of(Array)
         end

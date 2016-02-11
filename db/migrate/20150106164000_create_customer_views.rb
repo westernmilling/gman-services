@@ -1,18 +1,18 @@
 class CreateCustomerViews < ActiveRecord::Migration
-  return if Rails.env == 'production'
-
-  using(:grossman)
+  return if Customer.connection.class.to_s.include?('Relativity')
 
   def up
-    self.connection.execute 'CREATE OR REPLACE VIEW Customers AS
-SELECT
-  customer_name AS Name
-, customer_id AS CustomerId
-FROM
-  local_customers'
+    Customer.connection.execute('
+    CREATE OR REPLACE VIEW Customers AS
+      SELECT
+        customer_name AS Name
+      , customer_id AS CustomerId
+      FROM
+        customer_table
+    ')
   end
-#
+
   def down
-    self.connection.execute "DROP VIEW IF EXISTS Customers;"
+    Customer.connection.execute('DROP VIEW IF EXISTS Customers;')
   end
 end

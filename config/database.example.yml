@@ -1,0 +1,55 @@
+development:
+   adapter: mysql2
+   database: gman_services_dev
+   host: localhost
+   username: root
+   password:
+   pool: 5
+   timeout: 5000
+
+test:
+   adapter: mysql2
+   database: gman_services_test
+   host: localhost
+   username: root
+   password:
+   pool: 5
+   timeout: 5000
+
+production:
+   adapter: mysql2
+   database: gman_services
+   host: localhost
+   username: root
+   password:
+   pool: 5
+   timeout: 5000
+
+grossman_development:
+   adapter: mysql2
+   database: grossman_dev
+   host: localhost
+   username: root
+   pool: 5
+   timeout: 5000
+
+grossman_test:
+   adapter: mysql2
+   database: grossman_test
+   host: localhost
+   username: root
+   pool: 5
+   timeout: 5000
+
+grossman_production:
+  adapter: relativity
+  adapter_class: ActiveRecord::ConnectionAdapters::GrossmanRelativityAdapter
+  driver: relativity.jdbc.Driver
+  connection_alive_sql: "SELECT 1 FROM sysibm.tables FETCH FIRST 1 ROWS ONLY"
+  url: jdbc:relativity://server:1583/data
+  properties: # specific to com.mysql.jdbc.Driver
+    execDesc: 'jRuby'
+    arrayFetchOn:  1
+    arrayBufferSize: 8
+  username:
+  password:

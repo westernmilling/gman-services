@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
+RSpec.describe Api::V1::Trucking::DriversController, type: :controller do
   before do
     allow(controller).to receive(:doorkeeper_token).and_return(token)
   end
@@ -8,20 +8,20 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
   let(:drivers) do
     [
       {
-        :driver_number => Faker::Number.number(4),
-        :first_name => Faker::Name.first_name,
-        :active_fg => [true, false].sample,
-        :last_name => Faker::Name.last_name,
-        :sub_hauler_fg => [true, false].sample,
-        :driver_type => 'DR'
+        driver_number: Faker::Number.number(4),
+        first_name: Faker::Name.first_name,
+        active_fg: [true, false].sample,
+        last_name: Faker::Name.last_name,
+        sub_hauler_fg: [true, false].sample,
+        driver_type: 'DR'
       },
       {
-        :driver_number => Faker::Number.number(4),
-        :first_name => Faker::Name.first_name,
-        :active_fg => [true, false].sample,
-        :last_name => Faker::Name.last_name,
-        :sub_hauler_fg => [true, false].sample,
-        :driver_type => 'DR'
+        driver_number: Faker::Number.number(4),
+        first_name: Faker::Name.first_name,
+        active_fg: [true, false].sample,
+        last_name: Faker::Name.last_name,
+        sub_hauler_fg: [true, false].sample,
+        driver_type: 'DR'
       }
     ]
   end
@@ -31,7 +31,7 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
     context 'token accepted' do
       let(:token) { double :acceptable? => true }
       it 'responds with 200' do
-        get :index, :format => :json
+        get :index, format: :json
         expect(response.status).to eq(200)
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
                :accessible? => false
       end
       it 'responds with 401' do
-        get :index, :format => :json
+        get :index, format: :json
         expect(response.status).to eq(401)
       end
     end
@@ -52,7 +52,7 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
     let(:token) { double :acceptable? => true }
 
     before { index }
-    subject(:index) { get :index, :format => format }
+    subject(:index) { get :index, format: format }
     context 'when format is json' do
       let(:format) { :json }
 
@@ -70,7 +70,7 @@ RSpec.describe Api::V1::Trucking::DriversController, :type => :controller do
       end
 
       describe 'parsed JSON schema' do
-        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, symbolize_names: true) }
 
         it 'is an array' do
           is_expected.to be_kind_of(Array)

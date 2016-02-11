@@ -1,6 +1,7 @@
 class CreateDoorkeeperTables < ActiveRecord::Migration
-  using(:gman_services)
   def change
+    @connection = Doorkeeper::Application.connection
+
     create_table :oauth_applications do |t|
       t.string  :name,         null: false
       t.string  :uid,          null: false

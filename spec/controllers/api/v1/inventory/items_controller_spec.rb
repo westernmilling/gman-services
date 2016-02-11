@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
+RSpec.describe Api::V1::Inventory::ItemsController, type: :controller do
   before do
     allow(controller).to receive(:doorkeeper_token).and_return(token)
   end
@@ -8,12 +8,12 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
   let(:inventory_items) do
     [
       {
-        :item_id => Faker::Number.number(4),
-        :in_item_description => Faker::Name.first_name,
+        item_id: Faker::Number.number(4),
+        in_item_description: Faker::Name.first_name,
       },
       {
-        :item_id => Faker::Number.number(4),
-        :in_item_description => Faker::Company.bs,
+        item_id: Faker::Number.number(4),
+        in_item_description: Faker::Company.bs,
       }
     ]
   end
@@ -30,7 +30,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
     context 'token accepted' do
       let(:token) { double :acceptable? => true }
       it 'responds with 200' do
-        get :index, :format => :json
+        get :index, format: :json
         expect(response.status).to eq(200)
       end
     end
@@ -41,7 +41,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
                :accessible? => false
       end
       it 'responds with 401' do
-        get :index, :format => :json
+        get :index, format: :json
         expect(response.status).to eq(401)
       end
     end
@@ -51,7 +51,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
     let(:token) { double :acceptable? => true }
 
     before { index }
-    subject(:index) { get :index, :format => format }
+    subject(:index) { get :index, format: format }
     context 'when format is json' do
       let(:format) { :json }
 
@@ -69,7 +69,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
       end
 
       describe 'parsed JSON schema' do
-        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, symbolize_names: true) }
 
         it 'is an array' do
           is_expected.to be_kind_of(Array)
@@ -106,9 +106,9 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
     before { like_id_description }
     subject(:like_id_description) do
       get :like_id_description,
-          :format => format,
-          :item_id => 1,
-          :in_item_description => 'desc'
+          format: format,
+          item_id: 1,
+          in_item_description: 'desc'
     end
     context 'when format is json' do
       let(:format) { :json }
@@ -127,7 +127,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
       end
 
       describe 'parsed JSON schema' do
-        subject(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        subject(:json) { JSON.parse(response.body, symbolize_names: true) }
 
         it 'is an array' do
           is_expected.to be_kind_of(Array)
@@ -163,8 +163,8 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
     before { by_id }
     subject(:by_id) do
       get :by_id,
-          :format => format,
-          :item_id => 1
+          format: format,
+          item_id: 1
     end
     context 'when format is json' do
       let(:format) { :json }
@@ -183,7 +183,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, :type => :controller do
       end
 
       describe 'parsed JSON schema' do
-        let(:json) { JSON.parse(response.body, :symbolize_names => true) }
+        let(:json) { JSON.parse(response.body, symbolize_names: true) }
 
         it 'is an array' do
           expect(json).to be_kind_of(Array)
