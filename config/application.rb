@@ -7,8 +7,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 java.lang.Class.for_name('javax.crypto.JceSecurity')
-  .get_declared_field('isRestricted')
-  .tap do |f|
+    .get_declared_field('isRestricted')
+    .tap do |f|
   f.accessible = true
   f.set nil, false
 end

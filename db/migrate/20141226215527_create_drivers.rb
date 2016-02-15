@@ -4,13 +4,13 @@ class CreateDrivers < ActiveRecord::Migration
   def change
     @connection = Driver.connection
 
-    create_table :drivers do |t|
-      t.integer :driver_number
-      t.string :first_name
-      t.string :last_name
-      t.string :driver_type
-      t.integer :active_fg
-      t.integer :sub_hauler_fg
+    create_table :Trucking_Drivers do |t|
+      t.integer :DriverId
+      t.string :FirstName
+      t.string :LastName
+      t.string :DriverType
+      t.integer :ActiveFg
+      t.integer :SubHaulerFg
 
       t.timestamps
     end

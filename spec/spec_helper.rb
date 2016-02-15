@@ -1,5 +1,5 @@
-require 'coveralls'
-Coveralls.wear!('rails')
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

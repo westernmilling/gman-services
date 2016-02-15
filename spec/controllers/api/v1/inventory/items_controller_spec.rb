@@ -28,7 +28,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, type: :controller do
 
   describe 'doorkeeper token' do
     context 'token accepted' do
-      let(:token) { double :acceptable? => true }
+      let(:token) { double acceptable?: true }
       it 'responds with 200' do
         get :index, format: :json
         expect(response.status).to eq(200)
@@ -37,8 +37,8 @@ RSpec.describe Api::V1::Inventory::ItemsController, type: :controller do
 
     context 'token not accepted' do
       let(:token) do
-        double :acceptable? => false,
-               :accessible? => false
+        double acceptable?: false,
+               accessible?: false
       end
       it 'responds with 401' do
         get :index, format: :json
@@ -48,7 +48,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, type: :controller do
   end
 
   describe 'GET index' do
-    let(:token) { double :acceptable? => true }
+    let(:token) { double acceptable?: true }
 
     before { index }
     subject(:index) { get :index, format: format }
@@ -101,7 +101,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, type: :controller do
   end
 
   describe 'GET like_id_description' do
-    let(:token) { double :acceptable? => true }
+    let(:token) { double acceptable?: true }
 
     before { like_id_description }
     subject(:like_id_description) do
@@ -158,7 +158,7 @@ RSpec.describe Api::V1::Inventory::ItemsController, type: :controller do
     end
   end
   describe 'GET by_id' do
-    let(:token) { double :acceptable? => true }
+    let(:token) { double acceptable?: true }
 
     before { by_id }
     subject(:by_id) do

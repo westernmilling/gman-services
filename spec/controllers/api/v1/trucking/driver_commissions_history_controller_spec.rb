@@ -8,7 +8,7 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
 
   describe 'doorkeeper token' do
     context 'token accepted' do
-      let(:token) { double :acceptable? => true }
+      let(:token) { double acceptable?: true }
       it 'responds with 200' do
         get :index, format: :json
         expect(response.status).to eq(200)
@@ -17,8 +17,8 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
 
     context 'token not accepted' do
       let(:token) do
-        double :acceptable? => false,
-               :accessible? => false
+        double acceptable?: false,
+               accessible?: false
       end
       it 'responds with 401' do
         get :index, format: :json
@@ -60,7 +60,7 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
   end
 
   describe 'GET index' do
-    let(:token) { double :acceptable? => true }
+    let(:token) { double acceptable?: true }
 
     before { index }
     subject(:index) { get :index, format: format }
@@ -123,7 +123,7 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
     end
   end
   describe 'GET by_paid_date' do
-    let(:token) { double :acceptable? => true }
+    let(:token) { double acceptable?: true }
 
     let(:paid_date) { Date.new(2012, 01, 01) }
     before { by_paid_date }

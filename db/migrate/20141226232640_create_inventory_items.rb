@@ -4,9 +4,9 @@ class CreateInventoryItems < ActiveRecord::Migration
   def change
     @connection = InventoryItem.connection
 
-    create_table :inventory_items do |t|
-      t.integer :item_id
-      t.string :in_item_description
+    create_table :InvItems do |t|
+      t.integer :ItemId
+      t.string :InItem_Description
 
       t.timestamps
     end

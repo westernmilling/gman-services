@@ -1,6 +1,8 @@
 class Contract < ActiveRecord::Base
   establish_connection "grossman_#{Rails.env}".to_sym
 
+  scope :customer_id_eq,
+        ->(customer_id) { where("CustomerId = '#{customer_id}'") }
   scope :commodity_id_eq,
         ->(commodity_id) { where("CommodityId = #{commodity_id}") }
 

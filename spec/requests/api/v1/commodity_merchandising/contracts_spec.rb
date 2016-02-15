@@ -4,6 +4,12 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
   let(:all) do
     Contract.all
   end
+  let(:all_as_json) do
+    all
+      .map(&:attributes)
+      .map(&:to_snake_keys)
+      .to_json
+  end
   let(:application) { create(:doorkeeper_application) }
   subject(:response) { oauth_get(url, application.uid, application.secret) }
 
@@ -18,7 +24,7 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
       expect(response.status).to eq(200)
     end
     it 'have a body equal to all contracts json' do
-      expect(response.body).to eq(all.to_json)
+      expect(response.body).to eq(all_as_json)
     end
   end
 

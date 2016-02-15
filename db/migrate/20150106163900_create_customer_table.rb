@@ -4,9 +4,9 @@ class CreateCustomerTable < ActiveRecord::Migration
   def change
     @connection = Customer.connection
 
-    create_table :customer_table do |t|
-      t.string :customer_name
-      t.integer :customer_id
+    create_table :Customers do |t|
+      t.string :Name
+      t.integer :CustomerId
 
       t.timestamps
     end

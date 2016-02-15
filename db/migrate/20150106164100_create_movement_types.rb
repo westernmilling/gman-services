@@ -4,9 +4,9 @@ class CreateMovementTypes < ActiveRecord::Migration
   def change
     @connection = MovementType.connection
 
-    create_table :movement_types do |t|
-      t.string :movement_description
-      t.integer :movement_cd
+    create_table :MovementTypes do |t|
+      t.string :MovementDescription
+      t.integer :MovementCd
 
       t.timestamps
     end

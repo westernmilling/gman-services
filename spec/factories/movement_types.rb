@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :movement_type, class: MovementType do
-    movement_cd { Faker::Number.number(2) }
-    movement_description 'WALKING FLOOR'
+  factory :movement_type do
+    MovementCd { Faker::Number.number(2) }
+    MovementDescription 'WALKING FLOOR'
   end
 end

@@ -5,14 +5,6 @@ GIT
     activerecord-relativity-adapter (0.1)
 
 GIT
-  remote: git://github.com/michaelachrisco/hound-tools.git
-  revision: 7511afc75eec8710599154e7eafb8cebaf73aaa9
-  specs:
-    hound-tools (0.0.6)
-      rubocop (= 0.28.0)
-      thor
-
-GIT
   remote: https://github.com/michaelachrisco/plissken.git
   revision: 9177b144d504d56fd6ace297afe2182c6be08e01
   branch: trailing_spaces
@@ -57,8 +49,6 @@ GEM
     addressable (2.4.0)
     arel (5.0.1.20140414130214)
     ast (2.2.0)
-    astrolabe (1.3.1)
-      parser (~> 2.2)
     awesome_print (1.6.1)
     bcrypt (3.1.10)
     bcrypt (3.1.10-java)
@@ -84,6 +74,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    codeclimate-test-reporter (0.4.8)
+      simplecov (>= 0.7.1, < 1.0.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -93,13 +85,6 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
     concurrent-ruby (1.0.0-java)
-    coveralls (0.8.10)
-      json (~> 1.8)
-      rest-client (>= 1.6.8, < 2)
-      simplecov (~> 0.11.0)
-      term-ansicolor (~> 1.3)
-      thor (~> 0.19.1)
-      tins (~> 1.6.0)
     devise (3.5.6)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -109,8 +94,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    domain_name (0.5.20160128)
-      unf (>= 0.0.5, < 1.0.0)
     doorkeeper (2.2.1)
       railties (>= 3.2)
     erubis (2.7.0)
@@ -129,8 +112,6 @@ GEM
     foreman (0.78.0)
       thor (~> 0.19.1)
     hashie (3.4.3)
-    http-cookie (1.0.2)
-      domain_name (~> 0.5)
     httpauth (0.2.1)
     i18n (0.7.0)
     jdbc-mysql (5.1.38)
@@ -158,7 +139,6 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
-    netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     nokogiri (1.6.7.2-java)
@@ -175,12 +155,12 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.5.0)
-    parser (2.3.0.4)
+    parser (2.3.0.6)
       ast (~> 2.2)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
-    powerpack (0.0.9)
+    powerpack (0.1.1)
     puma (2.16.0)
     puma (2.16.0-java)
     rack (1.5.5)
@@ -211,10 +191,6 @@ GEM
       polyamorous (~> 1.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
-    rest-client (1.8.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -239,12 +215,12 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    rubocop (0.28.0)
-      astrolabe (~> 1.3)
-      parser (>= 2.2.0.pre.7, < 3.0)
-      powerpack (~> 0.0.6)
+    rubocop (0.37.2)
+      parser (>= 2.3.0.4, < 3.0)
+      powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
-      ruby-progressbar (~> 1.4)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 0.3)
     ruby-progressbar (1.7.5)
     seedbank (0.3.0)
     simplecov (0.11.2)
@@ -270,15 +246,12 @@ GEM
       activemodel (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
       i18n
-    term-ansicolor (1.3.2)
-      tins (~> 1.0)
     therubyrhino (2.0.4)
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
     thread_safe (0.3.5-java)
-    tins (1.6.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -289,10 +262,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unf (0.1.4)
-      unf_ext
-    unf (0.1.4-java)
-    unf_ext (0.0.7.2)
+    unicode-display_width (0.3.1)
     warden (1.2.6)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -312,14 +282,13 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capybara
-  coveralls
+  codeclimate-test-reporter
   devise
   doorkeeper (= 2.2.1)
   factory_girl_rails
   faker
   figaro
   foreman
-  hound-tools (~> 0.0.6)!
   jdbc-mysql
   jquery-rails
   jruby-openssl
@@ -334,7 +303,7 @@ DEPENDENCIES
   ransack (= 1.6.5)
   rspec-its
   rspec-rails (~> 3.0)
-  rubocop (= 0.28.0)
+  rubocop
   seedbank
   squeel (= 1.2.3)
   symbolize
