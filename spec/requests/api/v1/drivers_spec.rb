@@ -6,7 +6,7 @@ RSpec.describe '/api/v1/drivers', type: :request do
   end
 
   context 'when application id and secret are valid' do
-    let(:application) { create(:doorkeeper_application)  }
+    let(:application) { create(:doorkeeper_application) }
     subject(:response) do
       oauth_get('/api/v1/drivers', application.uid, application.secret)
     end

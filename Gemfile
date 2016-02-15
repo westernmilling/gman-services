@@ -36,15 +36,12 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'foreman'
-  gem 'hound-tools', '~> 0.0.6',
-      github: 'michaelachrisco/hound-tools',
-      require: false
-  gem 'rubocop', '0.28.0', require: false
+  gem 'rubocop'
 end
 
 group :test do
   gem 'capybara'
-  gem 'coveralls', require: false
+  gem 'codeclimate-test-reporter', group: :test, require: nil
   gem 'json_spec'
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.0'

@@ -2,7 +2,6 @@ AllCops:
   Exclude:
     - "vendor/**/*"
     - "db/schema.rb"
-    - bin/*
   UseCache: false
 Style/CollectionMethods:
   Description: Preferred collection methods.
@@ -18,7 +17,7 @@ Style/DotPosition:
   Description: Checks the position of the dot in multi-line method calls.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains
   Enabled: true
-  EnforcedStyle: trailing
+  EnforcedStyle: leading
   SupportedStyles:
   - leading
   - trailing
@@ -37,6 +36,9 @@ Style/IfUnlessModifier:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#if-as-a-modifier
   Enabled: false
   MaxLineLength: 80
+Style/OptionHash:
+  Description: Don't use option hashes when you can use keyword arguments.
+  Enabled: false
 Style/PercentLiteralDelimiters:
   Description: Use `%`-literal delimiters consistently
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-literal-braces
@@ -112,13 +114,23 @@ Style/StringLiteralsInInterpolation:
   SupportedStyles:
   - single_quotes
   - double_quotes
-Style/TrailingComma:
-  Description: Checks for trailing comma in parameter lists and literals.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas
+Style/TrailingCommaInArguments:
+  Description: 'Checks for trailing comma in argument lists.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
   Enabled: false
   EnforcedStyleForMultiline: no_comma
   SupportedStyles:
   - comma
+  - consistent_comma
+  - no_comma
+Style/TrailingCommaInLiteral:
+  Description: 'Checks for trailing comma in array and hash literals.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
+  Enabled: false
+  EnforcedStyleForMultiline: no_comma
+  SupportedStyles:
+  - comma
+  - consistent_comma
   - no_comma
 Metrics/AbcSize:
   Description: A calculated magnitude based on number of assignments, branches, and
@@ -162,6 +174,12 @@ Lint/AssignmentInCondition:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition
   Enabled: false
   AllowSafeAssignment: true
+Style/MultilineOperationIndentation:
+  Enabled: false
+  EnforcedStyle: indented
+  SupportedStyles:
+  - aligned
+  - indented
 Style/InlineComment:
   Description: Avoid inline comments.
   Enabled: false
@@ -190,8 +208,6 @@ Style/ModuleFunction:
   Description: Checks for usage of `extend self` in modules.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#module-function
   Enabled: false
-Style/MutableConstant:
-  Enabled: true
 Style/OneLineConditional:
   Description: Favor the ternary operator(?:) over if/then/else/end constructs.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#ternary-operator
@@ -231,19 +247,3 @@ Lint/LiteralInCondition:
 Lint/LiteralInInterpolation:
   Description: Checks for literals used in interpolation.
   Enabled: false
-Style/DotPosition:
-  Description: Checks the position of the dot in multi-line method calls.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains
-  Enabled: true
-  EnforcedStyle: leading
-  SupportedStyles:
-  - leading
-  - trailing
-Style/AndOr:
-  Description: Use &&/|| instead of and/or.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-and-or-or
-  Enabled: false
-  EnforcedStyle: always
-  SupportedStyles:
-  - always
-  - conditionals
