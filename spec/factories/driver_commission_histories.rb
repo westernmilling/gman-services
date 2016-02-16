@@ -1,15 +1,15 @@
 FactoryGirl.define do
   factory :driver_commission_history do
+    association :customer
+    association :movement_type
     DriverId { Faker::Number.number(4) }
     Backhauls { Faker::Number.number(4) }
     FreightRevenue { Faker::Number.number(4) }
-    CustomerId 0001
     DeliveryDate { Date.new(2014, 01, 01) }
     DriverRate { Faker::Number.number(4) }
     FreightBillNumber { Faker::Number.number(4) }
     FuelSurcharge { Faker::Number.number(4) }
     Layover 'layover'
-    MovementCd 1
     OtherHourDollars { Faker::Number.number(4) }
     OrderNumberText { Faker::Number.number(4) }
     OriginName 'ORIGIN NAME'

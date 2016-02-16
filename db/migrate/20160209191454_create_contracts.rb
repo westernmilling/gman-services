@@ -8,6 +8,7 @@ class CreateContracts < ActiveRecord::Migration
       t.string :ContractId
       t.string :CustomerId
       t.string :CommodityId
+      t.integer :CommUOMId
       t.integer :CONT_ContractNumber
       t.string :CONT_ContractType
       t.date :CONT_ContractDate

@@ -85,6 +85,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
     concurrent-ruby (1.0.0-java)
+    database_cleaner (1.5.1)
     devise (3.5.6)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -114,6 +115,9 @@ GEM
     hashie (3.4.3)
     httpauth (0.2.1)
     i18n (0.7.0)
+    jbuilder (2.4.1)
+      activesupport (>= 3.0.0, < 5.1)
+      multi_json (~> 1.2)
     jdbc-mysql (5.1.38)
     jquery-rails (3.1.4)
       railties (>= 3.0, < 5.0)
@@ -223,6 +227,8 @@ GEM
       unicode-display_width (~> 0.3)
     ruby-progressbar (1.7.5)
     seedbank (0.3.0)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -283,12 +289,14 @@ DEPENDENCIES
   capistrano-rvm
   capybara
   codeclimate-test-reporter
+  database_cleaner
   devise
   doorkeeper (= 2.2.1)
   factory_girl_rails
   faker
   figaro
   foreman
+  jbuilder
   jdbc-mysql
   jquery-rails
   jruby-openssl
@@ -305,6 +313,7 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   rubocop
   seedbank
+  shoulda-matchers (= 2.8.0)
   squeel (= 1.2.3)
   symbolize
   therubyrhino

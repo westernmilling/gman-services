@@ -4,10 +4,6 @@ class Customer < ActiveRecord::Base
   self.primary_key = 'CustomerId'
   self.table_name = 'Customers'
 
-  def self.default_scope
-    select(column_names.map(&:to_s))
-  end
-
   def self.column_names
     %w{
       CustomerId

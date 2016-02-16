@@ -2,9 +2,7 @@ module Api
   module V1
     module Inventory
       # Inventory Api endpoint
-      class ItemsController < ApplicationController
-        before_action :doorkeeper_authorize!
-
+      class ItemsController < Api::BaseController
         def index
           respond_to do |format|
             format.json do
