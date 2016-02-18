@@ -1,4 +1,3 @@
-.idea
 .DS_Store
 *.rbc
 capybara-*.html
@@ -13,40 +12,17 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
-
-config/initializers/secret_token.rb
-config/secrets.yml
-
-## Environment normalisation:
 /.bundle
 /vendor/bundle
-
-# these should all be checked in to normalise the environment:
-# Gemfile.lock, .ruby-version, .ruby-gemset
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
-# if using bower-rails ignore default bower_components path bower.json files
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
-config/shards.yml
+config/application.yml
 config/database.yml
-spec/cassettes
-
-# Ignore application configuration
-/config/application.yml
-/config/production.yml
-/config/development.yml
-/config/deploy.yml
-/config/deploy.rb
-/config/deploy/production.rb
-
-vm/.vagrant/machines/default/virtualbox
-vm/.vagrant/machines/default/virtualbox/private_key
-vm/.vagrant/machines/default/virtualbox/action_provision
-vm/.vagrant/machines/default/virtualbox/id
-vm/.vagrant/machines/default/virtualbox/index_uuid
-vm/.vagrant/machines/default/virtualbox/synced_folders
-vm/.vagrant/machines/default/virtualbox/action_set_name
+config/deploy.rb
+config/deploy/production.rb
+config/deploy/staging.rb

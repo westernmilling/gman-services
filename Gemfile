@@ -9,6 +9,7 @@ gem 'awesome_print'
 gem 'devise'
 gem 'doorkeeper', '2.2.1'
 gem 'figaro'
+gem 'jbuilder'
 gem 'jdbc-mysql', platform: :jruby
 gem 'jquery-rails'
 gem 'jruby-openssl'
@@ -42,7 +43,9 @@ end
 group :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter', group: :test, require: nil
+  gem 'database_cleaner'
   gem 'json_spec'
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda-matchers', '2.8.0'
 end

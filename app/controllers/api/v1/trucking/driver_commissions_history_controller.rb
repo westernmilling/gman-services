@@ -2,9 +2,7 @@ module Api
   module V1
     module Trucking
       # Driver Commission History Api endpoint
-      class DriverCommissionsHistoryController < ApplicationController
-        before_action :doorkeeper_authorize!
-
+      class DriverCommissionsHistoryController < Api::BaseController
         def index
           respond_to do |format|
             format.json { render json: DriverCommissionHistoryAdapter.all }

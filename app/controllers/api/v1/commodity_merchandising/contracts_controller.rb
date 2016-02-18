@@ -3,7 +3,10 @@ module Api
     module CommodityMerchandising
       class ContractsController < Api::BaseController
         def index
-          render_json(contracts)
+          render(
+            :index,
+            locals: { contracts: contracts }
+          )
         end
 
         def search

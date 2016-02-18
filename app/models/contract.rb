@@ -1,23 +1,31 @@
 class Contract < ActiveRecord::Base
   establish_connection "grossman_#{Rails.env}".to_sym
 
-  scope :customer_id_eq,
-        ->(customer_id) { where("CustomerId = '#{customer_id}'") }
+  belongs_to :commodity, foreign_key: :CommodityId
+  belongs_to :customer, foreign_key: :CustomerId
+  belongs_to :unit_of_measure,
+             class_name: Commodity::UnitOfMeasure,
+             foreign_key: :CommUOMId
+
   scope :commodity_id_eq,
-        ->(commodity_id) { where("CommodityId = #{commodity_id}") }
+        ->(commodity_id) { where("Contract.CommodityId = #{commodity_id}") }
+  scope :customer_id_eq,
+        ->(customer_id) { where("Contract.CustomerId = '#{customer_id}'") }
 
   self.primary_key = 'ContractId'
   self.table_name = 'Contract'
 
   def self.default_scope
-    select(column_names.map(&:to_s))
+    includes(:commodity, :customer, :unit_of_measure)
+      .joins(:commodity, :customer, :unit_of_measure)
   end
 
   def self.column_names
     %w{
-      ContractId
       CustomerId
       CommodityId
+      ContractId
+      CommUOMId
       CONT_ContractNumber
       CONT_ContractType
       CONT_ContractDate
@@ -31,6 +39,6 @@ class Contract < ActiveRecord::Base
   end
 
   def self.ransackable_scopes(_auth_object = nil)
-    [:commodity_id_eq]
+    [:commodity_id_eq, :customer_id_eq]
   end
 end
