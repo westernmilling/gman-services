@@ -43,8 +43,11 @@ module ActiveRecord
         column_names = model.column_names \
           if model.singleton_methods(false).include?(:column_names)
         column_names ||= []
+        statement_names = column_names
+                          .join(', ')
+                          .presence || '*'
 
-        "SELECT #{column_names.join(', ').presence || '*'} FROM #{table_name}"
+        "SELECT #{statement_names} FROM #{table_name}"
       end
 
       alias_chained_method :columns, :query_cache, :jdbc_columns

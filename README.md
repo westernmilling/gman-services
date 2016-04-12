@@ -7,3 +7,16 @@
 ## Getting Started
 
 For development you will need both gman_services_dev and grossman_dev databases.
+
+## Guidelines
+
+### Orders
+
+Querying orders from Grossman can be a minefield, especially if you have a large
+volume of orders in the system.
+
+Due to a lack of indexes on the `Order` ("header") and `Order::Line` ("detail")
+schemas it is recommended that the `Order::Reference` ("cross reference") model
+is used for querying orders. Also, due to issues (possibly incurred through
+kludgey design) with the Relativity adapter the `Order::Additional` is
+associated with the `Order::Reference` and not the `Order` model.
