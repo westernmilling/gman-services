@@ -7,6 +7,9 @@ class Order
 
     belongs_to :order, foreign_key: :FeedXrefKey, primary_key: :OrderKey
 
+    scope :ship_date_eq,
+          ->(ship_date) { where("ShipDate = '#{ship_date}'") }
+
     # Fetch the order "manually" to avoid issues accessing associations.
     def order
       @order ||= Order.where(OrderKey: self.FeedXrefKey).to_a.first
@@ -25,5 +28,9 @@ class Order
         UuidHeader
       }
     end
+  end
+
+  def self.ransackable_scopes(_auth_object = nil)
+    [:ship_date_eq]
   end
 end

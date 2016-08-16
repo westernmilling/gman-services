@@ -64,3 +64,36 @@ Returns a single order
   "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35"
 }
 ```
+
+#### GET /api/v1/orders?q[ship_date_eq]=:ship_date
+
+##### params
+* id(string): Order UUID
+
+```bash
+curl -H "Authentication: Bearer {token}"
+     -i "{host}/api/v1/orders?q\[ship_date_eq\]=2000-01-01"
+```
+
+Returns a collection of orders
+
+```
+[
+  {
+    "order_number": 000001,
+    "order_key": "001",
+    "quantity_shipped": "5.0",
+    "ship_date": "2000-01-01",
+    "warehouse_id": 1,
+    "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35"
+  },
+  {
+    "order_number": 000002,
+    "order_key": "002",
+    "quantity_shipped": "5.0",
+    "ship_date": "2000-01-01",
+    "warehouse_id": 1,
+    "uuid": "1AE4C0FD-B1B3-4381-ACF2-62025A6F0D8C"
+  }
+]
+```
