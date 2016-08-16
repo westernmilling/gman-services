@@ -7,12 +7,13 @@ class Order
 
     belongs_to :order, foreign_key: :FeedXrefKey, primary_key: :OrderKey
 
-    # Include the order details to avoid issues with accessing the association
-    # after it has been load (which executes a statement with LIMIT that is
-    # not supported by Relativities SQL dialect)
+    # Fetch the order "manually" to avoid issues accessing associations.
+    def order
+      @order ||= Order.where(OrderKey: self.FeedXrefKey).to_a.first
+    end
+
     def self.default_scope
       select(column_names.map(&:to_s))
-        .includes(:order)
     end
 
     def self.column_names
