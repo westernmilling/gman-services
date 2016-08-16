@@ -29,5 +29,8 @@ Rails.application.routes.draw do
     get 'inventory/items_by_id(.:format)',
         to: 'api/v1/inventory/items#by_id',
         defaults: { format: 'json' }
+    get 'orders/:id(.:format)',
+        to: 'api/v1/orders#show',
+        defaults: { format: 'json' }
   end
 end

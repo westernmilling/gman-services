@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216183233) do
+ActiveRecord::Schema.define(version: 20160411231915) do
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id", null: false
