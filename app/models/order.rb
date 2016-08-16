@@ -8,6 +8,12 @@ class Order < ActiveRecord::Base
            foreign_key: :InOrd_WareShipToOrderKey,
            primary_key: :InOrd_WareShipToOrderKey
 
+  def quantity_shipped
+    lines
+      .map(&:InOrd_QtyShipped)
+      .inject(0, :+)
+  end
+
   # Fetch the reference "manually" to avoid issues with recurring lookups.
   def reference
     @reference ||= Reference.where(FeedXrefKey: self.OrderKey).to_a.first

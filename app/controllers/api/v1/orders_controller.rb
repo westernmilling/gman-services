@@ -2,7 +2,8 @@ module Api
   module V1
     class OrdersController < Api::BaseController
       def show
-        order_reference = Order::Reference.where(UuidHeader: params[:id])
+        order_reference = Order::Reference
+                          .where(UuidHeader: params[:id])
                           .to_a
                           .first
 
