@@ -8,8 +8,6 @@ class Order::Line < ActiveRecord::Base
     select(column_names.map(&:to_s))
   end
 
-  # OrderKey
-  # InOrd_WareShipToOrderKey
   def self.column_names
     %w{
       ItemId

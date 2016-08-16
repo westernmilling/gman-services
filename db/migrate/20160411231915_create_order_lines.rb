@@ -6,9 +6,11 @@ class CreateOrderLines < ActiveRecord::Migration
             .include?('Relativity')
 
   def change
-    @connection = Contract.connection
+    @connection = Order::Line.connection
 
     create_table :order_lines do |t|
+      t.string :ItemId, null: false
+      t.decimal :InOrd_QtyShipped, null: false
 
       t.timestamps
     end

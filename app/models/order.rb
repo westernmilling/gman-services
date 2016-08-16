@@ -8,6 +8,11 @@ class Order < ActiveRecord::Base
            foreign_key: :InOrd_WareShipToOrderKey,
            primary_key: :InOrd_WareShipToOrderKey
 
+  # Fetch the reference "manually" to avoid issues with recurring lookups.
+  def reference
+    @reference ||= Reference.where(FeedXrefKey: self.OrderKey).to_a.first
+  end
+
   def self.default_scope
     select(column_names.map(&:to_s))
       .includes(:lines)
@@ -16,7 +21,6 @@ class Order < ActiveRecord::Base
   def self.column_names
     %w{
       OrderKey
-      InOrd_OrderNo
       InOrd_WareShipToOrderKey
       WarehouseId
     }

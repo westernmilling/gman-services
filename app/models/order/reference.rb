@@ -6,22 +6,21 @@ class Order
     self.table_name = 'InvCustomerOrders_CrossReference'
 
     belongs_to :order, foreign_key: :FeedXrefKey, primary_key: :OrderKey
-    belongs_to :additional,
-               class_name: Order::Additional,
-               foreign_key: :FeedXrefKey, primary_key: :OrderKey
 
+    # Include the order details to avoid issues with accessing the association
+    # after it has been load (which executes a statement with LIMIT that is
+    # not supported by Relativities SQL dialect)
     def self.default_scope
       select(column_names.map(&:to_s))
-        .includes(:order, :additional)
-        .joins(:order, :additional)
+        .includes(:order)
     end
 
-    # FeedXrefKey is the OrderKey
-    # OrderNumber
     def self.column_names
       %w{
         FeedXrefKey
+        OrderNumber
         ShipDate
+        UuidHeader
       }
     end
   end
