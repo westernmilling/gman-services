@@ -8,12 +8,12 @@ class CreateOrderReferences < ActiveRecord::Migration
   def change
     @connection = Order::Reference.connection
 
-    create_table :order_references do |t|
-      t.integer :FeedXrefKey, null: false
-      t.date :ShipDate, null: false
+    create_table :InvCustomerOrders_CrossReference, id: false do |t|
+      t.string :FeedXrefKey, null: false
+      t.integer :OrderNumber, null: false
+      t.datetime :ShipDate, null: false
+      t.integer :WarehouseId, null: false
       t.string :UuidHeader, null: false
-
-      t.timestamps
     end
   end
 end

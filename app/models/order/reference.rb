@@ -20,6 +20,7 @@ class Order
         FeedXrefKey
         OrderNumber
         ShipDate
+        WarehouseId
         UuidHeader
       }
     end

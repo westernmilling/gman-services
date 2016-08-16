@@ -8,13 +8,11 @@ class CreateOrders < ActiveRecord::Migration
   def change
     @connection = Order.connection
 
-    create_table :orders do |t|
-      t.integer :OrderKey, null: false
+    create_table :InvCustomerOrders_Open_MainInfo, id: false do |t|
+      t.string :OrderKey, null: false
       t.integer :InOrd_OrderNo, null: false
       t.string :InOrd_WareShipToOrderKey, null: false
       t.integer :WarehouseId, null: false
-
-      t.timestamps
     end
   end
 end

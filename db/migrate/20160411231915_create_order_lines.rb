@@ -8,11 +8,10 @@ class CreateOrderLines < ActiveRecord::Migration
   def change
     @connection = Order::Line.connection
 
-    create_table :order_lines do |t|
+    create_table :InvCustomerOrders_Open_Detail, id: false do |t|
       t.string :ItemId, null: false
       t.decimal :InOrd_QtyShipped, null: false
-
-      t.timestamps
+      t.string :InOrd_WareShipToOrderKey, null: false
     end
   end
 end

@@ -27,6 +27,7 @@ class Order < ActiveRecord::Base
   def self.column_names
     %w{
       OrderKey
+      InOrd_OrderNo
       InOrd_WareShipToOrderKey
       WarehouseId
     }
