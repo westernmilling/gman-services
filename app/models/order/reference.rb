@@ -10,13 +10,21 @@ class Order
     scope :ship_date_eq,
           ->(ship_date) { where("ShipDate = '#{ship_date}'") }
 
-    # Fetch the order "manually" to avoid issues accessing associations.
-    def order
-      @order ||= Order.where(OrderKey: self.FeedXrefKey).to_a.first
+    scope :ship_date_and_warehouse_id_eq,
+          (
+            lambda(ship_date, warehouse_id) do
+              where("ShipDate = '#{ship_date}' "\
+                    "AND WarehouseId = #{warehouse_id}")
+            end
+          )
+
+    def self.where(_anything)
+      fail 'Please dont'
     end
 
     def self.default_scope
       select(column_names.map(&:to_s))
+        .includes(order: :lines)
     end
 
     def self.column_names
@@ -31,6 +39,6 @@ class Order
   end
 
   def self.ransackable_scopes(_auth_object = nil)
-    [:ship_date_eq]
+    [:ship_date_and_warehouse_id_eq]
   end
 end
