@@ -9,18 +9,15 @@ class Order
 
     scope :ship_date_eq,
           ->(ship_date) { where("ShipDate = '#{ship_date}'") }
-
     scope :ship_date_and_warehouse_id_eq,
           (
-            lambda(ship_date, warehouse_id) do
+            lambda do |ship_date, warehouse_id|
               where("ShipDate = '#{ship_date}' "\
                     "AND WarehouseId = #{warehouse_id}")
             end
           )
 
-    def self.where(_anything)
-      fail 'Please dont'
-    end
+    protected
 
     def self.default_scope
       select(column_names.map(&:to_s))

@@ -24,7 +24,8 @@ module Api
       end
 
       def order_references
-        @_order_references ||= Order::Reference.ship_date_eq('2016-08-01')
+        @_order_references ||= Order::Reference
+                               .ship_date_and_warehouse_id_eq('2016-08-01', 5)
         # @_order_references ||= search.result
       end
     end
