@@ -4,6 +4,13 @@ class Order < ActiveRecord::Base
   self.primary_key = 'OrderKey'
   self.table_name = 'InvCustomerOrders_Open_MainInfo'
 
+  STATUS_MAP = [
+    :no_items,
+    :ordered,
+    :invoiced,
+    :deleted
+  ].freeze
+
   has_many :lines,
            foreign_key: :InOrd_WareShipToOrderKey,
            primary_key: :InOrd_WareShipToOrderKey
@@ -19,6 +26,10 @@ class Order < ActiveRecord::Base
     @reference ||= Reference.where(FeedXrefKey: self.OrderKey).to_a.first
   end
 
+  def status
+    STATUS_MAP[self.InOrd_StatusCd]
+  end
+
   def self.default_scope
     select(column_names.map(&:to_s))
       .includes(:lines)
@@ -29,6 +40,7 @@ class Order < ActiveRecord::Base
       OrderKey
       InOrd_OrderNo
       InOrd_WareShipToOrderKey
+      InOrd_StatusCd
       WarehouseId
     }
   end

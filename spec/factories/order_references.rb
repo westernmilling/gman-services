@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :order_reference, class: 'Order::Reference' do
     FeedXrefKey { Faker::Number.number(10) }
     OrderNumber { Faker::Number.number(6) }
+    OrderStatusCd { rand(4) }
     ShipDate { Time.zone.now }
     WarehouseId { Faker::Number.number(4) }
     UuidHeader { SecureRandom.uuid }

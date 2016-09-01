@@ -12,6 +12,10 @@ class Order
       @order ||= Order.where(OrderKey: self.FeedXrefKey).to_a.first
     end
 
+    def status
+      STATUS_MAP[self.OrderStatusCd]
+    end
+
     def self.default_scope
       select(column_names.map(&:to_s))
     end
@@ -20,6 +24,7 @@ class Order
       %w{
         FeedXrefKey
         OrderNumber
+        OrderStatusCd
         ShipDate
         WarehouseId
         UuidHeader
