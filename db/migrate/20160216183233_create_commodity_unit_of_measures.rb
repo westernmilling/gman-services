@@ -1,11 +1,11 @@
 class CreateCommodityUnitOfMeasures < ActiveRecord::Migration
-  return if Commodity::UnitOfMeasure
-            .connection
-            .class
-            .to_s
-            .include?('Relativity')
-
   def change
+    return if Commodity::UnitOfMeasure
+              .connection
+              .class
+              .to_s
+              .include?('Relativity')
+
     @connection = Commodity::UnitOfMeasure.connection
 
     create_table :CommodityUOM do |t|

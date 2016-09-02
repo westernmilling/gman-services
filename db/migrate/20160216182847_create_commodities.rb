@@ -1,7 +1,7 @@
 class CreateCommodities < ActiveRecord::Migration
-  return if Commodity.connection.class.to_s.include?('Relativity')
-
   def change
+    return if Commodity.connection.class.to_s.include?('Relativity')
+
     @connection = Commodity.connection
 
     create_table :Commodity do |t|

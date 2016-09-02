@@ -1,7 +1,7 @@
 class CreateContracts < ActiveRecord::Migration
-  return if Contract.connection.class.to_s.include?('Relativity')
-
   def change
+    return if Contract.connection.class.to_s.include?('Relativity')
+
     @connection = Contract.connection
 
     create_table :Contract do |t|

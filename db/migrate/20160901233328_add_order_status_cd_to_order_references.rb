@@ -1,11 +1,11 @@
 class AddOrderStatusCdToOrderReferences < ActiveRecord::Migration
-  return if Order::Reference
-            .connection
-            .class
-            .to_s
-            .include?('Relativity')
-
   def change
+    return if Order::Reference
+              .connection
+              .class
+              .to_s
+              .include?('Relativity')
+
     @connection = Order::Reference.connection
 
     add_column :InvCustomerOrders_CrossReference, :OrderStatusCd, :integer

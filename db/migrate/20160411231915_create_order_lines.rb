@@ -1,11 +1,11 @@
 class CreateOrderLines < ActiveRecord::Migration
-  return if Order::Line
-            .connection
-            .class
-            .to_s
-            .include?('Relativity')
-
   def change
+    return if Order::Line
+              .connection
+              .class
+              .to_s
+              .include?('Relativity')
+
     @connection = Order::Line.connection
 
     create_table :InvCustomerOrders_Open_Detail, id: false do |t|

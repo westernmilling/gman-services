@@ -1,11 +1,11 @@
 class CreateOrders < ActiveRecord::Migration
-  return if Order
-            .connection
-            .class
-            .to_s
-            .include?('Relativity')
-
   def change
+    return if Order
+              .connection
+              .class
+              .to_s
+              .include?('Relativity')
+
     @connection = Order.connection
 
     create_table :InvCustomerOrders_Open_MainInfo, id: false do |t|
