@@ -1,7 +1,7 @@
 class CreateMovementTypes < ActiveRecord::Migration
-  return if MovementType.connection.class.to_s.include?('Relativity')
-
   def change
+    return if MovementType.connection.class.to_s.include?('Relativity')
+
     @connection = MovementType.connection
 
     create_table :MovementTypes do |t|

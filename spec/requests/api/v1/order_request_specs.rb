@@ -38,6 +38,9 @@ describe '/api/v1/orders' do
       its(['ship_date']) do
         is_expected.to eq order_reference.ShipDate.to_s(:iso8601)
       end
+      its(['status']) do
+        is_expected.to eq Order::STATUS_MAP[order_reference.OrderStatusCd].to_s
+      end
       its(['warehouse_id']) do
         is_expected.to eq order_reference.WarehouseId
       end

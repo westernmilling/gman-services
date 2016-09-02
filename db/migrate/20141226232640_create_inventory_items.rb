@@ -1,7 +1,7 @@
 class CreateInventoryItems < ActiveRecord::Migration
-  return if InventoryItem.connection.class.to_s.include?('Relativity')
-
   def change
+    return if InventoryItem.connection.class.to_s.include?('Relativity')
+
     @connection = InventoryItem.connection
 
     create_table :InvItems do |t|

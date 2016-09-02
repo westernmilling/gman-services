@@ -1,11 +1,11 @@
 class CreateOrderReferences < ActiveRecord::Migration
-  return if Order::Reference
-            .connection
-            .class
-            .to_s
-            .include?('Relativity')
-
   def change
+    return if Order::Reference
+              .connection
+              .class
+              .to_s
+              .include?('Relativity')
+
     @connection = Order::Reference.connection
 
     create_table :InvCustomerOrders_CrossReference, id: false do |t|

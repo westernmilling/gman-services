@@ -1,7 +1,7 @@
 class CreateCustomerTable < ActiveRecord::Migration
-  return if Customer.connection.class.to_s.include?('Relativity')
-
   def change
+    return if Customer.connection.class.to_s.include?('Relativity')
+
     @connection = Customer.connection
 
     create_table :Customers do |t|
