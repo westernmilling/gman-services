@@ -15,7 +15,7 @@ set :keep_releases, 5
 set :normalize_asset_timestamps,
     %w{public/images public/javascripts public/stylesheets}
 set :rvm_type, :user
-set :rvm_ruby_version, 'jruby-1.7.19'
+set :rvm_ruby_version, 'jruby-9.0.5.0'
 
 namespace :deploy do
   desc 'Restart application'

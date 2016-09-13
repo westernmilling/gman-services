@@ -3,19 +3,16 @@ module Api
     module Trucking
       # Driver Commission History Api endpoint
       class DriverCommissionsHistoryController < Api::BaseController
+        # NB: This action intentionally left blank.
         def index
-          respond_to do |format|
-            format.json { render json: DriverCommissionHistoryAdapter.all }
-          end
+          render :index, locals: { commissions: [] }
         end
 
         def by_paid_date
-          respond_to do |format|
-            format.json do
-              render json: DriverCommissionHistoryAdapter
-                .by_paid_date(params['paid_date'])
-            end
-          end
+          commissions = DriverCommissionHistory
+                        .where(PaidDate: params['paid_date'])
+
+          render :index, locals: { commissions: commissions }
         end
       end
     end

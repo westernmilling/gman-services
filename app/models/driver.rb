@@ -18,4 +18,8 @@ class Driver < ActiveRecord::Base
       ActiveFg
     }
   end
+
+  def name
+    "#{self.FirstName.strip} #{self.LastName}".strip
+  end
 end
