@@ -48,7 +48,7 @@ Returns a response containing the access token to use in further requests.
 * id(string): Order UUID
 
 ```bash
-curl -H "Authentication: Bearer {token}"
+curl -H "Authorization: Bearer {token}"
      -i {host}/api/v1/orders/949085E3-6FC3-4240-BC86-2940D543DB35
 ```
 

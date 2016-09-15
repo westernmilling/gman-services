@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
-ruby '1.9.3', engine: 'jruby', engine_version: '1.7.19'
 
-gem 'activerecord-jdbc-adapter'
+gem 'activerecord-jdbc-adapter', platform: :jruby
 gem 'activerecord-relativity-adapter',
     github: 'josephbridgwaterrowe/activerecord-relativity-adapter'
 gem 'activerecord-jdbcmysql-adapter'
@@ -12,7 +11,6 @@ gem 'figaro'
 gem 'jbuilder'
 gem 'jdbc-mysql', platform: :jruby
 gem 'jquery-rails'
-gem 'jruby-openssl'
 gem 'mysql2', platform: :ruby
 gem 'net-ssh', '2.9.2'
 gem 'omniauth'

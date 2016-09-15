@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :driver_commission_history do
     association :customer
+    association :driver
     association :movement_type
-    DriverId { Faker::Number.number(4) }
     Backhauls { Faker::Number.number(4) }
     FreightRevenue { Faker::Number.number(4) }
     DeliveryDate { Date.new(2014, 01, 01) }
