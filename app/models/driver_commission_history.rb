@@ -10,14 +10,11 @@ class DriverCommissionHistory < ActiveRecord::Base
 
   def self.default_scope
     includes(:customer, :driver, :movement_type)
-      .joins(:customer, :driver, :movement_type)
+      .joins(:driver, :movement_type)
   end
 
   def self.column_names
     %w{
-      CustomerId
-      MovementCd
-      DriverId
       Backhauls
       FreightRevenue
       DeliveryDate
