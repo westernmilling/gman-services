@@ -1,7 +1,12 @@
 json.array! commissions do |commission|
   json.back_hauls commission.Backhauls
-  json.customer_id commission.CustomerId
-  json.customer_name commission.customer.Name.strip
+  if commission.customer
+    json.customer_id commission.CustomerId
+    json.customer_name commission.customer.Name.strip
+  else
+    json.customer_id nil
+    json.customer_name nil
+  end
   json.delivery_date commission.DeliveryDate.to_s(:iso8601)
   json.driver_name commission.driver.name
   json.driver_number commission.DriverId.to_i
