@@ -9,7 +9,7 @@ json.array! commissions do |commission|
   end
   json.delivery_date commission.DeliveryDate.to_s(:iso8601)
   json.driver_name commission.driver.name
-  json.driver_number commission.DriverId.to_i
+  json.driver_number commission.driver.DriverId.to_i
   json.driver_rate commission.DriverRate
   json.driver_commission_history_key commission.DrvrcomhKey
   json.freight_bill_number commission.FreightBillNumber.to_s.strip
