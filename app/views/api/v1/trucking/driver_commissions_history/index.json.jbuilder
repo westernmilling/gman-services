@@ -1,7 +1,7 @@
 json.array! commissions do |commission|
   json.back_hauls commission.Backhauls
   if commission.customer
-    json.customer_id commission.CustomerId
+    json.customer_id commission.customer.CustomerId
     json.customer_name commission.customer.Name.strip
   else
     json.customer_id nil
