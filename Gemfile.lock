@@ -190,6 +190,8 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.1)
+    remote_syslog_logger (1.0.3)
+      syslog_protocol
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec (3.4.0)
@@ -249,6 +251,7 @@ GEM
       activemodel (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
       i18n
+    syslog_protocol (0.9.2)
     therubyrhino (2.0.4)
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.6)
@@ -305,6 +308,7 @@ DEPENDENCIES
   puma
   rails (= 4.1.5)
   ransack (= 1.6.5)
+  remote_syslog_logger (= 1.0.3)
   rspec-its
   rspec-rails (~> 3.0)
   rubocop

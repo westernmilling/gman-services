@@ -26,6 +26,7 @@ gem 'symbolize'
 gem 'turbolinks'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
+gem 'remote_syslog_logger', '1.0.3'
 
 group :development, :test do
   gem 'capistrano', '3.4.0'
