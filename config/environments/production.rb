@@ -79,13 +79,6 @@ Rails.application.configure do
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
-  config.logger = RemoteSyslogLogger.new(Figaro.env.REMOTE_LOG_HOST,
-                                         Figaro.env.REMOTE_LOG_PORT)
-  config.logger.level = Logger.const_get('INFO')
-  config.log_level = (Figaro.env.REMOTE_LOG_LEVEL || 'info').to_sym
-
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
