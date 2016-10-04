@@ -16,8 +16,12 @@ set :normalize_asset_timestamps,
     %w{public/images public/javascripts public/stylesheets}
 set :rvm_type, :user
 set :rvm_ruby_version, 'jruby-9.0.5.0'
+set :rollbar_token, proc { Figaro.env.ROLLBAR_POST_SERVER_ITEM_ACCESS_TOKEN }
+set :rollbar_env, proc { fetch :stage }
+set :rollbar_role, proc { :app }
 
 namespace :deploy do
+  after :starting, 'figaro:load'
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
