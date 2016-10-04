@@ -66,9 +66,6 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano3-puma (1.2.1)
-      capistrano (~> 3.0)
-      puma (>= 2.6)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -292,7 +289,6 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
-  capistrano3-puma
   capybara
   codeclimate-test-reporter
   database_cleaner
