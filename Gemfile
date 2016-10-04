@@ -27,6 +27,7 @@ gem 'turbolinks'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
 gem 'remote_syslog_logger', '1.0.3'
+gem 'rollbar'
 
 group :development, :test do
   gem 'capistrano', '3.4.0'

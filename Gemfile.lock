@@ -194,6 +194,8 @@ GEM
       syslog_protocol
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rollbar (2.13.2)
+      multi_json
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -309,6 +311,7 @@ DEPENDENCIES
   rails (= 4.1.5)
   ransack (= 1.6.5)
   remote_syslog_logger (= 1.0.3)
+  rollbar
   rspec-its
   rspec-rails (~> 3.0)
   rubocop
