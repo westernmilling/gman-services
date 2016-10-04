@@ -37,7 +37,7 @@ Rails.application.configure do
               Figaro.env.REMOTE_LOG_PORT.present?
              RemoteSyslogLogger.new(Figaro.env.REMOTE_LOG_HOST,
                                     Figaro.env.REMOTE_LOG_PORT,
-                                    program: "gman-services-#{RAILS_ENV}")
+                                    program: "gman-services-#{Rails.env}")
            else
              Logger.new(STDOUT)
            end
