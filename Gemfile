@@ -39,7 +39,7 @@ group :development, :test do
   gem 'faker'
   gem 'flay'
   gem 'foreman'
-  gem 'rubocop', '0.42.0'
+  gem 'rubocop', '0.43.0'
 end
 
 group :test do

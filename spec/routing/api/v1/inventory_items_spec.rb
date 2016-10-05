@@ -8,7 +8,8 @@ RSpec.describe Api::V1::Inventory::ItemsController,
         .to route_to(
           controller: 'api/v1/inventory/items',
           action: 'index',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
 
@@ -18,7 +19,8 @@ RSpec.describe Api::V1::Inventory::ItemsController,
         .to route_to(
           controller: 'api/v1/inventory/items',
           action: 'index',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
   describe 'GET /api/v1/inventory/items_like_id_description' do
@@ -27,7 +29,8 @@ RSpec.describe Api::V1::Inventory::ItemsController,
         .to route_to(
           controller: 'api/v1/inventory/items',
           action: 'like_id_description',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
 
@@ -37,7 +40,8 @@ RSpec.describe Api::V1::Inventory::ItemsController,
         .to route_to(
           controller: 'api/v1/inventory/items',
           action: 'like_id_description',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
   describe 'GET /api/v1/inventory/items_by_id' do
@@ -46,7 +50,8 @@ RSpec.describe Api::V1::Inventory::ItemsController,
         .to route_to(
           controller: 'api/v1/inventory/items',
           action: 'by_id',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
   describe 'GET /api/v1/inventory/items_by_id.json' do
@@ -55,7 +60,8 @@ RSpec.describe Api::V1::Inventory::ItemsController,
         .to route_to(
           controller: 'api/v1/inventory/items',
           action: 'by_id',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
 end

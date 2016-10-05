@@ -1,6 +1,10 @@
 class CreateDriverCommissionHistories < ActiveRecord::Migration
   def change
-    return if DriverCommissionHistory.connection.class.to_s.include?('Relativity')
+    return if DriverCommissionHistory
+              .connection
+              .class
+              .to_s
+              .include?('Relativity')
 
     @connection = DriverCommissionHistory.connection
 
