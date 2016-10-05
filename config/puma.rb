@@ -1,4 +1,4 @@
-ENV['PORT'] ||= 3000
+ENV['PORT'] ||= '3000'
 ENV['RAILS_ENV'] ||= 'development'
 
 # NB: Since there are issues running puma under jruby with init.d we should
