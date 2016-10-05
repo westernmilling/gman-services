@@ -19,17 +19,6 @@ describe '/api/v1/orders' do
              OrderStatusCd: order.InOrd_StatusCd,
              WarehouseId: order.WarehouseId)
     end
-    # create_list(:order_reference, 2).map do |order_reference|
-    #   waso_key = order_reference.order.InOrd_WareShipToOrderKey
-    #
-    #   order_reference
-    #     .order
-    #     .lines << create(:order_line,
-    #                      ItemId: Faker::Number.number(4),
-    #                      InOrd_TotalPrice: Faker::Commerce.price,
-    #                      InOrd_WareShipToOrderKey: waso_key)
-    #   order_reference
-    # end
   end
   let(:application) { create(:doorkeeper_application) }
 

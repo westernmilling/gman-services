@@ -1,6 +1,4 @@
 ruby:
   enabled: true
   config_file: .rubocop.yml
-
-coffee_script:
-  enabled: true
+fail_on_violations: true

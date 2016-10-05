@@ -37,8 +37,9 @@ group :development, :test do
   gem 'capistrano-rvm'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'flay'
   gem 'foreman'
-  gem 'rubocop'
+  gem 'rubocop', '0.42.0'
 end
 
 group :test do

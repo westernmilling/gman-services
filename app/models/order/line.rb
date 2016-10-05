@@ -8,7 +8,7 @@ class Order
     def self.default_scope
       select(column_names.map(&:to_s))
     end
- 
+
     def self.column_names
       %w{
         ItemId
