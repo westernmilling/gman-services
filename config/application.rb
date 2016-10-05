@@ -31,18 +31,3 @@ module GmanServices
     config.secret_key_base = Figaro.env.SECRET_KEY_BASE
   end
 end
-
-Rails.application.configure do
-  logger = if Figaro.env.REMOTE_LOG_HOST.present? &&
-              Figaro.env.REMOTE_LOG_PORT.present?
-             RemoteSyslogLogger.new(Figaro.env.REMOTE_LOG_HOST,
-                                    Figaro.env.REMOTE_LOG_PORT,
-                                    program: "gman-services-#{Rails.env}")
-           else
-             Logger.new(STDOUT)
-           end
-
-  config.log_formatter = ::Logger::Formatter.new
-  config.logger = logger
-  config.logger.level = (Figaro.env.REMOTE_LOG_LEVEL || 'info').to_sym
-end

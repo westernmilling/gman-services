@@ -8,6 +8,9 @@ class AddOrderStatusCdToOrderReferences < ActiveRecord::Migration
 
     @connection = Order::Reference.connection
 
-    add_column :InvCustomerOrders_CrossReference, :OrderStatusCd, :integer
+    add_column :InvCustomerOrders_CrossReference,
+               :OrderStatusCd,
+               :integer,
+               null: false
   end
 end
