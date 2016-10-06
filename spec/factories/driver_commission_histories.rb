@@ -5,7 +5,7 @@ FactoryGirl.define do
     association :movement_type
     Backhauls { Faker::Number.number(4) }
     FreightRevenue { Faker::Number.number(4) }
-    DeliveryDate { Date.new(2014, 01, 01) }
+    DeliveryDate { Date.new(2014, 1, 1) }
     DriverRate { Faker::Number.number(4) }
     FreightBillNumber { Faker::Number.number(4) }
     FuelSurcharge { Faker::Number.number(4) }
@@ -13,7 +13,7 @@ FactoryGirl.define do
     OtherHourDollars { Faker::Number.number(4) }
     OrderNumberText { Faker::Number.number(4) }
     OriginName 'ORIGIN NAME'
-    PaidDate Date.new(2014, 01, 01)
+    PaidDate Date.new(2014, 0o1, 0o1)
     Revenue { Faker::Number.number(4) }
     SplitRate { Faker::Number.number(4) }
     TotalFreightRevenue { Faker::Number.number(4) }

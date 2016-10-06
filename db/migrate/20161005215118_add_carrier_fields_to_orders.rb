@@ -1,4 +1,4 @@
-class AddInOrdStatusCdToOrders < ActiveRecord::Migration
+class AddCarrierFieldsToOrders < ActiveRecord::Migration
   def change
     return if Order
               .connection
@@ -9,7 +9,11 @@ class AddInOrdStatusCdToOrders < ActiveRecord::Migration
     @connection = Order.connection
 
     add_column :InvCustomerOrders_Open_MainInfo,
-               :InOrd_StatusCd,
+               :InOrd_CarrierCustomer,
+               :integer,
+               null: false
+    add_column :InvCustomerOrders_Open_MainInfo,
+               :InOrd_CarrierCustomerSub,
                :integer,
                null: false
   end

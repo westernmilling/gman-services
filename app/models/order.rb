@@ -15,6 +15,12 @@ class Order < ActiveRecord::Base
            foreign_key: :InOrd_WareShipToOrderKey,
            primary_key: :InOrd_WareShipToOrderKey
 
+  def carrier_id
+    format('%06d%02d',
+           self.InOrd_CarrierCustomer,
+           self.InOrd_CarrierCustomerSub)
+  end
+
   def quantity_shipped
     lines
       .map(&:InOrd_QtyShipped)
@@ -38,9 +44,13 @@ class Order < ActiveRecord::Base
   def self.column_names
     %w{
       OrderKey
+      InOrd_CarrierCustomer
+      InOrd_CarrierCustomerSub
       InOrd_OrderNo
-      InOrd_WareShipToOrderKey
+      InOrd_ShipDate
+      InOrd_ShipTime
       InOrd_StatusCd
+      InOrd_WareShipToOrderKey
       WarehouseId
     }
   end

@@ -8,7 +8,8 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         .to route_to(
           controller: 'api/v1/trucking/driver_commissions_history',
           action: 'index',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
 
@@ -18,7 +19,8 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         .to route_to(
           controller: 'api/v1/trucking/driver_commissions_history',
           action: 'index',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
   describe 'GET /api/v1/driver_commissions_history_by_paid_date' do
@@ -27,7 +29,8 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         .to route_to(
           controller: 'api/v1/trucking/driver_commissions_history',
           action: 'by_paid_date',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
 
@@ -37,7 +40,8 @@ RSpec.describe Api::V1::Trucking::DriverCommissionsHistoryController,
         .to route_to(
           controller: 'api/v1/trucking/driver_commissions_history',
           action: 'by_paid_date',
-          format: 'json')
+          format: 'json'
+        )
     end
   end
 end

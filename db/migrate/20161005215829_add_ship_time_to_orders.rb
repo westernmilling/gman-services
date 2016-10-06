@@ -1,4 +1,4 @@
-class AddInOrdStatusCdToOrders < ActiveRecord::Migration
+class AddShipTimeToOrders < ActiveRecord::Migration
   def change
     return if Order
               .connection
@@ -9,8 +9,12 @@ class AddInOrdStatusCdToOrders < ActiveRecord::Migration
     @connection = Order.connection
 
     add_column :InvCustomerOrders_Open_MainInfo,
-               :InOrd_StatusCd,
-               :integer,
+               :InOrd_ShipDate,
+               :datetime,
+               null: false
+    add_column :InvCustomerOrders_Open_MainInfo,
+               :InOrd_ShipTime,
+               :datetime,
                null: false
   end
 end
