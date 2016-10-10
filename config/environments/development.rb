@@ -1,3 +1,5 @@
+require File.expand_path('../remote_logger.rb', __FILE__)
+
 Rails.application.configure do
   config.cache_classes = false
   config.eager_load = false

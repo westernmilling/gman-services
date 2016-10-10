@@ -1,4 +1,4 @@
-require 'logger'
+require File.expand_path('../remote_logger.rb', __FILE__)
 
 Rails.application.configure do
   config.action_controller.perform_caching = false
