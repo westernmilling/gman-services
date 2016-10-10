@@ -7,7 +7,12 @@ module Api
                           .to_a
                           .first
 
-        render :show, locals: { order_reference: order_reference }
+        if order_reference
+          render :show, locals: { order_reference: order_reference }
+        else
+          render text: "Order::Reference with UUID #{params[:id]} not found",
+                 status: 404
+        end
       end
     end
   end

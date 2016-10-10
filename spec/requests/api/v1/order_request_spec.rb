@@ -61,10 +61,12 @@ describe '/api/v1/orders' do
           is_expected.to eq order_reference.ShipDate.to_date.to_s(:iso8601)
         end
         its(['ship_time']) do
-          is_expected.to eq order_reference.order.InOrd_ShipTime.strftime('%H:%M')
+          is_expected
+            .to eq order_reference.order.InOrd_ShipTime.strftime('%H:%M')
         end
         its(['status']) do
-          is_expected.to eq Order::STATUS_MAP[order_reference.OrderStatusCd].to_s
+          is_expected
+            .to eq Order::STATUS_MAP[order_reference.OrderStatusCd].to_s
         end
         its(['warehouse_id']) do
           is_expected.to eq order_reference.WarehouseId
