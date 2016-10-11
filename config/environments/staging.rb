@@ -1,4 +1,4 @@
-require 'logger'
+require_relative 'remote_logger'
 
 Rails.application.configure do
   config.action_controller.perform_caching = false

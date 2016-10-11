@@ -12,5 +12,4 @@ Rails.application.configure do
 
   config.log_formatter = ::Logger::Formatter.new
   config.log_level = (Figaro.env.REMOTE_LOG_LEVEL || 'info').to_sym
-  config.logger = logger
 end
