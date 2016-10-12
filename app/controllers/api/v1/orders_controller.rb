@@ -22,7 +22,7 @@ module Api
       end
 
       private
-      
+
       def search_query
         OrderQuery.new(warehouse_id: params[:warehouse_id],
                        order_number: params[:order_number])
