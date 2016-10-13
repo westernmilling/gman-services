@@ -16,17 +16,16 @@ module Api
       end
 
       def index
-        order_references = Order::Reference.where(search_query)
+        order_references = Order::Reference.ransack(ransack_query).result
 
         render :index, locals: { order_references: order_references }
       end
 
       private
 
-      def search_query
-        OrderQuery.new(warehouse_id: params[:warehouse_id],
-                       order_number: params[:order_number])
-                  .to_query
+      def ransack_query
+        OrderQuery.new(params.slice(:warehouse_id_eq, :order_number_eq))
+                  .to_ransack_query
       end
     end
   end
