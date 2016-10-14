@@ -7,6 +7,15 @@ class Order
 
     belongs_to :order, foreign_key: :FeedXrefKey, primary_key: :OrderKey
 
+    scope :warehouse_id_eq,
+          lambda { |warehouse_id|
+            where("#{table_name}.WarehouseId = #{warehouse_id}")
+          }
+    scope :order_number_eq,
+          lambda { |order_number|
+            where("#{table_name}.OrderNumber = #{order_number}")
+          }
+
     # Fetch the order "manually" to avoid issues accessing associations.
     def order
       @order ||= Order.where(OrderKey: self.FeedXrefKey).to_a.first
@@ -29,6 +38,10 @@ class Order
         WarehouseId
         UuidHeader
       }
+    end
+
+    def self.ransackable_scopes(_auth_object = nil)
+      [:warehouse_id_eq, :order_number_eq]
     end
   end
 end

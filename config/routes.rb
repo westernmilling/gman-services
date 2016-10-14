@@ -32,5 +32,8 @@ Rails.application.routes.draw do
     get 'orders/:id(.:format)',
         to: 'api/v1/orders#show',
         defaults: { format: 'json' }
+    get 'orders(.:format)',
+        to: 'api/v1/orders#index',
+        defaults: { format: 'json' }
   end
 end

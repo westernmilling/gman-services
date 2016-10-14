@@ -14,6 +14,19 @@ module Api
                  status: 404
         end
       end
+
+      def index
+        order_references = Order::Reference.ransack(ransack_query).result
+
+        render :index, locals: { order_references: order_references }
+      end
+
+      private
+
+      def ransack_query
+        OrderQuery.new(params.slice(:warehouse_id_eq, :order_number_eq))
+                  .to_ransack_query
+      end
     end
   end
 end
