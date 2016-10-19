@@ -3,7 +3,7 @@ class OrderQuery
 
   attr_accessor :warehouse_id_eq, :order_number_eq
 
-  validates! :warehouse_id_eq, length: { is: 2 }
+  validates! :warehouse_id_eq, length: { maximum: 4, minimum: 1 }
   validates! :order_number_eq, length: { is: 6 }
 
   def to_ransack_query

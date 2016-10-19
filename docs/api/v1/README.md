@@ -44,6 +44,8 @@ Returns a response containing the access token to use in further requests.
 
 #### GET /api/v1/orders/:id
 
+Fetch a single order by the order UUID.
+
 ##### params
 * id(string): Order UUID
 
@@ -63,4 +65,32 @@ Returns a single order
   "warehouse_id": 0,
   "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35"
 }
+```
+
+#### GET /api/v1/orders?order_number_eq={order_number}&warehouse_id_eq={warehouse_id}
+
+Fetch orders by filter.
+
+##### params
+* order_number(string): The order number to match
+* warehouse_id(string): The warehouse id to match
+
+```bash
+curl -H "Authorization: Bearer {token}"
+     -i {host}/api/v1/orders?order_number_eq={order_number}&warehouse_id_eq={warehouse_id}
+```
+
+Returns an array of orders
+
+```
+[
+  {
+    "order_number": 123456,
+    "order_key": "000",
+    "quantity_shipped": "0.0",
+    "ship_date": "2000-01-01",
+    "warehouse_id": 1,
+    "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35"
+  }
+]
 ```
