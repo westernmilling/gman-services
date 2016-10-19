@@ -29,8 +29,8 @@ RSpec.describe OrderQuery, type: :model do
       end
     end
 
-    context 'when warehouse_id_eq is 4 characters long' do
-      let(:warehouse_id_eq) { '1234' }
+    context 'when warehouse_id_eq is 5 characters long' do
+      let(:warehouse_id_eq) { '12345' }
 
       it do
         expect { subject }.to raise_error(ActiveModel::StrictValidationFailed)
