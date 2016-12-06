@@ -9,9 +9,12 @@ class Order
       return nil if self.ContractId == '00000000'
 
       @contract ||= Contract
-        .where(CONT_ContractType: 'S', Inv_ContractId: self.ContractId)
-        .to_a
-        .first
+                    .where(
+                      CONT_ContractType: 'S',
+                      Inv_ContractId: self.ContractId
+                    )
+                    .to_a
+                    .first
     end
 
     def self.default_scope

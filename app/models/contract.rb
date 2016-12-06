@@ -33,8 +33,8 @@ class Contract < ActiveRecord::Base
       CONT_ContractType
       CONT_DeliveredBushels
       CONT_FreightAdjustment
-      CONT_Quantity
       CONT_Price
+      CONT_Quantity
       CONT_FromDate
       CONT_ToDate
       Inv_ContractId

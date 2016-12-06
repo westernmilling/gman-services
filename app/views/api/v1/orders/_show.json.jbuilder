@@ -14,6 +14,12 @@ json.lines order_reference.order.lines do |order_line|
   json.contract do
     if order_line.contract
       json.contract_id order_line.contract.ContractId
+      json.contract_date order_line.contract.CONT_ContractDate
+      json.contract_price order_line.contract.CONT_Price.to_f
+      json.contract_number order_line.contract.CONT_ContractNumber
+      json.contract_sub order_line.contract.CONT_ContractSub
+      json.contract_type order_line.contract.CONT_ContractType
+      json.location_id order_line.contract.LocationId
     else
       json.nil!
     end

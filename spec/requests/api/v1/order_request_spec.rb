@@ -111,9 +111,10 @@ describe '/api/v1/orders' do
                   end
                 end
 
-                it { puts "Line: #{response_body['lines'][0]}"; is_expected.to be_present }
+                it { is_expected.to be_present }
                 its(['contract_date']) do
-                  is_expected.to eq order_line.contract.CONT_ContractDate
+                  is_expected
+                    .to eq order_line.contract.CONT_ContractDate.to_s(:iso8601)
                 end
                 its(['contract_id']) do
                   is_expected.to eq order_line.contract.ContractId
