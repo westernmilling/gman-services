@@ -30,15 +30,18 @@ RSpec.describe Contract, type: :model do
           CommodityId
           ContractId
           CommUOMId
-          CONT_ContractNumber
-          CONT_ContractType
+          LocationId
           CONT_ContractDate
-          CONT_Quantity
+          CONT_ContractNumber
+          CONT_ContractSub
+          CONT_ContractType
           CONT_DeliveredBushels
-          CONT_Price
           CONT_FreightAdjustment
+          CONT_Price
+          CONT_Quantity
           CONT_FromDate
           CONT_ToDate
+          Inv_ContractId
         }
       )
     end
