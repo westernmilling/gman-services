@@ -7,6 +7,7 @@ describe '/api/v1/orders' do
 
       order
         .lines << create(:order_line,
+                         OrderKey: order.OrderKey.to_s + '00',
                          ItemId: Faker::Number.number(4),
                          InOrd_TotalPrice: Faker::Commerce.price,
                          InOrd_WareShipToOrderKey: waso_key)
@@ -90,6 +91,49 @@ describe '/api/v1/orders' do
             end
             its(['item_price']) do
               is_expected.to eq order_line.InOrd_TotalPrice.to_s
+            end
+
+            describe 'contract' do
+              subject { response_body['lines'][0]['contract'] }
+
+              context 'when the order line does not have a contract applied' do
+                it { is_expected.to be_nil }
+              end
+
+              context 'when the order line has a contract applied' do
+                let(:order_reference) do
+                  order_references.sample.tap do |reference|
+                    contract = create(:contract, CONT_ContractType: 'S')
+
+                    reference.order.lines[0].update_attributes!(
+                      ContractId: contract.Inv_ContractId
+                    )
+                  end
+                end
+
+                it { puts "Line: #{response_body['lines'][0]}"; is_expected.to be_present }
+                its(['contract_date']) do
+                  is_expected.to eq order_line.contract.CONT_ContractDate
+                end
+                its(['contract_id']) do
+                  is_expected.to eq order_line.contract.ContractId
+                end
+                its(['contract_price']) do
+                  is_expected.to eq order_line.contract.CONT_Price
+                end
+                its(['contract_number']) do
+                  is_expected.to eq order_line.contract.CONT_ContractNumber
+                end
+                its(['contract_sub']) do
+                  is_expected.to eq order_line.contract.CONT_ContractSub
+                end
+                its(['contract_type']) do
+                  is_expected.to eq order_line.contract.CONT_ContractType
+                end
+                its(['location_id']) do
+                  is_expected.to eq order_line.contract.LocationId
+                end
+              end
             end
           end
         end
