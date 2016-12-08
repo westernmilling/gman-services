@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 gem 'activerecord-jdbc-adapter', platform: :jruby
 gem 'activerecord-relativity-adapter',
-    github: 'josephbridgwaterrowe/activerecord-relativity-adapter'
+    github: 'westernmilling/activerecord-relativity-adapter',
+    branch: 'bug/constantize-error-attempt-866'
 gem 'activerecord-jdbcmysql-adapter'
 gem 'awesome_print'
 gem 'devise'
