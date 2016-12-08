@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :order_reference, class: 'Order::Reference' do
+  factory :order_reference do
     FeedXrefKey { Faker::Number.number(10) }
     OrderNumber { Faker::Number.number(6) }
     OrderStatusCd { rand(4) }
