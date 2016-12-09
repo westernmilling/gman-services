@@ -1,7 +1,6 @@
 GIT
-  remote: git://github.com/westernmilling/activerecord-relativity-adapter.git
-  revision: 81d198e44bf444916c93fd7f81b71a7fcc98938b
-  branch: bug/constantize-error-attempt-866
+  remote: git://github.com/josephbridgwaterrowe/activerecord-relativity-adapter.git
+  revision: 23d689745e879b071b7f28df16eb3915b8d7c893
   specs:
     activerecord-relativity-adapter (0.1)
 
