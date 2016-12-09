@@ -54,7 +54,7 @@ RSpec.describe Api::V1::HealthCheckController, type: :controller do
       before do
         allow(Customer)
           .to receive(:count)
-          .and_return(0)
+          .and_return(nil)
 
         get :index
       end
