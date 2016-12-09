@@ -35,5 +35,8 @@ Rails.application.routes.draw do
     get 'orders(.:format)',
         to: 'api/v1/orders#index',
         defaults: { format: 'json' }
+    get 'health_check',
+        to: 'api/v1/health_check#index',
+        defaults: { format: 'json' }
   end
 end
