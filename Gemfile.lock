@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/josephbridgwaterrowe/activerecord-relativity-adapter.git
-  revision: eca219aa380cca66c4b235cba9b57de219aba5c5
+  revision: 23d689745e879b071b7f28df16eb3915b8d7c893
   specs:
     activerecord-relativity-adapter (0.1)
 
