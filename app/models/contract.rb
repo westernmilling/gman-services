@@ -41,27 +41,6 @@ class Contract < ActiveRecord::Base
     }
   end
 
-  # def self.column_names
-  #   %w{
-  #     CustomerId
-  #     CommodityId
-  #     ContractId
-  #     CommUOMId
-  #     LocationId
-  #     CONT_ContractDate
-  #     CONT_ContractNumber
-  #     CONT_ContractSub
-  #     CONT_ContractType
-  #     CONT_Quantity
-  #     CONT_DeliveredBushels
-  #     CONT_Price
-  #     CONT_FreightAdjustment
-  #     CONT_FromDate
-  #     CONT_ToDate
-  #     Inv_ContractId
-  #   }
-  # end
-
   def self.ransackable_scopes(_auth_object = nil)
     [:commodity_id_eq, :customer_id_eq]
   end

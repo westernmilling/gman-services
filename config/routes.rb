@@ -8,6 +8,9 @@ Rails.application.routes.draw do
           to: 'api/v1/commodity_merchandising/contracts#index',
           defaults: { format: :json }
     end
+    get 'customer_contracts(.:format)',
+        to: 'api/v1/customer_contracts#index',
+        defaults: { format: :json }
 
     get 'drivers(.:format)',
         to: 'api/v1/trucking/drivers#index',
