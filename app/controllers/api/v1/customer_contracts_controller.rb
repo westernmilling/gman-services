@@ -8,7 +8,10 @@ module Api
       protected
 
       def customer_contracts
-        @_customer_contracs ||= CustomerContract.ransack(params[:q]).result
+        @_customer_contracs ||= CustomerContract
+                                .joins(:contract)
+                                .ransack(params[:q])
+                                .result
       end
     end
   end
