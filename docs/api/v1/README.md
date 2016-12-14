@@ -40,6 +40,39 @@ Returns a response containing the access token to use in further requests.
 * Content-Type: application/json
 * Authorization: Bearer {access_token}
 
+### Customer Contracts
+
+#### GET /api/v1/customer_contracts?q[customer_id]={customer_ids}
+
+Fetch the customer contract mapping records for the matching customer ids.
+
+##### params
+* q[customer_id](string): A comma separated list of Grossman customer ids.
+
+```bash
+curl -H "Authorization: Bearer {token}"
+     -i {host}/api/v1/customer-contracts?q[customer_id]=100000,100001
+```
+
+Returns an array of customer contract items.
+
+```
+[
+  {
+    "contract_id": "10000000",
+    "contract_type": "Sale",
+    "customer_id": "100000",
+    "location_id": "01"
+  },
+  {
+    "contract_id": "10000100",
+    "contract_type": "Sale",
+    "customer_id": "100001",
+    "location_id": "01"
+  }
+]
+```
+
 ### Orders
 
 #### GET /api/v1/orders/:id
