@@ -11,7 +11,7 @@ class CreateCustomerContracts < ActiveRecord::Migration
     create_table :Contract_Customers, id: false do |t|
       t.string :CustomerId, null: false
       t.string :InvContractId, null: false
-      t.integer :LocationId, null: false
+      t.string :LocationId, null: false
       t.string :ContractType, null: false
     end
   end
