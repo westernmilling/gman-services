@@ -23,7 +23,7 @@ class Contract < ActiveRecord::Base
   include Contract::Scopes
 
   def contract_type
-    TYPE_MAP[self.ContractType.strip]
+    TYPE_MAP[self.CONT_ContractType.strip]
   end
 
   def self.default_scope

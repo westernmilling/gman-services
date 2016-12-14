@@ -129,7 +129,7 @@ describe '/api/v1/orders' do
                   is_expected.to eq order_line.contract.CONT_ContractSub
                 end
                 its(['contract_type']) do
-                  is_expected.to eq order_line.contract.CONT_ContractType
+                  is_expected.to eq order_line.contract.contract_type
                 end
                 its(['location_id']) do
                   is_expected.to eq order_line.contract.LocationId

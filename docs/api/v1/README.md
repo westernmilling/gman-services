@@ -96,7 +96,20 @@ Returns a single order
   "quantity_shipped": "0.0",
   "ship_date": "2000-01-01",
   "warehouse_id": 0,
-  "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35"
+  "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35",
+  "lines": [
+    "item_number": "001",
+    "item_price": "100.00",
+    "contract": {
+      "contract_id": "1000000",
+      "contract_date": "2016-12-14",
+      "contract_price": "100.00",
+      "contract_number": "10000",
+      "contract_sub": "00",
+      "contract_type": "Sale",
+      "location_id": "01"
+    }
+  ]
 }
 ```
 
