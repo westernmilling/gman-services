@@ -60,7 +60,7 @@ describe '/api/v1/customer_contracts' do
             is_expected.to eq customer_contracts[0].CustomerId.to_s
           end
           its(['location_id']) do
-            is_expected.to eq customer_contracts[0].LocationId
+            is_expected.to eq customer_contracts[0].LocationId.to_s
           end
         end
       end

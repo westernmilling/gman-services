@@ -4,7 +4,7 @@ FactoryGirl.define do
     association :customer
     association :unit_of_measure, factory: :commodity_unit_of_measure
     sequence(:CONT_ContractNumber) { |x| 100_000 + x }
-    sequence(:LocationId) { |x| x.to_s }
+    sequence(:LocationId)
     CONT_ContractDate { Date.current }
     CONT_ContractSub { '00' }
     CONT_ContractType { %w{P S}.sample }
