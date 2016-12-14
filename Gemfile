@@ -5,6 +5,7 @@ gem 'activerecord-relativity-adapter',
     github: 'josephbridgwaterrowe/activerecord-relativity-adapter'
 gem 'activerecord-jdbcmysql-adapter'
 gem 'awesome_print'
+gem 'composite_primary_keys'
 gem 'devise'
 gem 'doorkeeper', '2.2.1'
 gem 'figaro'
