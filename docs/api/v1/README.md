@@ -47,11 +47,11 @@ Returns a response containing the access token to use in further requests.
 Fetch the customer contract mapping records for the matching customer ids.
 
 ##### params
-* q[customer_id](string): A comma separated list of Grossman customer ids.
+* q\[customer_id\](string): A comma separated list of Grossman customer ids.
 
 ```bash
 curl -H "Authorization: Bearer {token}"
-     -i {host}/api/v1/customer-contracts?q[customer_id]=100000,100001
+     -i {host}/api/v1/customer_contracts?q[customer_id]=100000,100001
 ```
 
 Returns an array of customer contract items.
