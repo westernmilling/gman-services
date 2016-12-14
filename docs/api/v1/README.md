@@ -40,6 +40,39 @@ Returns a response containing the access token to use in further requests.
 * Content-Type: application/json
 * Authorization: Bearer {access_token}
 
+### Customer Contracts
+
+#### GET /api/v1/customer_contracts?q[customer_id]={customer_ids}
+
+Fetch the customer contract mapping records for the matching customer ids.
+
+##### params
+* q[customer_id](string): A comma separated list of Grossman customer ids.
+
+```bash
+curl -H "Authorization: Bearer {token}"
+     -i {host}/api/v1/customer-contracts?q[customer_id]=100000,100001
+```
+
+Returns an array of customer contract items.
+
+```
+[
+  {
+    "contract_id": "10000000",
+    "contract_type": "Sale",
+    "customer_id": "100000",
+    "location_id": "01"
+  },
+  {
+    "contract_id": "10000100",
+    "contract_type": "Sale",
+    "customer_id": "100001",
+    "location_id": "01"
+  }
+]
+```
+
 ### Orders
 
 #### GET /api/v1/orders/:id
@@ -63,7 +96,20 @@ Returns a single order
   "quantity_shipped": "0.0",
   "ship_date": "2000-01-01",
   "warehouse_id": 0,
-  "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35"
+  "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35",
+  "lines": [
+    "item_number": "001",
+    "item_price": "100.00",
+    "contract": {
+      "contract_id": "1000000",
+      "contract_date": "2016-12-14",
+      "contract_price": "100.00",
+      "contract_number": "10000",
+      "contract_sub": "00",
+      "contract_type": "Sale",
+      "location_id": "01"
+    }
+  ]
 }
 ```
 
