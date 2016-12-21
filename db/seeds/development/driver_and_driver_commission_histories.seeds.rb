@@ -8,7 +8,7 @@ movement_type = FactoryGirl.create(:movement_type)
   driver.save
   FactoryGirl.create(:driver_commission_history,
                      DriverId: driver.id,
-                     CustomerName: customer.customer_name,
-                     CustomerId: customer.customer_id,
-                     MovementCd: movement_type.movement_cd)
+                     CustomerName: customer.Name,
+                     CustomerId: customer.CustomerId,
+                     MovementCd: movement_type.MovementCd)
 end
