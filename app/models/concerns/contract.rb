@@ -53,7 +53,7 @@ class Contract < ActiveRecord::Base
       scope :customer_id_eq,
             ->(value) { where("Contract.CustomerId = '#{value}'") }
       scope :inv_contract_id_eq,
-            ->(value) { where("Contract.Inv_ContractId = #{value}") }
+            ->(value) { where("Contract.Inv_ContractId = '#{value}'") }
       scope :location_id_eq,
             ->(value) { where("Contract.LocationId = #{value}") }
     end

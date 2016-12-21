@@ -2,13 +2,17 @@ require 'rails_helper'
 
 RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
   let(:contracts) do
-    create_list(:contract, 2)
+    Array.new(10) do
+      create(:contract, LocationId: [1, 2, 3, 4].sample)
+    end
   end
   let(:application) { create(:doorkeeper_application) }
-  subject(:response) { oauth_get(url, application.uid, application.secret) }
+  let(:query_string) { '' }
+  let(:request) { oauth_get(url, application.uid, application.secret) }
+  let(:response) { request.response }
+  let(:url) { "/api/v1/commodity_merchandising/contracts#{query_string}" }
 
-  context 'when application id and secret are valid' do
-    let(:application) { create(:doorkeeper_application) }
+  context 'when there are no filters' do
     subject(:response) do
       contracts
 
@@ -23,7 +27,7 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
       let(:body) { response.body }
       subject { JSON.parse(response.body) }
 
-      its(:size) { is_expected.to eq 2 }
+      its(:size) { is_expected.to eq contracts.size }
 
       describe 'first contract' do
         let(:first) { JSON.parse(response.body)[0] }
@@ -101,6 +105,63 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
           end
         end
       end
+    end
+  end
+
+  context 'when filtering by contract_type_eq' do
+    let(:filtered_contract_type) { %w(Purchase Sale).sample }
+    let(:query_string) do
+      "?q[contract_type_eq]=#{filtered_contract_type}"
+    end
+
+    it 'should respond with status code of 200' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'should return contracts matching the contract type' do
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body.map { |hash| hash['contract_type'] })
+        .to all eq filtered_contract_type
+    end
+  end
+
+  context 'when filtering by inv_contract_id_eq' do
+    let(:filtered_inv_contract_id) { contracts.sample.Inv_ContractId }
+    let(:query_string) do
+      "?q[inv_contract_id_eq]=#{filtered_inv_contract_id}"
+    end
+
+    it 'should respond with status code of 200' do
+      expect(response.status).to eq(200)
+    end
+    it 'should return a single contract' do
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body.size).to eq 1
+    end
+
+    it 'should return a contract matching inventory contract id' do
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body[0]['inv_contract_id']).to eq filtered_inv_contract_id
+    end
+  end
+
+  context 'when filtering by location_id_eq' do
+    let(:filtered_location_id) { contracts.sample.LocationId }
+    let(:query_string) do
+      "?q[location_id_eq]=#{filtered_location_id}"
+    end
+
+    it 'should respond with status code of 200' do
+      expect(response.status).to eq(200)
+    end
+    it 'should return contracts matching the contract type' do
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body.map { |hash| hash['location_id'] })
+        .to all eq filtered_location_id
     end
   end
 
