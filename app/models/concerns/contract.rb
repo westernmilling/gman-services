@@ -49,13 +49,13 @@ class Contract < ActiveRecord::Base
       scope :commodity_id_eq,
             ->(value) { where("Contract.CommodityId = #{value}") }
       scope :contract_type_eq,
-            ->(value) { where("Contract.CONT_ContractType = '#{value}'") }
+            ->(value) { where("Contract.CONT_ContractType = ?", value) }
       scope :customer_id_eq,
-            ->(value) { where("Contract.CustomerId = '#{value}'") }
+            ->(value) { where("Contract.CustomerId = ?", value) }
       scope :inv_contract_id_eq,
-            ->(value) { where("Contract.Inv_ContractId = '#{value}'") }
-      scope :location_id_eq,
-            ->(value) { where("Contract.LocationId = #{value}") }
+            ->(value) { where("Contract.Inv_ContractId = ?", value) }
+            scope :location_id_eq,
+                  ->(value) { where("Contract.LocationId = #{value}") }
     end
   end
 end
