@@ -3,7 +3,7 @@ require_relative 'concerns/contract'
 class Contract < ActiveRecord::Base
   establish_connection "grossman_#{Rails.env}".to_sym
 
-  self.primary_key = 'ContractId'
+  self.primary_keys = :ContractId, :LocationId
   self.table_name = 'Contract'
 
   include Contract::Columns
@@ -19,6 +19,9 @@ class Contract < ActiveRecord::Base
   belongs_to :unit_of_measure,
              class_name: Commodity::UnitOfMeasure,
              foreign_key: :CommUOMId
+  has_many :pick_up_orders,
+           foreign_key: [:ContractId, :ContractLocationId],
+           primary_key: [:Inv_ContractId, :LocationId]
 
   include Contract::Scopes
 
