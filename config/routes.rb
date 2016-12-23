@@ -38,6 +38,9 @@ Rails.application.routes.draw do
     get 'orders(.:format)',
         to: 'api/v1/orders#index',
         defaults: { format: 'json' }
+    get 'pick_up_orders(.:format)',
+        to: 'api/v1/pick_up_orders#index',
+        defaults: { format: 'json' }
     get 'health_check',
         to: 'api/v1/health_check#index',
         defaults: { format: 'json' }
