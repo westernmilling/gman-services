@@ -17,6 +17,7 @@ class CreatePickUpOrders < ActiveRecord::Migration
       t.decimal :FreightAmount, precision: 9, scale: 5
       t.string :ItemId
       t.string :ReleasePrefix
+      t.integer :ReleaseLoadNumber
       t.string :Origin
       t.string :OriginState
       t.integer :OriginWeightCertificate

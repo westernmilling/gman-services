@@ -9,6 +9,8 @@ module Api
           )
         end
 
+        protected
+
         def search
           @search ||= Contract.ransack(params[:q])
         end
