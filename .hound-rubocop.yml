@@ -1,8 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.2
   Exclude:
-    - "vendor/**/*"
-    - "db/schema.rb"
   UseCache: false
 Style/CollectionMethods:
   Description: Preferred collection methods.
@@ -159,6 +157,9 @@ Metrics/MethodLength:
   Enabled: false
   CountComments: false
   Max: 10
+Metrics/BlockLength:
+  Description: 'Avoid long blocks with many lines.'
+  Enabled: true
 Metrics/ParameterLists:
   Description: Avoid parameter lists longer than three or four parameters.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#too-many-params

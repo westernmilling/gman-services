@@ -19,6 +19,12 @@ RSpec.describe Contract, type: :model do
       .class_name('Commodity::UnitOfMeasure')
       .with_foreign_key(:CommUOMId)
   end
+  it do
+    is_expected
+      .to have_many(:pick_up_orders)
+      .with_foreign_key([:ContractId, :ContractLocationId])
+      .with_primary_key([:Inv_ContractId, :LocationId])
+  end
 
   describe '.column_names' do
     subject { described_class.column_names }

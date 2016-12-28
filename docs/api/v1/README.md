@@ -140,3 +140,54 @@ Returns an array of orders
   }
 ]
 ```
+
+### Pick Up Orders
+
+#### GET /api/v1/pick_up_orders?contract_commodity_id_eq={commodity_id}
+
+Fetch pick up orders by filter.
+
+##### params
+* contract_commodity_id_eq(number)
+* contract_contract_id_eq(string)
+* purchase_customer_id_eq(string)
+* release_prefix_eq(string)
+* release_load_number_eq
+* release_number_eq(string): A composite of the release prefix and release load
+  number. The release prefix should be padded to 10 characters and the release
+  load number should be padded to 4 zeros. For example:
+    `TEST______0001`
+
+```bash
+curl -H "Authorization: Bearer {token}"
+     -i {host}/api/v1/pick_up_orders?contract_commodity_id_eq={commodity_id}
+```
+
+Returns an array of pick up orders
+
+```
+[
+  {
+    "contract_id": "10000100",
+    "contract_location_id": 1,
+    "load_number": 1,
+    "origin": "GOSHEN",
+    "origin_state": "CA",
+    "origin_weight_certificate": "ABC0001",
+    "origin_tare_weight": 25000,
+    "origin_gross_weight": 75000,
+    "origin_net_weight": 50000,
+    "pickup_type": "Contract",
+    "purchase_customer_id": "00001000"
+    "release_prefix": "TEST",
+    "release_load_number": 1,
+    "release_number": "TEST      0001",
+    "ship_date": "2016-27-01",
+    "status": "Open",
+    "contract": {
+      "contract_id": "10000100",
+      "commodity_id": 1010
+    }
+  }
+]
+```
