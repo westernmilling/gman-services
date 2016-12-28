@@ -1,4 +1,5 @@
 class PickUpOrder < ActiveRecord::Base
+  # rubocop:disable Metrics/BlockLength
   module Columns
     extend ActiveSupport::Concern
 
@@ -32,6 +33,7 @@ class PickUpOrder < ActiveRecord::Base
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
   module Ransack
     extend ActiveSupport::Concern
