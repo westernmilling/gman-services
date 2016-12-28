@@ -148,12 +148,15 @@ Returns an array of orders
 Fetch pick up orders by filter.
 
 ##### params
-* contract_commodity_id_eq(number): The commodity id to match
-* contract_contract_id_eq(string): The contract id to match
-* purchase_customer_id_eq(string):
-* release_prefix_eq(string):
-* release_load_number_eq:
-* release_number_eq(string):
+* contract_commodity_id_eq(number)
+* contract_contract_id_eq(string)
+* purchase_customer_id_eq(string)
+* release_prefix_eq(string)
+* release_load_number_eq
+* release_number_eq(string): A composite of the release prefix and release load
+  number. The release prefix should be padded to 10 characters and the release
+  load number should be padded to 4 zeros. For example:
+    `TEST______0001`
 
 ```bash
 curl -H "Authorization: Bearer {token}"

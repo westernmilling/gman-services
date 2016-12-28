@@ -19,12 +19,11 @@ gem 'omniauth-oauth2', '1.0.3'
 gem 'plissken', git: 'https://github.com/michaelachrisco/plissken.git',
                 branch: 'trailing_spaces'
 gem 'puma'
-gem 'rails', '4.1.5'
-gem 'ransack', '1.6.5'
+gem 'rails', '4.2.6'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'remote_syslog_logger', '1.0.3'
 gem 'rollbar'
 gem 'seedbank'
-gem 'squeel', '1.2.3'
 gem 'symbolize'
 gem 'therubyrhino'
 gem 'uglifier', '>= 1.0.3'
@@ -44,7 +43,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'codeclimate-test-reporter', group: :test, require: nil
+  gem 'codeclimate-test-reporter', '0.4.8', require: nil
   gem 'database_cleaner'
   gem 'json_spec'
   gem 'rspec-its'

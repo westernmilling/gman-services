@@ -49,7 +49,7 @@ RSpec.describe PickUpOrder, type: :model do
       end
     end
 
-    context 'when the Status is 0' do
+    context 'when the Status is 1' do
       let(:instance) { PickUpOrder.new(Status: 1) }
 
       it 'should return Used' do
