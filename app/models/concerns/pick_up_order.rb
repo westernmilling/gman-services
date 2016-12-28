@@ -56,24 +56,34 @@ class PickUpOrder < ActiveRecord::Base
     extend ActiveSupport::Concern
 
     included do
-      scope :contract_commodity_id_eq,
-            ->(value) { where("Contract.CommodityId = #{value}") }
-      scope :contract_contract_id_eq,
-            ->(value) { where("Contract.Inv_ContractId = '#{value}'") }
-      scope :purchase_customer_id_eq,
-            ->(value) { where("PurchaseCustomerId = '#{value}'") }
-      scope :release_prefix_eq,
-            ->(value) { where("ReleasePrefix = '#{value}'") }
-      scope :release_load_number_eq,
-            ->(value) { where("ReleaseLoadNumber = #{value}") }
-      scope :release_number_eq, (
-        lambda do |value|
+      class << self
+        def contract_commodity_id_eq(value)
+          where("Contract.CommodityId = #{value}")
+        end
+
+        def contract_contract_id_eq(value)
+          where("Contract.Inv_ContractId = '#{value}'")
+        end
+
+        def purchase_customer_id_eq(value)
+          where("PurchaseCustomerId = '#{value}'")
+        end
+
+        def release_prefix_eq(value)
+          where("ReleasePrefix = '#{value}'")
+        end
+
+        def release_load_number_eq(value)
+          where("ReleaseLoadNumber = #{value}")
+        end
+
+        def release_number_eq(value)
           prefix = value.slice(0, 10).strip
           load_number = value.slice(-4, 4)
 
           release_prefix_eq(prefix).release_load_number_eq(load_number)
         end
-      )
+      end
     end
   end
 end
