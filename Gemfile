@@ -4,7 +4,6 @@ gem 'activerecord-jdbc-adapter', platform: :jruby
 gem 'activerecord-jdbcmysql-adapter'
 gem 'activerecord-relativity-adapter',
     github: 'josephbridgwaterrowe/activerecord-relativity-adapter'
-gem 'awesome_print'
 gem 'composite_primary_keys'
 gem 'devise'
 gem 'doorkeeper', '2.2.1'
@@ -20,6 +19,7 @@ gem 'plissken', git: 'https://github.com/michaelachrisco/plissken.git',
                 branch: 'trailing_spaces'
 gem 'puma'
 gem 'rails', '4.2.6'
+gem 'rainbow'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'remote_syslog_logger', '1.0.3'
 gem 'rollbar'
