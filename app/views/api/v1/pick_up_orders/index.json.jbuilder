@@ -2,7 +2,7 @@ json.array! pick_up_orders do |pick_up_order|
   json.contract_id pick_up_order.ContractId
   json.contract_location_id pick_up_order.ContractLocationId
   json.commodity_id pick_up_order.item.InItem_CommodityId
-  json.item_id pick_up_order.ItemId
+  json.item_id pick_up_order.ItemId.strip
   json.load_number pick_up_order.LoadNumber
   json.origin pick_up_order.Origin.strip
   json.origin_state pick_up_order.OriginState
