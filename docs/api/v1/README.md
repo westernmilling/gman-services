@@ -170,6 +170,8 @@ Returns an array of pick up orders
   {
     "contract_id": "10000100",
     "contract_location_id": 1,
+    "commodity_id": 1010,
+    "item_id": "TEST1",
     "load_number": 1,
     "origin": "GOSHEN",
     "origin_state": "CA",
@@ -183,11 +185,7 @@ Returns an array of pick up orders
     "release_load_number": 1,
     "release_number": "TEST      0001",
     "ship_date": "2016-27-01",
-    "status": "Open",
-    "contract": {
-      "contract_id": "10000100",
-      "commodity_id": 1010
-    }
+    "status": "Open"
   }
 ]
 ```
