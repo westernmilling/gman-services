@@ -148,8 +148,8 @@ Returns an array of orders
 Fetch pick up orders by filter.
 
 ##### params
-* contract_commodity_id_eq(number)
-* contract_contract_id_eq(string)
+* contract_id_eq(string)
+* item_commodity_id_eq(number)
 * purchase_customer_id_eq(string)
 * release_prefix_eq(string)
 * release_load_number_eq
@@ -160,7 +160,7 @@ Fetch pick up orders by filter.
 
 ```bash
 curl -H "Authorization: Bearer {token}"
-     -i {host}/api/v1/pick_up_orders?contract_commodity_id_eq={commodity_id}
+     -i {host}/api/v1/pick_up_orders?item_commodity_id_eq={commodity_id}
 ```
 
 Returns an array of pick up orders

@@ -18,7 +18,7 @@ gem 'omniauth-oauth2', '1.0.3'
 gem 'plissken', git: 'https://github.com/michaelachrisco/plissken.git',
                 branch: 'trailing_spaces'
 gem 'puma'
-gem 'rails', '4.2.6'
+gem 'rails', '4.1.5'
 gem 'rainbow'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'remote_syslog_logger', '1.0.3'

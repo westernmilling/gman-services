@@ -41,8 +41,8 @@ class PickUpOrder < ActiveRecord::Base
     included do
       def self.ransackable_scopes(_auth_object = nil)
         [
-          :contract_commodity_id_eq,
-          :contract_contract_id_eq,
+          :contract_id_eq,
+          :item_commodity_id_eq,
           :purchase_customer_id_eq,
           :release_prefix_eq,
           :release_load_number_eq,
@@ -57,12 +57,12 @@ class PickUpOrder < ActiveRecord::Base
 
     included do
       class << self
-        def contract_commodity_id_eq(value)
-          where("Contract.CommodityId = #{value}")
+        def contract_id_eq(value)
+          where("InvPickUpOrders.ContractId = '#{value}'")
         end
 
-        def contract_contract_id_eq(value)
-          where("Contract.Inv_ContractId = '#{value}'")
+        def item_commodity_id_eq(value)
+          where("InvItems.InItem_CommodityId = #{value}")
         end
 
         def purchase_customer_id_eq(value)

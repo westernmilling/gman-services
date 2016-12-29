@@ -24,10 +24,13 @@ class PickUpOrder < ActiveRecord::Base
   include PickUpOrder::Columns
   include PickUpOrder::Ransack
 
-  # NB: has_one worked, where belongs_to did not.
-  has_one :contract,
-          foreign_key: [:Inv_ContractId, :LocationId],
-          primary_key: [:ContractId, :ContractLocationId]
+  belongs_to :item,
+             class_name: InventoryItem,
+             foreign_key: :ItemId,
+             primary_key: :ItemId
+  belongs_to :contract,
+             foreign_key: [:ContractId, :ContractLocationId],
+             primary_key: [:Inv_ContractId, :LocationId]
 
   include PickUpOrder::Scopes
 
@@ -44,7 +47,7 @@ class PickUpOrder < ActiveRecord::Base
   end
 
   def self.default_scope
-    includes(:contract)
-      .joins(:contract)
+    includes(:contract, item: [:commodity])
+      .references(:contracts, item: [:commodity])
   end
 end

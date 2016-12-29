@@ -7,9 +7,16 @@ RSpec.describe PickUpOrder, type: :model do
 
   it do
     is_expected
-      .to have_one(:contract)
-      .with_foreign_key([:Inv_ContractId, :LocationId])
-      .with_primary_key([:ContractId, :ContractLocationId])
+      .to belong_to(:contract)
+      .with_foreign_key([:ContractId, :ContractLocationId])
+      .with_primary_key([:Inv_ContractId, :LocationId])
+  end
+  it do
+    is_expected
+      .to belong_to(:item)
+      .class_name('InventoryItem')
+      .with_foreign_key(:ItemId)
+      .with_primary_key(:ItemId)
   end
 
   describe '#pickup_type' do
