@@ -1,45 +1,42 @@
+module ActionDispatch
+  module Routing
+    class Mapper
+      def draw(routes_name)
+        instance_eval(
+          File.read(Rails.root.join("config/routes/#{routes_name}.rb"))
+        )
+      end
+    end
+  end
+end
+
 Rails.application.routes.draw do
-  # devise_for :users
   use_doorkeeper
 
-  scope '/api/v1/' do
-    scope 'commodity_merchandising' do
-      get 'contracts(.:format)',
-          to: 'api/v1/commodity_merchandising/contracts#index',
-          defaults: { format: :json }
+  draw :items
+
+  scope '/api/v1', module: 'api/v1' do
+    scope 'commodity_merchandising', module: 'commodity_merchandising' do
+      resources :contracts, only: [:index], defaults: { format: 'json' }
     end
     get 'customer_contracts(.:format)',
-        to: 'api/v1/customer_contracts#index',
-        defaults: { format: :json }
+        to: 'customer_contracts#index',
+        defaults: { format: 'json' }
 
     get 'drivers(.:format)',
-        to: 'api/v1/trucking/drivers#index',
+        to: 'trucking/drivers#index',
         defaults: { format: 'json' }
 
     get 'driver_commissions_history(.:format)',
-        to: 'api/v1/trucking/driver_commissions_history#index',
+        to: 'trucking/driver_commissions_history#index',
         defaults: { format: 'json' }
     get 'driver_commissions_history_by_paid_date(.:format)',
-        to: 'api/v1/trucking/driver_commissions_history#by_paid_date',
+        to: 'trucking/driver_commissions_history#by_paid_date',
         defaults: { format: 'json' }
 
-    get 'inventory/items(.:format)',
-        to: 'api/v1/inventory/items#index',
-        defaults: { format: 'json' }
-    get 'inventory/items_like_id_description(.:format)',
-        to: 'api/v1/inventory/items#like_id_description',
-        defaults: { format: 'json' }
-    get 'inventory/items_by_id(.:format)',
-        to: 'api/v1/inventory/items#by_id',
-        defaults: { format: 'json' }
-    get 'orders/:id(.:format)',
-        to: 'api/v1/orders#show',
-        defaults: { format: 'json' }
-    get 'orders(.:format)',
-        to: 'api/v1/orders#index',
-        defaults: { format: 'json' }
-    get 'health_check',
-        to: 'api/v1/health_check#index',
-        defaults: { format: 'json' }
+    get 'health_check', to: 'health_check#index', defaults: { format: 'json' }
+
+    resources :orders, only: [:show, :index], defaults: { format: 'json' }
+    resources :pick_up_orders, only: [:index], defaults: { format: 'json' }
   end
 end

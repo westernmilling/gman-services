@@ -7,7 +7,7 @@ class CreateContracts < ActiveRecord::Migration
     create_table :Contract do |t|
       t.string :ContractId
       t.string :CustomerId
-      t.string :CommodityId
+      t.integer :CommodityId
       t.integer :CommUOMId
       t.integer :CONT_ContractNumber
       t.string :CONT_ContractType

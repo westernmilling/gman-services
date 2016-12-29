@@ -37,13 +37,13 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
           is_expected.to eq contracts[0].ContractId
         end
         its(['customer_id']) do
-          is_expected.to eq contracts[0].CustomerId
+          is_expected.to eq contracts[0].CustomerId.to_s
         end
         its(['contract_number']) do
           is_expected.to eq contracts[0].CONT_ContractNumber
         end
         its(['commodity_id']) do
-          is_expected.to eq contracts[0].CommodityId
+          is_expected.to eq contracts[0].CommodityId.to_i
         end
         its(['contract_id']) do
           is_expected.to eq contracts[0].ContractId
@@ -58,7 +58,7 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
           is_expected.to eq contracts[0].Inv_ContractId
         end
         its(['location_id']) do
-          is_expected.to eq contracts[0].LocationId
+          is_expected.to eq contracts[0].LocationId.to_i
         end
         its(['price']) do
           is_expected.to eq contracts[0].CONT_Price
@@ -85,7 +85,7 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
           subject { first['commodity'] }
 
           its(['commodity_id']) do
-            is_expected.to eq contracts[0].commodity.CommodityId
+            is_expected.to eq contracts[0].commodity.CommodityId.to_i
           end
           its(['description']) do
             is_expected.to eq contracts[0].commodity.COMM_Description
@@ -157,11 +157,11 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
     it 'should respond with status code of 200' do
       expect(response.status).to eq(200)
     end
-    it 'should return contracts matching the contract type' do
+    it 'should return contracts matching the location id' do
       parsed_body = JSON.parse(response.body)
 
       expect(parsed_body.map { |hash| hash['location_id'] })
-        .to all eq filtered_location_id
+        .to all eq filtered_location_id.to_i
     end
   end
 

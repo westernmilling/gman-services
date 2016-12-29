@@ -9,6 +9,7 @@ AllCops:
     - "db/schema.rb"
     - "node_modules/**/*"
     - bin/*
+    - "**/*.jbuilder"
 Style/AndOr:
   Description: Use &&/|| instead of and/or.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-and-or-or
@@ -39,3 +40,5 @@ Style/StringLiterals:
   SupportedStyles:
   - single_quotes
   - double_quotes
+Rails/NotNullColumn:
+  Enabled: false

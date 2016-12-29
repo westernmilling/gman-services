@@ -18,7 +18,8 @@ RSpec.describe InventoryItemAdapter, type: :model do
 
       its(:keys) do
         is_expected.to eq([:item_id,
-                           :in_item_description])
+                           :in_item_description,
+                           :in_item_commodity_id])
       end
     end
     describe '#like_id_description' do
@@ -36,7 +37,8 @@ RSpec.describe InventoryItemAdapter, type: :model do
         subject { inventory_items.first }
         its(:keys) do
           is_expected.to eq([:item_id,
-                             :in_item_description])
+                             :in_item_description,
+                             :in_item_commodity_id])
         end
       end
     end
