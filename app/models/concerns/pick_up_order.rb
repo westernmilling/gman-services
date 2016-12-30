@@ -69,7 +69,7 @@ class PickUpOrder < ActiveRecord::Base
         end
 
         def contract_id_eq(value)
-          where("InvPickUpOrders.ContractId = '#{value}'")
+          where('InvPickUpOrders.ContractId = ?', value)
         end
 
         def item_commodity_id_eq(value)
@@ -77,11 +77,11 @@ class PickUpOrder < ActiveRecord::Base
         end
 
         def purchase_customer_id_eq(value)
-          where("PurchaseCustomerId = '#{value}'")
+          where('PurchaseCustomerId = ?', value)
         end
 
         def release_prefix_eq(value)
-          where("ReleasePrefix = '#{value}'")
+          where('ReleasePrefix = ?', value)
         end
 
         def release_load_number_eq(value)
