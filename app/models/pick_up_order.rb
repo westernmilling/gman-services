@@ -52,6 +52,6 @@ class PickUpOrder < ActiveRecord::Base
 
   def self.default_scope
     includes(:contract, item: [:commodity])
-      .references(:contracts, item: [:commodity])
+      .references(:contract, item: [:commodity])
   end
 end

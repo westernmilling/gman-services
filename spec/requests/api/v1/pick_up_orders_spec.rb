@@ -14,16 +14,22 @@ describe 'pick up orders' do
       pick_up_orders
     end
 
+    let(:commodities) do
+      [
+        create(:commodity, CommodityId: 1001),
+        create(:commodity, CommodityId: 1002)
+      ]
+    end
     let(:contracts) do
       [
-        create(:contract, CommodityId: items[0].InItem_CommodityId),
-        create(:contract, CommodityId: items[1].InItem_CommodityId)
+        create(:contract, commodity: items[0].commodity),
+        create(:contract, commodity: items[1].commodity)
       ]
     end
     let(:items) do
       [
-        create(:inventory_item, InItem_CommodityId: 1001),
-        create(:inventory_item, InItem_CommodityId: 1002)
+        create(:inventory_item, InItem_CommodityId: commodities[0].CommodityId),
+        create(:inventory_item, InItem_CommodityId: commodities[1].CommodityId)
       ]
     end
     let(:pick_up_order_count) { 10 }
@@ -36,6 +42,7 @@ describe 'pick up orders' do
                ContractId: contract.Inv_ContractId,
                ContractLocationId: contract.LocationId,
                ItemId: item.ItemId,
+               LoadNumber: i,
                PurchaseCustomerId: contract.CustomerId,
                ReleasePrefix: contract.Inv_ContractId,
                ReleaseLoadNumber: i)
@@ -59,6 +66,8 @@ describe 'pick up orders' do
       it 'should return pick up orders' do
         parsed_body = JSON.parse(response.body)
 
+        expect(parsed_body[0]['contract_balance'])
+          .to eq(pick_up_orders[0].contract.balance)
         expect(parsed_body[0]['contract_id'])
           .to eq(pick_up_orders[0].ContractId)
         expect(parsed_body[0]['contract_location_id'])

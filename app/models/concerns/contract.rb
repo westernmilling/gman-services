@@ -48,6 +48,7 @@ class Contract < ActiveRecord::Base
     extend ActiveSupport::Concern
 
     BALANCE_CALC = '(Contract.CONT_Quantity - Contract.CONT_DeliveredBushels)'
+                   .freeze
 
     included do
       def balance_eq(value)
