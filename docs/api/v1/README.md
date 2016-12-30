@@ -40,6 +40,23 @@ Returns a response containing the access token to use in further requests.
 * Content-Type: application/json
 * Authorization: Bearer {access_token}
 
+### Contracts
+
+#### GET /api/v1/commodity_merchandising/contracts?q[contract_type_eq]=P
+
+Fetch the contracts matching the filter parameters.
+
+##### params
+* q\[commodity_id_eq\](number)
+* q\[contract_type_eq\](string): Purchase or Sale, use P or S.
+* q\[customer_id_eq\](string)
+* q\[inv_contract_id_eq\](string)
+* q\[location_id_eq\](number)
+
+TODO
+
+Make sure this gets finished before the next PR.
+
 ### Customer Contracts
 
 #### GET /api/v1/customer_contracts?q[customer_id]={customer_ids}
@@ -143,17 +160,17 @@ Returns an array of orders
 
 ### Pick Up Orders
 
-#### GET /api/v1/pick_up_orders?contract_commodity_id_eq={commodity_id}
+#### GET /api/v1/pick_up_orders?q[contract_commodity_id_eq]={commodity_id}
 
 Fetch pick up orders by filter.
 
 ##### params
-* contract_id_eq(string)
-* item_commodity_id_eq(number)
-* purchase_customer_id_eq(string)
-* release_prefix_eq(string)
-* release_load_number_eq
-* release_number_eq(string): A composite of the release prefix and release load
+* q\[contract_id_eq\](string)
+* q\[item_commodity_id_eq\](number)
+* q\[purchase_customer_id_eq\](string)
+* q\[release_prefix_eq\](string)
+* q\[release_load_number_eq\]
+* q\[release_number_eq\](string): A composite of the release prefix and release load
   number. The release prefix should be padded to 10 characters and the release
   load number should be padded to 4 zeros. For example:
     `TEST______0001`

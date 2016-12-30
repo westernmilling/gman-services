@@ -41,6 +41,8 @@ class PickUpOrder < ActiveRecord::Base
     included do
       def self.ransackable_scopes(_auth_object = nil)
         [
+          :contract_balance_eq,
+          :contract_balance_not_eq,
           :contract_id_eq,
           :item_commodity_id_eq,
           :purchase_customer_id_eq,
@@ -57,6 +59,14 @@ class PickUpOrder < ActiveRecord::Base
 
     included do
       class << self
+        def contract_balance_eq(value)
+          where(format('%s = %d', Contract::Scopes::BALANCE_CALC, value))
+        end
+
+        def contract_balance_not_eq(value)
+          where(format('%s <> %d', Contract::Scopes::BALANCE_CALC, value))
+        end
+
         def contract_id_eq(value)
           where("InvPickUpOrders.ContractId = '#{value}'")
         end

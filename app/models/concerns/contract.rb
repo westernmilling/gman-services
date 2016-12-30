@@ -32,6 +32,8 @@ class Contract < ActiveRecord::Base
     included do
       def self.ransackable_scopes(_auth_object = nil)
         [
+          :balance_eq,
+          :balance_not_eq,
           :commodity_id_eq,
           :contract_type_eq,
           :customer_id_eq,
@@ -45,7 +47,17 @@ class Contract < ActiveRecord::Base
   module Scopes
     extend ActiveSupport::Concern
 
+    BALANCE_CALC = '(Contract.CONT_Quantity - Contract.CONT_DeliveredBushels)'
+
     included do
+      def balance_eq(value)
+        where(format('%s = %d', BALANCE_CALC, value))
+      end
+
+      def balance_not_eq(value)
+        where(format('%s <> %d', BALANCE_CALC, value))
+      end
+
       scope :commodity_id_eq,
             ->(value) { where("Contract.CommodityId = #{value}") }
       scope :contract_type_eq,

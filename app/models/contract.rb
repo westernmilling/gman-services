@@ -25,6 +25,10 @@ class Contract < ActiveRecord::Base
 
   include Contract::Scopes
 
+  def balance
+    self.CONT_Quantity - self.CONT_DeliveredBushels
+  end
+
   def contract_type
     TYPE_MAP[self.CONT_ContractType.strip]
   end

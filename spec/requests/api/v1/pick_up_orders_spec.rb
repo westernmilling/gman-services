@@ -166,5 +166,23 @@ describe 'pick up orders' do
           .to all eq filters[:release_number_eq]
       end
     end
+
+    context 'when the request is filtering by contract balance equal' do
+      let(:filters) do
+        {
+          contract_balance_eq: pick_up_orders.sample.contract.balance
+        }
+      end
+
+      include_examples 'response ok'
+
+      it 'should only return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(parsed_body.map { |hash| hash['contract_balance'] })
+          .to all eq filters[:contract_balance_eq].to_i
+      end
+    end
   end
 end

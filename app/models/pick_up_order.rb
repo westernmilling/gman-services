@@ -34,6 +34,10 @@ class PickUpOrder < ActiveRecord::Base
 
   include PickUpOrder::Scopes
 
+  def contract_balance
+    contract.presence ? contract.balance : nil
+  end
+
   def pickup_type
     PICKUP_TYPE[self.PickupType]
   end
