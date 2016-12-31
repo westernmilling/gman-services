@@ -1,11 +1,5 @@
 require 'rails_helper'
 
-shared_examples 'response ok' do
-  it 'should respond with status code of 200' do
-    expect(response.status).to eq(200)
-  end
-end
-
 describe 'pick up orders' do
   let(:application) { create(:doorkeeper_application) }
 
@@ -191,6 +185,24 @@ describe 'pick up orders' do
         expect(parsed_body).to_not be_empty
         expect(parsed_body.map { |hash| hash['contract_balance'] })
           .to all eq filters[:contract_balance_eq].to_i
+      end
+    end
+
+    context 'when the request is filtering by contract balance not equal' do
+      let(:filters) do
+        {
+          contract_balance_not_eq: pick_up_orders.sample.contract.balance
+        }
+      end
+
+      include_examples 'response ok'
+
+      it 'should only not return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(parsed_body.map { |hash| hash['contract_balance'] })
+          .to_not include filters[:contract_balance_not_eq].to_i
       end
     end
   end

@@ -57,6 +57,15 @@ TODO
 
 Make sure this gets finished before the next PR.
 
+Returns an array of matching contracts.
+
+```
+[
+  {
+  }
+]
+```
+
 ### Customer Contracts
 
 #### GET /api/v1/customer_contracts?q[customer_id]={customer_ids}
