@@ -155,7 +155,6 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
     end
   end
 
-
   context 'when filtering by inv_contract_id_in' do
     let(:filters) do
       {
@@ -176,7 +175,7 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
       parsed_body = JSON.parse(response.body)
 
       expect(parsed_body.map { |hash| hash['inv_contract_id'] })
-        .to include *filters[:inv_contract_id_in].split(',')
+        .to include(*filters[:inv_contract_id_in].split(','))
     end
   end
 

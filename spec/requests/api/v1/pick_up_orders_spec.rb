@@ -60,8 +60,6 @@ describe 'pick up orders' do
       it 'should return pick up orders' do
         parsed_body = JSON.parse(response.body)
 
-        expect(parsed_body[0]['contract_balance'])
-          .to eq(pick_up_orders[0].contract.balance)
         expect(parsed_body[0]['contract_id'])
           .to eq(pick_up_orders[0].ContractId)
         expect(parsed_body[0]['contract_location_id'])
@@ -171,9 +169,15 @@ describe 'pick up orders' do
     end
 
     context 'when the request is filtering by contract balance equal' do
+      let(:balance) { pick_up_orders.sample.contract.balance }
+      let(:contracts_matching_balance) do
+        pick_up_orders.select do |pick_up|
+          pick_up.contract.balance == balance
+        end.map(&:contract)
+      end
       let(:filters) do
         {
-          contract_balance_eq: pick_up_orders.sample.contract.balance
+          contract_balance_eq: balance
         }
       end
 
@@ -183,8 +187,8 @@ describe 'pick up orders' do
         parsed_body = JSON.parse(response.body)
 
         expect(parsed_body).to_not be_empty
-        expect(parsed_body.map { |hash| hash['contract_balance'] })
-          .to all eq filters[:contract_balance_eq].to_i
+        expect(parsed_body.map { |hash| hash['contract_id'] })
+          .to include(*contracts_matching_balance.map(&:Inv_ContractId))
       end
     end
 

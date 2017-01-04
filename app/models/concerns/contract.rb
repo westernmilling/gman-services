@@ -1,4 +1,5 @@
 class Contract < ActiveRecord::Base
+  # rubocop:disable Metrics/BlockLength
   module Columns
     extend ActiveSupport::Concern
 
@@ -79,9 +80,9 @@ class Contract < ActiveRecord::Base
 
         def inv_contract_id_in(value)
           values_string = value
-            .split(',')
-            .map { |value| "'#{value}'" }
-            .join(', ')
+                          .split(',')
+                          .map { |contract_id| "'#{contract_id}'" }
+                          .join(', ')
 
           where("Contract.Inv_ContractId IN (#{values_string})")
         end
@@ -92,4 +93,5 @@ class Contract < ActiveRecord::Base
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 end
