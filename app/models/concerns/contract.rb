@@ -38,6 +38,7 @@ class Contract < ActiveRecord::Base
           :contract_type_eq,
           :customer_id_eq,
           :inv_contract_id_eq,
+          :inv_contract_id_in,
           :location_id_eq
         ]
       end
@@ -74,6 +75,15 @@ class Contract < ActiveRecord::Base
 
         def inv_contract_id_eq(value)
           where('Contract.Inv_ContractId = ?', value)
+        end
+
+        def inv_contract_id_in(value)
+          values_string = value
+            .split(',')
+            .map { |value| "'#{value}'" }
+            .join(', ')
+
+          where("Contract.Inv_ContractId IN (#{values_string})")
         end
 
         def location_id_eq(value)

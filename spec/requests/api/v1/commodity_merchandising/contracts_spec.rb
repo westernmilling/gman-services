@@ -155,6 +155,11 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
     end
   end
 
+
+  context 'when filtering by inv_contract_id_in' do
+    pending 'should return the matching contracts'
+  end
+
   context 'when filtering by location_id_eq' do
     let(:filtered_location_id) { contracts.sample.LocationId }
     let(:query_string) do

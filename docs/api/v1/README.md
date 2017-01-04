@@ -51,6 +51,7 @@ Fetch the contracts matching the filter parameters.
 * q\[contract_type_eq\](string): Purchase or Sale, use P or S.
 * q\[customer_id_eq\](string)
 * q\[inv_contract_id_eq\](string)
+* q\[inv_contract_id_in\](string): CSV of contract ids
 * q\[location_id_eq\](number)
 
 TODO
