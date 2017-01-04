@@ -157,7 +157,27 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
 
 
   context 'when filtering by inv_contract_id_in' do
-    pending 'should return the matching contracts'
+    let(:filters) do
+      {
+        inv_contract_id_in: contracts.sample(2).map(&:Inv_ContractId).join(',')
+      }
+    end
+
+    it 'should respond with status code of 200' do
+      expect(response.status).to eq(200)
+    end
+    it 'should return a single contract' do
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body.size).to eq 2
+    end
+
+    it 'should return a contract matching inventory contract id' do
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body.map { |hash| hash['inv_contract_id'] })
+        .to include *filters[:inv_contract_id_in].split(',')
+    end
   end
 
   context 'when filtering by location_id_eq' do

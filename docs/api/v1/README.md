@@ -47,6 +47,8 @@ Returns a response containing the access token to use in further requests.
 Fetch the contracts matching the filter parameters.
 
 ##### params
+* q\[balance_eq\](number)
+* q\[balance_not_eq\](number)
 * q\[commodity_id_eq\](number)
 * q\[contract_type_eq\](string): Purchase or Sale, use P or S.
 * q\[customer_id_eq\](string)
@@ -54,15 +56,35 @@ Fetch the contracts matching the filter parameters.
 * q\[inv_contract_id_in\](string): CSV of contract ids
 * q\[location_id_eq\](number)
 
-TODO
-
-Make sure this gets finished before the next PR.
-
-Returns an array of matching contracts.
+Returns matching contracts.
 
 ```
 [
   {
+    "balance": "1000000.0",
+    "contract_id": "0159001200P",
+    "customer_id": "00100100",
+    "commodity_id": 1010,
+    "inv_contract_id": "59001200",
+    "location_id": 71,
+    "contract_number": 590012,
+    "price": 150.0,
+    "freight_adjustment": 0,
+    "commodity": {
+      "commodity_id": 1010,
+      "description": "CORN",
+      "conversion_factor": "2000.0"
+    },
+    "unit_of_measure": {
+      "uom_id": 1,
+      "description": "TON"
+    },
+    "contract_date": "2017-01-04",
+    "contract_type": "Purchase",
+    "quantity": 1000000,
+    "delivered_quantity": 0,
+    "from_date": "2017-01-01",
+    "to_date": "2017-01-31"
   }
 ]
 ```
