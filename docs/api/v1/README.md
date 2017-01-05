@@ -206,6 +206,7 @@ Fetch pick up orders by filter.
   number. The release prefix should be padded to 10 characters and the release
   load number should be padded to 4 zeros. For example:
     `TEST______0001`
+* q\[status_eq\](number): 0 for Open, 1 for Used.
 
 ```bash
 curl -H "Authorization: Bearer {token}"

@@ -50,7 +50,8 @@ class PickUpOrder < ActiveRecord::Base
           :purchase_customer_id_eq,
           :release_prefix_eq,
           :release_load_number_eq,
-          :release_number_eq
+          :release_number_eq,
+          :status_eq
         ]
       end
     end
@@ -109,6 +110,10 @@ class PickUpOrder < ActiveRecord::Base
           load_number = value.slice(-4, 4)
 
           release_prefix_eq(prefix).release_load_number_eq(load_number)
+        end
+
+        def status_eq(value)
+          where("Status = #{value}")
         end
       end
     end

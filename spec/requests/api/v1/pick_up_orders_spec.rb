@@ -180,7 +180,7 @@ describe 'pick up orders' do
         expect(
           parsed_body
             .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
-        ).to include(
+        ).to contain_exactly(
           *matching_pick_up_orders
             .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
         )
@@ -220,7 +220,7 @@ describe 'pick up orders' do
         expect(
           parsed_body
             .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
-        ).to include(
+        ).to contain_exactly(
           *matching_pick_up_orders
             .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
         )
@@ -260,7 +260,7 @@ describe 'pick up orders' do
         expect(
           parsed_body
             .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
-        ).to include(
+        ).to contain_exactly(
           *matching_pick_up_orders
             .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
         )
@@ -279,7 +279,50 @@ describe 'pick up orders' do
 
         expect(parsed_body).to_not be_empty
         expect(parsed_body.map { |hash| hash['contract_balance'] })
-          .to_not include filters[:contract_balance_not_eq].to_i
+          .to_not contain_exactly filters[:contract_balance_not_eq].to_i
+      end
+    end
+
+    context 'when the request is filtering by open status' do
+      let(:pick_up_orders) do
+        [
+          create(:pick_up_order,
+                 ContractId: contracts[0].Inv_ContractId,
+                 ContractLocationId: contracts[0].LocationId,
+                 ItemId: items[0].ItemId,
+                 LoadNumber: 1,
+                 PurchaseCustomerId: contracts[0].CustomerId,
+                 ReleasePrefix: contracts[0].Inv_ContractId,
+                 ReleaseLoadNumber: 1,
+                 Status: 0),
+          create(:pick_up_order,
+                 ContractId: contracts[1].Inv_ContractId,
+                 ContractLocationId: contracts[1].LocationId,
+                 ItemId: items[0].ItemId,
+                 LoadNumber: 1,
+                 PurchaseCustomerId: contracts[1].CustomerId,
+                 ReleasePrefix: contracts[1].Inv_ContractId,
+                 ReleaseLoadNumber: 1,
+                 Status: 1)
+        ]
+      end
+      let(:filters) do
+        {
+          status_eq: 0
+        }
+      end
+
+      it 'should only not return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(
+          parsed_body
+            .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
+        ).to contain_exactly(
+          *[pick_up_orders[0]]
+            .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
+        )
       end
     end
   end
