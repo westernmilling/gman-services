@@ -26,6 +26,46 @@ RSpec.describe Contract, type: :model do
       .with_primary_key([:Inv_ContractId, :LocationId])
   end
 
+  describe '#balance' do
+    let(:instance) do
+      described_class.new(
+        CONT_Quantity: 50_000,
+        CONT_DeliveredBushels: 30_000
+      )
+    end
+    subject do
+      instance.balance
+    end
+
+    it 'should return the sum of the quantity and ' \
+       'the misleadingly named delivered bushels' do
+      expect(subject).to eq(20_000)
+    end
+  end
+
+  describe '#contract_type' do
+    let(:instance) do
+      described_class.new(
+        CONT_ContractType: native_contract_type,
+      )
+    end
+    subject do
+      instance.contract_type
+    end
+
+    context 'when CONT_ContractType is P' do
+      let(:native_contract_type) { 'P' }
+
+      it { is_expected.to eq 'Purchase' }
+    end
+
+    context 'when CONT_ContractType is S' do
+      let(:native_contract_type) { 'S' }
+
+      it { is_expected.to eq 'Sale' }
+    end
+  end
+
   describe '.column_names' do
     subject { described_class.column_names }
 

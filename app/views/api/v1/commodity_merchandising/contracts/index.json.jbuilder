@@ -1,4 +1,5 @@
 json.array! contracts do |contract|
+  json.balance contract.balance
   json.contract_id contract.ContractId
   json.customer_id contract.CustomerId
   json.commodity_id contract.CommodityId.to_i

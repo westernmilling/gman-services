@@ -34,6 +34,10 @@ class PickUpOrder < ActiveRecord::Base
 
   include PickUpOrder::Scopes
 
+  def contract_balance
+    contract.presence ? contract.balance : nil
+  end
+
   def pickup_type
     PICKUP_TYPE[self.PickupType]
   end
@@ -48,6 +52,6 @@ class PickUpOrder < ActiveRecord::Base
 
   def self.default_scope
     includes(:contract, item: [:commodity])
-      .references(:contracts, item: [:commodity])
+      .references(:contract, item: [:commodity])
   end
 end

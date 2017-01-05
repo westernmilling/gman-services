@@ -33,7 +33,6 @@ class PickUpOrder < ActiveRecord::Base
       end
     end
   end
-  # rubocop:enable Metrics/BlockLength
 
   module Ransack
     extend ActiveSupport::Concern
@@ -41,7 +40,12 @@ class PickUpOrder < ActiveRecord::Base
     included do
       def self.ransackable_scopes(_auth_object = nil)
         [
+          :contract_balance_eq,
+          :contract_balance_gt,
+          :contract_balance_lt,
+          :contract_balance_not_eq,
           :contract_id_eq,
+          :contract_present,
           :item_commodity_id_eq,
           :purchase_customer_id_eq,
           :release_prefix_eq,
@@ -57,8 +61,31 @@ class PickUpOrder < ActiveRecord::Base
 
     included do
       class << self
+        def contract_balance_eq(value)
+          joins(:contract)
+            .where(format('%s = %d', Contract::Scopes::BALANCE_CALC, value))
+        end
+
+        def contract_balance_gt(value)
+          where(format('%s > %d', Contract::Scopes::BALANCE_CALC, value))
+        end
+
+        def contract_balance_lt(value)
+          where(format('%s < %d', Contract::Scopes::BALANCE_CALC, value))
+        end
+
+        def contract_balance_not_eq(value)
+          joins(:contract)
+            .where(format('%s <> %d', Contract::Scopes::BALANCE_CALC, value))
+        end
+
         def contract_id_eq(value)
-          where("InvPickUpOrders.ContractId = '#{value}'")
+          where('InvPickUpOrders.ContractId = ?', value)
+        end
+
+        def contract_present(value)
+          joins(:contract)
+            .where("Contract.ContractId IS #{value ? 'NOT' : ''} NULL")
         end
 
         def item_commodity_id_eq(value)
@@ -66,11 +93,11 @@ class PickUpOrder < ActiveRecord::Base
         end
 
         def purchase_customer_id_eq(value)
-          where("PurchaseCustomerId = '#{value}'")
+          where('PurchaseCustomerId = ?', value)
         end
 
         def release_prefix_eq(value)
-          where("ReleasePrefix = '#{value}'")
+          where('ReleasePrefix = ?', value)
         end
 
         def release_load_number_eq(value)
@@ -86,4 +113,5 @@ class PickUpOrder < ActiveRecord::Base
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 end

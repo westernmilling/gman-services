@@ -10,6 +10,7 @@ AllCops:
     - "node_modules/**/*"
     - bin/*
     - "**/*.jbuilder"
+    - config/deploy.rb
 Style/AndOr:
   Description: Use &&/|| instead of and/or.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-and-or-or

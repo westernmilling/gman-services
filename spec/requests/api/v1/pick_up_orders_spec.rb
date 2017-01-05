@@ -1,11 +1,5 @@
 require 'rails_helper'
 
-shared_examples 'response ok' do
-  it 'should respond with status code of 200' do
-    expect(response.status).to eq(200)
-  end
-end
-
 describe 'pick up orders' do
   let(:application) { create(:doorkeeper_application) }
 
@@ -14,16 +8,22 @@ describe 'pick up orders' do
       pick_up_orders
     end
 
+    let(:commodities) do
+      [
+        create(:commodity, CommodityId: 1001),
+        create(:commodity, CommodityId: 1002)
+      ]
+    end
     let(:contracts) do
       [
-        create(:contract, CommodityId: items[0].InItem_CommodityId),
-        create(:contract, CommodityId: items[1].InItem_CommodityId)
+        create(:contract, commodity: items[0].commodity),
+        create(:contract, commodity: items[1].commodity)
       ]
     end
     let(:items) do
       [
-        create(:inventory_item, InItem_CommodityId: 1001),
-        create(:inventory_item, InItem_CommodityId: 1002)
+        create(:inventory_item, InItem_CommodityId: commodities[0].CommodityId),
+        create(:inventory_item, InItem_CommodityId: commodities[1].CommodityId)
       ]
     end
     let(:pick_up_order_count) { 10 }
@@ -36,6 +36,7 @@ describe 'pick up orders' do
                ContractId: contract.Inv_ContractId,
                ContractLocationId: contract.LocationId,
                ItemId: item.ItemId,
+               LoadNumber: i,
                PurchaseCustomerId: contract.CustomerId,
                ReleasePrefix: contract.Inv_ContractId,
                ReleaseLoadNumber: i)
@@ -105,8 +106,6 @@ describe 'pick up orders' do
         }
       end
 
-      include_examples 'response ok'
-
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
 
@@ -121,8 +120,6 @@ describe 'pick up orders' do
           contract_id_eq: pick_up_orders.sample.ContractId
         }
       end
-
-      include_examples 'response ok'
 
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
@@ -139,8 +136,6 @@ describe 'pick up orders' do
         }
       end
 
-      include_examples 'response ok'
-
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
 
@@ -156,14 +151,135 @@ describe 'pick up orders' do
         }
       end
 
-      include_examples 'response ok'
-
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
 
         expect(parsed_body).to_not be_empty
         expect(parsed_body.map { |hash| hash['release_number'] })
           .to all eq filters[:release_number_eq]
+      end
+    end
+
+    context 'when the request is filtering by contract balance equal' do
+      let(:balance) { pick_up_orders.sample.contract.balance }
+      let(:matching_pick_up_orders) do
+        pick_up_orders.select do |pick_up|
+          pick_up.contract.balance == balance
+        end
+      end
+      let(:filters) do
+        {
+          contract_balance_eq: balance
+        }
+      end
+
+      it 'should only return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(
+          parsed_body
+            .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
+        ).to include(
+          *matching_pick_up_orders
+            .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
+        )
+      end
+    end
+
+    context 'when the request is filtering by contract balance greater than' do
+      let(:balance) { contracts[0].balance }
+      let(:contracts) do
+        [
+          create(:contract,
+                 commodity: items[0].commodity,
+                 CONT_Quantity: 1_000,
+                 CONT_DeliveredBushels: 0),
+          create(:contract,
+                 commodity: items[1].commodity,
+                 CONT_Quantity: 2_000,
+                 CONT_DeliveredBushels: 0)
+        ]
+      end
+      let(:matching_pick_up_orders) do
+        pick_up_orders.select do |pick_up|
+          pick_up.contract.balance > balance
+        end
+      end
+      let(:pick_up_order_count) { 2 }
+      let(:filters) do
+        {
+          contract_balance_gt: balance
+        }
+      end
+
+      it 'should only return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(
+          parsed_body
+            .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
+        ).to include(
+          *matching_pick_up_orders
+            .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
+        )
+      end
+    end
+
+    context 'when the request is filtering by contract balance less than' do
+      let(:balance) { contracts[1].balance }
+      let(:contracts) do
+        [
+          create(:contract,
+                 commodity: items[0].commodity,
+                 CONT_Quantity: 1_000,
+                 CONT_DeliveredBushels: 0),
+          create(:contract,
+                 commodity: items[1].commodity,
+                 CONT_Quantity: 2_000,
+                 CONT_DeliveredBushels: 0)
+        ]
+      end
+      let(:matching_pick_up_orders) do
+        pick_up_orders.select do |pick_up|
+          pick_up.contract.balance < balance
+        end
+      end
+      let(:pick_up_order_count) { 2 }
+      let(:filters) do
+        {
+          contract_balance_lt: balance
+        }
+      end
+
+      it 'should only return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(
+          parsed_body
+            .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
+        ).to include(
+          *matching_pick_up_orders
+            .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
+        )
+      end
+    end
+
+    context 'when the request is filtering by contract balance not equal' do
+      let(:filters) do
+        {
+          contract_balance_not_eq: pick_up_orders.sample.contract.balance
+        }
+      end
+
+      it 'should only not return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(parsed_body.map { |hash| hash['contract_balance'] })
+          .to_not include filters[:contract_balance_not_eq].to_i
       end
     end
   end
