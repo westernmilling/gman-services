@@ -34,6 +34,8 @@ class Contract < ActiveRecord::Base
       def self.ransackable_scopes(_auth_object = nil)
         [
           :balance_eq,
+          :balance_gt,
+          :balance_lt,
           :balance_not_eq,
           :commodity_id_eq,
           :contract_type_eq,
@@ -56,6 +58,14 @@ class Contract < ActiveRecord::Base
       class << self
         def balance_eq(value)
           where(format('%s = %d', BALANCE_CALC, value))
+        end
+
+        def balance_gt(value)
+          where(format('%s > %d', BALANCE_CALC, value))
+        end
+
+        def balance_lt(value)
+          where(format('%s < %d', BALANCE_CALC, value))
         end
 
         def balance_not_eq(value)

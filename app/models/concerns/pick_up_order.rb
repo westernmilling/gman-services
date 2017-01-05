@@ -41,6 +41,8 @@ class PickUpOrder < ActiveRecord::Base
       def self.ransackable_scopes(_auth_object = nil)
         [
           :contract_balance_eq,
+          :contract_balance_gt,
+          :contract_balance_lt,
           :contract_balance_not_eq,
           :contract_id_eq,
           :contract_present,
@@ -62,6 +64,14 @@ class PickUpOrder < ActiveRecord::Base
         def contract_balance_eq(value)
           joins(:contract)
             .where(format('%s = %d', Contract::Scopes::BALANCE_CALC, value))
+        end
+
+        def contract_balance_gt(value)
+          where(format('%s > %d', Contract::Scopes::BALANCE_CALC, value))
+        end
+
+        def contract_balance_lt(value)
+          where(format('%s < %d', Contract::Scopes::BALANCE_CALC, value))
         end
 
         def contract_balance_not_eq(value)

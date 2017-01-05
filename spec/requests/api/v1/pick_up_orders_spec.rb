@@ -106,8 +106,6 @@ describe 'pick up orders' do
         }
       end
 
-      include_examples 'response ok'
-
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
 
@@ -122,8 +120,6 @@ describe 'pick up orders' do
           contract_id_eq: pick_up_orders.sample.ContractId
         }
       end
-
-      include_examples 'response ok'
 
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
@@ -140,8 +136,6 @@ describe 'pick up orders' do
         }
       end
 
-      include_examples 'response ok'
-
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
 
@@ -157,8 +151,6 @@ describe 'pick up orders' do
         }
       end
 
-      include_examples 'response ok'
-
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
 
@@ -170,10 +162,10 @@ describe 'pick up orders' do
 
     context 'when the request is filtering by contract balance equal' do
       let(:balance) { pick_up_orders.sample.contract.balance }
-      let(:contracts_matching_balance) do
+      let(:matching_pick_up_orders) do
         pick_up_orders.select do |pick_up|
           pick_up.contract.balance == balance
-        end.map(&:contract)
+        end
       end
       let(:filters) do
         {
@@ -181,14 +173,97 @@ describe 'pick up orders' do
         }
       end
 
-      include_examples 'response ok'
+      it 'should only return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(
+          parsed_body
+            .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
+        ).to include(
+          *matching_pick_up_orders
+            .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
+        )
+      end
+    end
+
+    context 'when the request is filtering by contract balance greater than' do
+      let(:balance) { contracts[0].balance }
+      let(:contracts) do
+        [
+          create(:contract,
+                 commodity: items[0].commodity,
+                 CONT_Quantity: 1_000,
+                 CONT_DeliveredBushels: 0),
+          create(:contract,
+                 commodity: items[1].commodity,
+                 CONT_Quantity: 2_000,
+                 CONT_DeliveredBushels: 0)
+        ]
+      end
+      let(:matching_pick_up_orders) do
+        pick_up_orders.select do |pick_up|
+          pick_up.contract.balance > balance
+        end
+      end
+      let(:pick_up_order_count) { 2 }
+      let(:filters) do
+        {
+          contract_balance_gt: balance
+        }
+      end
 
       it 'should only return matching records' do
         parsed_body = JSON.parse(response.body)
 
         expect(parsed_body).to_not be_empty
-        expect(parsed_body.map { |hash| hash['contract_id'] })
-          .to include(*contracts_matching_balance.map(&:Inv_ContractId))
+        expect(
+          parsed_body
+            .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
+        ).to include(
+          *matching_pick_up_orders
+            .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
+        )
+      end
+    end
+
+    context 'when the request is filtering by contract balance less than' do
+      let(:balance) { contracts[1].balance }
+      let(:contracts) do
+        [
+          create(:contract,
+                 commodity: items[0].commodity,
+                 CONT_Quantity: 1_000,
+                 CONT_DeliveredBushels: 0),
+          create(:contract,
+                 commodity: items[1].commodity,
+                 CONT_Quantity: 2_000,
+                 CONT_DeliveredBushels: 0)
+        ]
+      end
+      let(:matching_pick_up_orders) do
+        pick_up_orders.select do |pick_up|
+          pick_up.contract.balance < balance
+        end
+      end
+      let(:pick_up_order_count) { 2 }
+      let(:filters) do
+        {
+          contract_balance_lt: balance
+        }
+      end
+
+      it 'should only return matching records' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(
+          parsed_body
+            .map { |hash| "#{hash['contract_id']}-#{hash['load_number']}" }
+        ).to include(
+          *matching_pick_up_orders
+            .map { |match| "#{match.ContractId}-#{match.LoadNumber}" }
+        )
       end
     end
 
@@ -198,8 +273,6 @@ describe 'pick up orders' do
           contract_balance_not_eq: pick_up_orders.sample.contract.balance
         }
       end
-
-      include_examples 'response ok'
 
       it 'should only not return matching records' do
         parsed_body = JSON.parse(response.body)

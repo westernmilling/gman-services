@@ -121,10 +121,6 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
       "?q[contract_type_eq]=#{filtered_contract_type}"
     end
 
-    it 'should respond with status code of 200' do
-      expect(response.status).to eq(200)
-    end
-
     it 'should return contracts matching the contract type' do
       parsed_body = JSON.parse(response.body)
 
@@ -139,9 +135,6 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
       "?q[inv_contract_id_eq]=#{filtered_inv_contract_id}"
     end
 
-    it 'should respond with status code of 200' do
-      expect(response.status).to eq(200)
-    end
     it 'should return a single contract' do
       parsed_body = JSON.parse(response.body)
 
@@ -162,9 +155,6 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
       }
     end
 
-    it 'should respond with status code of 200' do
-      expect(response.status).to eq(200)
-    end
     it 'should return a single contract' do
       parsed_body = JSON.parse(response.body)
 
@@ -185,9 +175,6 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
       "?q[location_id_eq]=#{filtered_location_id}"
     end
 
-    it 'should respond with status code of 200' do
-      expect(response.status).to eq(200)
-    end
     it 'should return contracts matching the location id' do
       parsed_body = JSON.parse(response.body)
 
@@ -203,14 +190,56 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
       }
     end
 
-    include_examples 'response ok'
-
     it 'should only return matching records' do
       parsed_body = JSON.parse(response.body)
 
       expect(parsed_body).to_not be_empty
       expect(parsed_body.map { |hash| hash['balance'] })
         .to all eq filters[:balance_eq].to_i
+    end
+  end
+
+  context 'when the request is filtering by balance greater than' do
+    let(:contracts) do
+      [
+        create(:contract, CONT_Quantity: 1_000, CONT_DeliveredBushels: 0),
+        create(:contract, CONT_Quantity: 2_000, CONT_DeliveredBushels: 0),
+      ]
+    end
+    let(:filters) do
+      {
+        balance_gt: contracts[0].balance
+      }
+    end
+
+    it 'should only return matching records' do
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body).to_not be_empty
+      expect(parsed_body.map { |hash| hash['contract_id'] })
+        .to include(contracts[1].ContractId)
+    end
+  end
+
+  context 'when the request is filtering by balance less than' do
+    let(:contracts) do
+      [
+        create(:contract, CONT_Quantity: 1_000, CONT_DeliveredBushels: 0),
+        create(:contract, CONT_Quantity: 2_000, CONT_DeliveredBushels: 0),
+      ]
+    end
+    let(:filters) do
+      {
+        balance_lt: contracts[1].balance
+      }
+    end
+
+    it 'should only return matching records' do
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body).to_not be_empty
+      expect(parsed_body.map { |hash| hash['contract_id'] })
+        .to include(contracts[0].ContractId)
     end
   end
 
