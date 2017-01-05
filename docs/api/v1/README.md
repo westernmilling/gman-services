@@ -63,7 +63,6 @@ Returns matching contracts.
   {
     "balance": "1000000.0",
     "contract_id": "0159001200P",
-    "customer_id": "00100100",
     "customer": {
       "customer_id": "00100100",
       "name": "Giles Dairy",

@@ -1,7 +1,6 @@
 json.array! contracts do |contract|
   json.balance contract.balance
   json.contract_id contract.ContractId
-  json.customer_id contract.CustomerId
   json.customer do
     json.customer_id contract.customer.CustomerId
     json.name contract.customer.Name

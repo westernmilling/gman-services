@@ -43,9 +43,6 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
         its(['contract_id']) do
           is_expected.to eq contracts[0].ContractId
         end
-        its(['customer_id']) do
-          is_expected.to eq contracts[0].CustomerId.to_s
-        end
         its(['contract_number']) do
           is_expected.to eq contracts[0].CONT_ContractNumber
         end
