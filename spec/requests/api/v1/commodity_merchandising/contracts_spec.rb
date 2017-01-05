@@ -88,6 +88,16 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
         its(['commodity']) { is_expected.to be_present }
         its(['unit_of_measure']) { is_expected.to be_present }
 
+        describe 'customer' do
+          subject { first['customer'] }
+
+          its(['customer_id']) do
+            is_expected.to eq contracts[0].customer.CustomerId
+          end
+          its(['name']) do
+            is_expected.to eq contracts[0].customer.Name
+          end
+        end
         describe 'commodity' do
           subject { first['commodity'] }
 
