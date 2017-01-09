@@ -98,4 +98,35 @@ RSpec.describe PickUpOrder, type: :model do
       )
     end
   end
+
+  describe '.item_id_eq' do
+    before do
+      subject_pool
+    end
+
+    let(:subject_pool) do
+      Array.new(4) do |index|
+        create(:pick_up_order, ItemId: (1 + (index % 2)).to_s)
+      end
+    end
+
+    subject { described_class.item_id_eq(item_id) }
+
+    context 'when there are matching records' do
+      let(:item_id) { '1' }
+
+      it 'should return matches' do
+        expect(subject).to_not be_empty
+        expect(subject.map(&:ItemId)).to all eq item_id
+      end
+    end
+
+    context 'when there are no matching records' do
+      let(:item_id) { '99' }
+
+      it 'should return nothing' do
+        expect(subject).to be_empty
+      end
+    end
+  end
 end
