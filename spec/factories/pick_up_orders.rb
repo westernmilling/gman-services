@@ -1,10 +1,12 @@
 FactoryGirl.define do
   factory :pick_up_order do
     sequence(:CarrierCustomerNumber) { |x| 1_000 + x }
+    sequence(:ContractId) { |x| 100_000 + x }
     sequence(:ItemId) { |x| 10 + x }
 
     CarrierCustomerSub { '00' }
     FreightAmount { 0 }
+    LoadNumber { 1 }
     Origin { Faker::Address.city }
     OriginState { Faker::Address.state }
     OriginWeightCertificate { 0 }

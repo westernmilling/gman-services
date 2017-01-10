@@ -95,7 +95,7 @@ class PickUpOrder < ActiveRecord::Base
         end
 
         def item_id_eq(value)
-          where('InvPickUpOrders.ItemId = ?', value)
+          where('InvItems.ItemId = ?', value)
         end
 
         def purchase_customer_id_eq(value)
