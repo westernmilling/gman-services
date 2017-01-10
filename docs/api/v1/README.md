@@ -202,6 +202,7 @@ Fetch pick up orders by filter.
 ##### params
 * q\[contract_id_eq\](string)
 * q\[item_commodity_id_eq\](number)
+* q\[item_id_eq\](string)
 * q\[purchase_customer_id_eq\](string)
 * q\[release_prefix_eq\](string)
 * q\[release_load_number_eq\]

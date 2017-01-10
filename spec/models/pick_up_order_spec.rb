@@ -98,4 +98,80 @@ RSpec.describe PickUpOrder, type: :model do
       )
     end
   end
+
+  describe '.item_id_eq' do
+    before do
+      subject_pool
+    end
+
+    let(:matching_item) { create(:inventory_item, ItemId: '1000') }
+    let(:matching_pool) do
+      create_list(:pick_up_order, 2, item: matching_item)
+    end
+    let(:subject_pool) do
+      matching_pool + create_list(:pick_up_order, 2, ItemId: '2000')
+    end
+
+    subject { described_class.item_id_eq(item_id) }
+
+    context 'when there are matching records' do
+      let(:item_id) { '1000' }
+
+      it 'should return matches' do
+        expect(
+          subject
+            .map { |object| "#{object.ContractId}-#{object.LoadNumber}" }
+        ).to contain_exactly(
+          *matching_pool
+            .map { |object| "#{object.ContractId}-#{object.LoadNumber}" }
+        )
+      end
+    end
+
+    context 'when there are no matching records' do
+      let(:item_id) { '99' }
+
+      it 'should return nothing' do
+        expect(subject).to be_empty
+      end
+    end
+  end
+
+  describe '.status_eq' do
+    before do
+      subject_pool
+    end
+
+    let(:matching_pool) do
+      create_list(:pick_up_order, 2, Status: 0)
+    end
+    let(:subject_pool) do
+      matching_pool + create_list(:pick_up_order, 2, Status: 1)
+    end
+
+    subject { described_class.status_eq(status) }
+
+    context 'when there are matching records' do
+      let(:status) { 0 }
+
+      it 'should return matches' do
+        expect(
+          subject
+            .map { |object| "#{object.ContractId}-#{object.LoadNumber}" }
+        ).to contain_exactly(
+          *matching_pool
+            .map { |object| "#{object.ContractId}-#{object.LoadNumber}" }
+        )
+      end
+    end
+
+    context 'when there are no matching records' do
+      let(:matching_pool) { [] }
+      let(:status) { 0 }
+
+      it 'should return nothing' do
+        expect(subject).to be_empty
+      end
+    end
+  end
 end
