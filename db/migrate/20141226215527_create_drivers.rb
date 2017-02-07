@@ -1,7 +1,7 @@
 class CreateDrivers < ActiveRecord::Migration
-  return if Driver.connection.class.to_s.include?('Relativity')
-
   def change
+    return if Driver.connection.class.to_s.include?('Relativity')
+
     @connection = Driver.connection
 
     create_table :Trucking_Drivers do |t|
