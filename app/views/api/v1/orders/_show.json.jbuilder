@@ -13,7 +13,7 @@ json.lines order_reference.order.lines do |order_line|
   if order_line.InOrd_InvoiceDate
     json.invoice_date order_line.InOrd_InvoiceDate.to_date.to_s(:iso8601)
   else
-    json.invoice_date nil
+    json.invoice_date ''
   end
   json.invoice_number order_line.InOrd_Invoice
   json.item_number order_line.ItemId.strip
