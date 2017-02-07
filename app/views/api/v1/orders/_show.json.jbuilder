@@ -1,4 +1,3 @@
-json.ignore_nil!
 json.order_number order_reference.OrderNumber
 json.order_key order_reference.FeedXrefKey
 json.carrier_id order_reference.order.carrier_id
@@ -13,13 +12,13 @@ json.lines order_reference.order.lines do |order_line|
   if order_line.InOrd_InvoiceDate
     json.invoice_date order_line.InOrd_InvoiceDate.to_date.to_s(:iso8601)
   else
-    json.invoice_date ''
+    json.invoice_date nil
   end
   json.invoice_number order_line.InOrd_Invoice
   json.item_number order_line.ItemId.strip
   json.item_price order_line.InOrd_TotalPrice
-  json.contract do
-    if order_line.contract
+  if order_line.contract
+    json.contract do
       json.contract_id order_line.contract.ContractId
       json.contract_date order_line.contract.CONT_ContractDate
       json.contract_price order_line.contract.CONT_Price.to_f
@@ -27,8 +26,8 @@ json.lines order_reference.order.lines do |order_line|
       json.contract_sub order_line.contract.CONT_ContractSub
       json.contract_type order_line.contract.contract_type
       json.location_id order_line.contract.LocationId
-    else
-      json.nil!
     end
+  else
+    json.contract nil
   end
 end
