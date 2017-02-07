@@ -2,13 +2,16 @@ require 'rails_helper'
 
 describe '/api/v1/orders' do
   let(:order_references) do
-    create_list(:order, 2).map do |order|
+    create_list(:order, 2).each_with_index.map do |order, index|
       waso_key = order.InOrd_WareShipToOrderKey
 
       order
         .lines << create(:order_line,
                          OrderKey: order.OrderKey.to_s + '00',
                          ItemId: Faker::Number.number(4),
+                         InOrd_GrossInvoiceAmount: 10_000,
+                         InOrd_InvoiceDate: Time.zone.today,
+                         InOrd_Invoice: 100_000 + index,
                          InOrd_TotalPrice: Faker::Commerce.price,
                          InOrd_WareShipToOrderKey: waso_key)
 
@@ -16,8 +19,8 @@ describe '/api/v1/orders' do
              order: order,
              FeedXrefKey: order.OrderKey,
              OrderNumber: order.InOrd_OrderNo,
-             ShipDate: order.InOrd_ShipDate,
              OrderStatusCd: order.InOrd_StatusCd,
+             ShipDate: order.InOrd_ShipDate,
              WarehouseId: order.WarehouseId)
     end
   end
@@ -86,6 +89,16 @@ describe '/api/v1/orders' do
 
             subject { response_body['lines'][0] }
 
+            its(['invoice_date']) do
+              is_expected
+                .to eq order_line.InOrd_InvoiceDate.to_date.to_s(:iso8601)
+            end
+            its(['invoice_gross_amount']) do
+              is_expected.to eq order_line.InOrd_GrossInvoiceAmount.to_s
+            end
+            its(['invoice_number']) do
+              is_expected.to eq order_line.InOrd_Invoice
+            end
             its(['item_number']) do
               is_expected.to eq order_line.ItemId
             end

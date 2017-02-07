@@ -147,9 +147,13 @@ Returns a single order
   "order_key": "000",
   "quantity_shipped": "0.0",
   "ship_date": "2000-01-01",
+  "status": "ordered",
   "warehouse_id": 0,
   "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35",
   "lines": [
+    "invoice_date": null,
+    "invoice_gross_amount": null,
+    "invoice_number": null,
     "item_number": "001",
     "item_price": "100.00",
     "contract": {
@@ -185,10 +189,27 @@ Returns an array of orders
   {
     "order_number": 123456,
     "order_key": "000",
-    "quantity_shipped": "0.0",
+    "quantity_shipped": "10.0",
     "ship_date": "2000-01-01",
+    "status": "invoiced",
     "warehouse_id": 1,
     "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35"
+    "lines": [
+      "invoice_date": "2017-02-07",
+      "invoice_gross_amount": "1,000.00",
+      "invoice_number": 123456,
+      "item_number": "001",
+      "item_price": "100.00",
+      "contract": {
+        "contract_id": "1000000",
+        "contract_date": "2016-12-14",
+        "contract_price": "100.00",
+        "contract_number": "10000",
+        "contract_sub": "00",
+        "contract_type": "Sale",
+        "location_id": "01"
+      }
+    ]
   }
 ]
 ```
