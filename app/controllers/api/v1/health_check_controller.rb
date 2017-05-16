@@ -9,6 +9,8 @@ module Api
         else
           render json: { health_check: 'Failed' }, status: 500
         end
+      rescue ActiveRecord::JDBCError
+        render json: { health_check: 'Failed' }, status: 500
       end
     end
   end

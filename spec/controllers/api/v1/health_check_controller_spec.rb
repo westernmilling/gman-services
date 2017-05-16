@@ -72,5 +72,19 @@ RSpec.describe Api::V1::HealthCheckController, type: :controller do
         expect(parsed_json['health_check']).to eq('Failed')
       end
     end
+
+    context 'a ActiveRecord::JDBCError is raised' do
+      before do
+        allow(Customer)
+          .to receive(:count)
+          .and_raise(ActiveRecord::JDBCError)
+
+        get :index
+      end
+
+      it 'fails the health check' do
+        expect(JSON.parse(response.body)['health_check']).to eq('Failed')
+      end
+    end
   end
 end
