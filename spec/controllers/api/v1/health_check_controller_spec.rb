@@ -86,5 +86,19 @@ RSpec.describe Api::V1::HealthCheckController, type: :controller do
         expect(JSON.parse(response.body)['health_check']).to eq('Failed')
       end
     end
+
+    context 'a ActiveRecord::ConnectionTimeoutError is raised' do
+      before do
+        allow(Customer)
+          .to receive(:count)
+          .and_raise(ActiveRecord::ConnectionTimeoutError)
+
+        get :index
+      end
+
+      it 'fails the health check' do
+        expect(JSON.parse(response.body)['health_check']).to eq('Failed')
+      end
+    end
   end
 end
