@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Order::Reference, type: :model do
+RSpec.describe OrderReference, type: :model do
   it do
     is_expected
       .to belong_to(:order)

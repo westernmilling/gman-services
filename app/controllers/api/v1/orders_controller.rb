@@ -2,7 +2,7 @@ module Api
   module V1
     class OrdersController < Api::BaseController
       def show
-        order_reference = Order::Reference
+        order_reference = OrderReference
                           .where(UuidHeader: params[:id])
                           .to_a
                           .first
@@ -10,13 +10,13 @@ module Api
         if order_reference
           render :show, locals: { order_reference: order_reference }
         else
-          render text: "Order::Reference with UUID #{params[:id]} not found",
+          render text: "OrderReference with UUID #{params[:id]} not found",
                  status: 404
         end
       end
 
       def index
-        order_references = Order::Reference.ransack(ransack_query).result
+        order_references = OrderReference.ransack(ransack_query).result
 
         render :index, locals: { order_references: order_references }
       end
