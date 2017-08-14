@@ -16,6 +16,7 @@ class Contract < ActiveRecord::Base
           CONT_ContractSub
           CONT_ContractType
           CONT_DeliveredBushels
+          CONT_FobLocationDescription1
           CONT_FreightAdjustment
           CONT_Price
           CONT_Quantity
