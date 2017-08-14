@@ -9,6 +9,10 @@ class Contract < ActiveRecord::Base
   include Contract::Columns
   include Contract::Ransack
 
+  FOB_LOCATION_MAP = {
+    'D' => 'Delivered',
+    'F' => 'FOB'
+  }.freeze
   TYPE_MAP = {
     'P' => 'Purchase',
     'S' => 'Sale'
@@ -31,6 +35,10 @@ class Contract < ActiveRecord::Base
 
   def contract_type
     TYPE_MAP[self.CONT_ContractType.strip]
+  end
+
+  def fob_location
+    FOB_LOCATION_MAP[self.CONT_FobLocationDescription1.strip]
   end
 
   def self.default_scope

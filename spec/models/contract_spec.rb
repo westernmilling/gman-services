@@ -66,6 +66,29 @@ RSpec.describe Contract, type: :model do
     end
   end
 
+  describe '#fob_location' do
+    let(:instance) do
+      described_class.new(
+        CONT_FobLocationDescription1: native_fob_location_description
+      )
+    end
+    subject do
+      instance.fob_location
+    end
+
+    context 'when CONT_FobLocationDescription1 is D' do
+      let(:native_fob_location_description) { 'D' }
+
+      it { is_expected.to eq 'Delivered' }
+    end
+
+    context 'when CONT_FobLocationDescription1 is F' do
+      let(:native_fob_location_description) { 'F' }
+
+      it { is_expected.to eq 'FOB' }
+    end
+  end
+
   describe '.column_names' do
     subject { described_class.column_names }
 
@@ -82,6 +105,7 @@ RSpec.describe Contract, type: :model do
           CONT_ContractSub
           CONT_ContractType
           CONT_DeliveredBushels
+          CONT_FobLocationDescription1
           CONT_FreightAdjustment
           CONT_Price
           CONT_Quantity
