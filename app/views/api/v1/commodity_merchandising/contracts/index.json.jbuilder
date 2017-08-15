@@ -22,6 +22,7 @@ json.array! contracts do |contract|
   end
   json.contract_date contract.CONT_ContractDate
   json.contract_type contract.contract_type
+  json.fob_location contract.fob_location
   json.quantity contract.CONT_Quantity.to_f
   json.delivered_quantity contract.CONT_DeliveredBushels.to_f
   json.from_date contract.CONT_FromDate

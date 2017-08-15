@@ -86,6 +86,7 @@ Returns matching contracts.
     "contract_type": "Purchase",
     "quantity": 1000000,
     "delivered_quantity": 0,
+    "fob_location": "Delivered"
     "from_date": "2017-01-01",
     "to_date": "2017-01-31"
   }

@@ -58,6 +58,9 @@ RSpec.describe '/api/v1/commodity_merchandising/contracts', type: :request do
         its(['contract_type']) do
           is_expected.to eq contracts[0].contract_type
         end
+        its(['fob_location']) do
+          is_expected.to eq contracts[0].fob_location
+        end
         its(['inv_contract_id']) do
           is_expected.to eq contracts[0].Inv_ContractId
         end
