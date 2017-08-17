@@ -144,6 +144,9 @@ describe '/api/v1/orders' do
                 its(['contract_type']) do
                   is_expected.to eq order_line.contract.contract_type
                 end
+                its(['fob_location']) do
+                  is_expected.to eq order_line.contract.fob_location
+                end
                 its(['location_id']) do
                   is_expected.to eq order_line.contract.LocationId
                 end

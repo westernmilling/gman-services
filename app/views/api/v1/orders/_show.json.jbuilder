@@ -25,6 +25,7 @@ json.lines order_reference.order.lines do |order_line|
       json.contract_number order_line.contract.CONT_ContractNumber
       json.contract_sub order_line.contract.CONT_ContractSub
       json.contract_type order_line.contract.contract_type
+      json.fob_location order_line.contract.fob_location
       json.location_id order_line.contract.LocationId
     end
   else
