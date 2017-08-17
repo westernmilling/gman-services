@@ -1,3 +1,4 @@
+dist: precise
 language: ruby
 rvm:
   - jruby-9.0.5.0
