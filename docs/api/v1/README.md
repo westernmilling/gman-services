@@ -147,24 +147,45 @@ Returns a single order
   "order_number": 000000,
   "order_key": "000",
   "quantity_shipped": "0.0",
-  "ship_date": "2000-01-01",
+  "ship_date": "2018-01-01",
   "status": "ordered",
-  "warehouse_id": 0,
+  "warehouse_id": 71,
   "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35",
   "lines": [
     "invoice_date": null,
     "invoice_gross_amount": null,
     "invoice_number": null,
     "item_number": "001",
-    "item_price": "100.00",
+    "item_price": "150.00",
     "contract": {
-      "contract_id": "1000000",
-      "contract_date": "2016-12-14",
-      "contract_price": "100.00",
-      "contract_number": "10000",
-      "contract_sub": "00",
+      "balance": "1000000.0",
+      "contract_id": "7160000000S",
+      "customer": {
+        "customer_id": "00100100",
+        "name": "Giles Dairy",
+      },
+      "commodity_id": 1010,
+      "inv_contract_id": "60000000",
+      "location_id": 71,
+      "contract_number": 600000,
+      "price": 150.0,
+      "freight_adjustment": 0,
+      "commodity": {
+        "commodity_id": 1010,
+        "description": "CORN",
+        "conversion_factor": "2000.0"
+      },
+      "unit_of_measure": {
+        "uom_id": 1,
+        "description": "TON"
+      },
+      "contract_date": "2018-01-01",
       "contract_type": "Sale",
-      "location_id": "01"
+      "quantity": 1000000,
+      "delivered_quantity": 0,
+      "fob_location": "Delivered"
+      "from_date": "2018-01-01",
+      "to_date": "2018-01-31"
     }
   ]
 }
@@ -191,24 +212,45 @@ Returns an array of orders
     "order_number": 123456,
     "order_key": "000",
     "quantity_shipped": "10.0",
-    "ship_date": "2000-01-01",
+    "ship_date": "2018-01-01",
     "status": "invoiced",
     "warehouse_id": 1,
     "uuid": "949085E3-6FC3-4240-BC86-2940D543DB35"
     "lines": [
-      "invoice_date": "2017-02-07",
+      "invoice_date": "2018-01-01",
       "invoice_gross_amount": "1,000.00",
       "invoice_number": 123456,
       "item_number": "001",
-      "item_price": "100.00",
+      "item_price": "150.00",
       "contract": {
-        "contract_id": "1000000",
-        "contract_date": "2016-12-14",
-        "contract_price": "100.00",
-        "contract_number": "10000",
-        "contract_sub": "00",
+        "balance": "1000000.0",
+        "contract_id": "7160000000S",
+        "customer": {
+          "customer_id": "00100100",
+          "name": "Giles Dairy",
+        },
+        "commodity_id": 1010,
+        "inv_contract_id": "60000000",
+        "location_id": 71,
+        "contract_number": 600000,
+        "price": 150.0,
+        "freight_adjustment": 0,
+        "commodity": {
+          "commodity_id": 1010,
+          "description": "CORN",
+          "conversion_factor": "2000.0"
+        },
+        "unit_of_measure": {
+          "uom_id": 1,
+          "description": "TON"
+        },
+        "contract_date": "2018-01-01",
         "contract_type": "Sale",
-        "location_id": "01"
+        "quantity": 1000000,
+        "delivered_quantity": 0,
+        "fob_location": "Delivered"
+        "from_date": "2018-01-01",
+        "to_date": "2018-01-31"
       }
     ]
   }

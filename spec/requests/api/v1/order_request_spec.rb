@@ -123,32 +123,99 @@ describe '/api/v1/orders' do
                     )
                   end
                 end
+                let(:contract) { order_line.contract }
 
                 it { is_expected.to be_present }
-                its(['contract_date']) do
-                  is_expected
-                    .to eq order_line.contract.CONT_ContractDate.to_s(:iso8601)
+
+                its(['balance']) do
+                  is_expected.to eq contract.balance
                 end
                 its(['contract_id']) do
-                  is_expected.to eq order_line.contract.ContractId
-                end
-                its(['contract_price']) do
-                  is_expected.to eq order_line.contract.CONT_Price
+                  is_expected.to eq contract.ContractId
                 end
                 its(['contract_number']) do
-                  is_expected.to eq order_line.contract.CONT_ContractNumber
+                  is_expected.to eq contract.CONT_ContractNumber
                 end
-                its(['contract_sub']) do
-                  is_expected.to eq order_line.contract.CONT_ContractSub
+                its(['commodity_id']) do
+                  is_expected.to eq contract.CommodityId.to_i
+                end
+                its(['contract_id']) do
+                  is_expected.to eq contract.ContractId
+                end
+                its(['contract_date']) do
+                  is_expected
+                    .to eq contract.CONT_ContractDate.to_s(:iso8601)
                 end
                 its(['contract_type']) do
-                  is_expected.to eq order_line.contract.contract_type
+                  is_expected.to eq contract.contract_type
                 end
                 its(['fob_location']) do
-                  is_expected.to eq order_line.contract.fob_location
+                  is_expected.to eq contract.fob_location
+                end
+                its(['inv_contract_id']) do
+                  is_expected.to eq contract.Inv_ContractId
                 end
                 its(['location_id']) do
-                  is_expected.to eq order_line.contract.LocationId
+                  is_expected.to eq contract.LocationId.to_i
+                end
+                its(['price']) do
+                  is_expected.to eq contract.CONT_Price
+                end
+                its(['freight_adjustment']) do
+                  is_expected.to eq contract.CONT_FreightAdjustment
+                end
+                its(['quantity']) do
+                  is_expected.to eq contract.CONT_Quantity
+                end
+                its(['delivered_quantity']) do
+                  is_expected.to eq contract.CONT_DeliveredBushels
+                end
+                its(['from_date']) do
+                  is_expected.to eq contract.CONT_FromDate.to_s(:iso8601)
+                end
+                its(['to_date']) do
+                  is_expected.to eq contract.CONT_ToDate.to_s(:iso8601)
+                end
+                its(['commodity']) { is_expected.to be_present }
+                its(['unit_of_measure']) { is_expected.to be_present }
+
+                describe 'customer' do
+                  subject { response_body['lines'][0]['contract']['customer'] }
+
+                  its(['customer_id']) do
+                    is_expected.to eq contract.customer.CustomerId
+                  end
+                  its(['name']) do
+                    is_expected.to eq contract.customer.Name
+                  end
+                end
+                describe 'commodity' do
+                  subject { response_body['lines'][0]['contract']['commodity'] }
+
+                  its(['commodity_id']) do
+                    is_expected.to eq contract.commodity.CommodityId.to_i
+                  end
+                  its(['description']) do
+                    is_expected.to eq contract.commodity.COMM_Description
+                  end
+                  its(['conversion_factor']) do
+                    is_expected
+                      .to eq contract.commodity.COMM_ConversionFactor
+                  end
+                end
+                describe 'unit_of_measure' do
+                  subject do
+                    response_body['lines'][0]['contract']['unit_of_measure']
+                  end
+
+                  its(['uom_id']) do
+                    is_expected
+                      .to eq contract.unit_of_measure.CommUOMId
+                  end
+                  its(['description']) do
+                    is_expected
+                      .to eq contract.unit_of_measure.CommUOMDescription
+                  end
                 end
               end
             end
