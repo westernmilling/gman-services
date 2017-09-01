@@ -8,6 +8,7 @@ json.commodity_id contract.CommodityId.to_i
 json.inv_contract_id contract.Inv_ContractId
 json.location_id contract.LocationId.to_i
 json.contract_number contract.CONT_ContractNumber
+json.contract_sub contract.CONT_ContractSub
 json.price contract.CONT_Price.to_f
 json.freight_adjustment contract.CONT_FreightAdjustment.to_f
 json.commodity do

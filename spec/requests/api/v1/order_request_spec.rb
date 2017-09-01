@@ -136,6 +136,9 @@ describe '/api/v1/orders' do
                 its(['contract_number']) do
                   is_expected.to eq contract.CONT_ContractNumber
                 end
+                its(['contract_sub']) do
+                  is_expected.to eq contract.CONT_ContractSub
+                end
                 its(['commodity_id']) do
                   is_expected.to eq contract.CommodityId.to_i
                 end
