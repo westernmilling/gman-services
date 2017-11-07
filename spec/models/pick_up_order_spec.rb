@@ -137,6 +137,46 @@ RSpec.describe PickUpOrder, type: :model do
     end
   end
 
+  describe '.load_number_eq' do
+    before do
+      subject_pool
+    end
+
+    let(:matching_pool) do
+      create_list(:pick_up_order, 1, LoadNumber: 1)
+    end
+    let(:subject_pool) do
+      matching_pool + Array.new(2) do |i|
+        create(:pick_up_order, LoadNumber: 10 + i)
+      end
+    end
+
+    subject { described_class.load_number_eq(load_number) }
+
+    context 'when there are matching records' do
+      let(:load_number) { 1 }
+
+      it 'should return matches' do
+        expect(
+          subject
+            .map { |object| "#{object.ContractId}-#{object.LoadNumber}" }
+        ).to contain_exactly(
+          *matching_pool
+            .map { |object| "#{object.ContractId}-#{object.LoadNumber}" }
+        )
+      end
+    end
+
+    context 'when there are no matching records' do
+      let(:matching_pool) { [] }
+      let(:load_number) { 99 }
+
+      it 'should return nothing' do
+        expect(subject).to be_empty
+      end
+    end
+  end
+
   describe '.status_eq' do
     before do
       subject_pool

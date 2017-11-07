@@ -282,5 +282,26 @@ describe 'pick up orders' do
           .to_not contain_exactly filters[:contract_balance_not_eq].to_i
       end
     end
+
+    context 'when the request is filtering contract release load' do
+      let(:filters) do
+        {
+          contract_id_eq: pick_up_order.ContractId,
+          load_number_eq: pick_up_order.LoadNumber
+        }
+      end
+      let(:pick_up_order) { pick_up_orders.sample }
+
+      it 'returns the matching pick up order' do
+        parsed_body = JSON.parse(response.body)
+
+        expect(parsed_body).to_not be_empty
+        expect(parsed_body.size).to eq 1
+        expect(parsed_body[0]).to include(
+          'contract_id' => pick_up_order.ContractId,
+          'load_number' => pick_up_order.LoadNumber
+        )
+      end
+    end
   end
 end

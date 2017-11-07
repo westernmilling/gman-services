@@ -48,6 +48,7 @@ class PickUpOrder < ActiveRecord::Base
           :contract_present,
           :item_commodity_id_eq,
           :item_id_eq,
+          :load_number_eq,
           :purchase_customer_id_eq,
           :release_prefix_eq,
           :release_load_number_eq,
@@ -96,6 +97,10 @@ class PickUpOrder < ActiveRecord::Base
 
         def item_id_eq(value)
           where('InvItems.ItemId = ?', value)
+        end
+
+        def load_number_eq(value)
+          where('InvPickUpOrders.LoadNumber = ?', value)
         end
 
         def purchase_customer_id_eq(value)
