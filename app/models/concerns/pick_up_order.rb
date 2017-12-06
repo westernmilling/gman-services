@@ -100,7 +100,7 @@ class PickUpOrder < ActiveRecord::Base
         end
 
         def load_number_eq(value)
-          where('InvPickUpOrders.LoadNumber = ?', value)
+          where('InvPickUpOrders.LoadNumber = ?', value.to_i)
         end
 
         def purchase_customer_id_eq(value)

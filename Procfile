@@ -1,2 +1,2 @@
 web: bundle exec bin/puma -C config/puma.rb
-log: tail -f log/development.log
+log: touch log/development.log && tail -f log/development.log
