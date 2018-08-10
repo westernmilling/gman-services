@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   scope '/api/v1', module: 'api/v1' do
     scope 'commodity_merchandising', module: 'commodity_merchandising' do
       resources :contracts, only: [:index], defaults: { format: 'json' }
+      resources :bulk_contracts, only: [:index], defaults: { format: 'json' }
     end
     get 'customer_contracts(.:format)',
         to: 'customer_contracts#index',
