@@ -35,7 +35,9 @@ module Api
         end
 
         def customer_ids
-          params[:customer_ids]
+          params[:customer_ids].split(',').map do |customer_id|
+            "'#{customer_id}'"
+          end.join(',')
         end
       end
     end
