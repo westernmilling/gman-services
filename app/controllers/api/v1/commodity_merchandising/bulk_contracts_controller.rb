@@ -17,10 +17,10 @@ module Api
         end
 
         def search_query_string
-          "select #{column_names.join(', ')} from Contract" \
-          'INNER JOIN InvPickUpOrders on' \
-          'InvPickUpOrders.ContractId = Contract.Inv_ContractId' \
-          'and Contract.LocationId = InvPickUpOrders.ContractLocationId' \
+          "select #{column_names.join(', ')} from Contract " \
+          'INNER JOIN InvPickUpOrders on ' \
+          'InvPickUpOrders.ContractId = Contract.Inv_ContractId ' \
+          'and Contract.LocationId = InvPickUpOrders.ContractLocationId ' \
           "where CustomerId IN (#{customer_ids})"
         end
 
