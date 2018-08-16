@@ -2,7 +2,9 @@ module Api
   module V1
     module CommodityMerchandising
       class BulkContractsController < Api::BaseController
-        include SimpleApi
+        def index
+          render json: resources, status: :ok
+        end
 
         private
 
@@ -19,7 +21,7 @@ module Api
           'INNER JOIN InvPickUpOrders on' \
           'InvPickUpOrders.ContractId = Contract.Inv_ContractId' \
           'and Contract.LocationId = InvPickUpOrders.ContractLocationId' \
-          "where CustomerId = '#{customer_ids}'"
+          "where CustomerId IN (#{customer_ids})"
         end
 
         def column_names
@@ -33,7 +35,7 @@ module Api
         end
 
         def customer_ids
-          params[:q][:customer_ids]
+          params[:customer_ids]
         end
       end
     end
