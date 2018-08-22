@@ -3,13 +3,16 @@ module Api
     module CommodityMerchandising
       class BulkContractsController < Api::BaseController
         def index
-          render text: resources, status: :ok
+          render json: resources, status: :ok
         end
 
         private
 
         def resources
-          Contract.connection.select(search_query_string).to_a.inspect
+          JSON.dump(records)
+
+        def records
+          Contract.connection.select(search_query_string).to_a
         end
 
         def search_query_string
