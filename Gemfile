@@ -13,7 +13,6 @@ gem 'jdbc-mysql', platform: :jruby
 gem 'jquery-rails'
 gem 'mysql2', platform: :ruby
 gem 'net-ssh', '2.9.2'
-gem 'oj'
 gem 'omniauth'
 gem 'omniauth-oauth2', '1.0.3'
 gem 'plissken', git: 'https://github.com/michaelachrisco/plissken.git',
