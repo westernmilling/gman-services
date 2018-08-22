@@ -3,16 +3,16 @@ module Api
     module CommodityMerchandising
       class BulkContractsController < Api::BaseController
         def index
-          render json: resources, status: :ok
+          render text: resources, status: :ok
         end
 
         private
 
         def resources
-          @_resources ||= search.as_json(include: :pick_up_orders)
+          JSON.dump(records)
         end
 
-        def search
+        def records
           Contract.connection.select(search_query_string).to_a
         end
 
@@ -20,8 +20,7 @@ module Api
           "select #{column_names.join(', ')} from Contract " \
           'INNER JOIN InvPickUpOrders on ' \
           'InvPickUpOrders.ContractId = Contract.Inv_ContractId ' \
-          'and Contract.LocationId = InvPickUpOrders.ContractLocationId ' \
-          "where CustomerId IN (#{customer_ids})"
+          'and Contract.LocationId = InvPickUpOrders.ContractLocationId'
         end
 
         def column_names
@@ -32,12 +31,6 @@ module Api
           model_class.column_names.map do |name|
             "#{model_class.table_name}.#{name}"
           end
-        end
-
-        def customer_ids
-          params[:customer_ids].split(',').map do |customer_id|
-            "'#{customer_id}'"
-          end.join(',')
         end
       end
     end
