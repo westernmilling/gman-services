@@ -38,7 +38,6 @@ module Api
 
         def contract_column_names
           columns = %w(
-            ContractId
             CustomerId
             CONT_ContractDate
             CONT_ContractType
@@ -53,6 +52,7 @@ module Api
 
         def pick_up_order_column_names
           columns = %w(
+            ContractId
             ItemId
             Origin
             OriginState
