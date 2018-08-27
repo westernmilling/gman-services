@@ -20,11 +20,15 @@ module Api
           "select #{column_names.join(', ')} from Contract " \
           'INNER JOIN InvPickUpOrders on ' \
           'InvPickUpOrders.ContractId = Contract.Inv_ContractId ' \
+          'INNER JOIN Commodity on ' \
+          'Commodity.CommodityId = Contract.CommodityId ' \
           'and Contract.LocationId = InvPickUpOrders.ContractLocationId'
         end
 
         def column_names
-          column_name_generator(Contract) + column_name_generator(PickUpOrder)
+          column_name_generator(Contract) +
+            column_name_generator(PickUpOrder) +
+            column_name_generator(Commodity)
         end
 
         def column_name_generator(model_class)
