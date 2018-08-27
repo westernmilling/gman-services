@@ -65,7 +65,7 @@ module Api
 
         def column_name_generator(model_class, columns)
           columns.map do |name|
-            [model_class, name].join('.')
+            [model_class.table_name, name].join('.')
           end
         end
       end
