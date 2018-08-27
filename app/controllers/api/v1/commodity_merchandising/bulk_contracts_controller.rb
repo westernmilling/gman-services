@@ -37,7 +37,7 @@ module Api
         end
 
         def contract_column_names
-          columns = %(
+          columns = %w(
             CONT_ContractDate
             CONT_ContractType
             CONT_FobLocationDescription1
