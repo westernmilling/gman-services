@@ -37,7 +37,7 @@ module Api
         end
 
         def contract_column_names
-          column_names = %(
+          columns = %(
             CONT_ContractDate
             CONT_ContractType
             CONT_FobLocationDescription1
@@ -46,11 +46,11 @@ module Api
             CONT_FromDate
             CONT_ToDate
           )
-          column_name_generator(Contract, column_names)
+          column_name_generator(Contract, columns)
         end
 
         def pick_up_order_column_names
-          column_names = %w(
+          columns = %w(
             CustomerId
             ItemId
             Origin
@@ -60,7 +60,7 @@ module Api
             ReleasePrefix
             Status
           )
-          column_name_generator(PickUpOrder, column_names)
+          column_name_generator(PickUpOrder, columns)
         end
 
         def column_name_generator(model_class, columns)
