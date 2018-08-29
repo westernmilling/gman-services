@@ -54,6 +54,7 @@ module Api
           columns = %w(
             ContractId
             ItemId
+            LoadNumber
             Origin
             OriginState
             PickupType
