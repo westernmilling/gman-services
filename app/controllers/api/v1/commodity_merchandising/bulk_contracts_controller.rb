@@ -46,6 +46,7 @@ module Api
             CONT_Quantity
             CONT_FromDate
             CONT_ToDate
+            LocationId
           )
           column_name_generator(Contract, columns)
         end
