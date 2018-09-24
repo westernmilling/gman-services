@@ -38,6 +38,7 @@ module Api
 
         def contract_column_names
           columns = %w(
+            CommodityId
             CustomerId
             CONT_ContractDate
             CONT_ContractType
