@@ -27,9 +27,9 @@ module Api
         # Worked with commodity id. Took 1:17
 
         def column_names
-          contract_column_names +
-            pick_up_order_column_names +
-            commodity_column_names
+          pick_up_order_column_names +
+          commodity_column_names +
+          contract_column_names
         end
 
         def commodity_column_names
@@ -38,17 +38,7 @@ module Api
 
         def contract_column_names
           columns = %w(
-            CommodityId
-            CustomerId
-            CONT_ContractDate
-            CONT_ContractType
-            CONT_FobLocationDescription1
-            CONT_Price
-            CONT_Quantity
-            CONT_FromDate
-            CONT_ToDate
-            LocationId
-            ItemId
+            *
           )
           column_name_generator(Contract, columns)
         end
