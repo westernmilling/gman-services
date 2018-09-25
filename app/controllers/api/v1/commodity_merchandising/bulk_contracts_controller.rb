@@ -48,6 +48,7 @@ module Api
             CONT_FromDate
             CONT_ToDate
             LocationId
+            ItemId
           )
           column_name_generator(Contract, columns)
         end
@@ -55,7 +56,6 @@ module Api
         def pick_up_order_column_names
           columns = %w(
             ContractId
-            ItemId
             LoadNumber
             Origin
             OriginState
